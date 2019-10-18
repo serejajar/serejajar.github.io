@@ -5,16 +5,17 @@
     <title></title>
     <script type="text/javascript" src="main.js" defer></script>
     <style media="screen">
-      p {
+      p.error-msg {
         display: none;
       }
     </style>
   </head>
   <body>
-    <div class="">
+    <div>
       <input id="input" type="text">
       <button type="button" name="button">Send</button>
+      The message from Web Worker is: <span id="result"></span>
     </div>
-    <p>Your browser doesn't support Web Workers</p>
+    <p class="error-msg">Your browser doesn't support Web Workers</p>
   </body>
 </html>
