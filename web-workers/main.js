@@ -6,8 +6,9 @@ const p = document.querySelector('p');
 if (window.Worker) {
   const myWorker = new Worker('worker.js');
   btn.onclick = function() {
-    myWorker.postMessage([ input.value ]);
-    console.log('Message posted to worker.js');
+    let {value} = input;
+    myWorker.postMessage([ value ]);
+    console.log('Message posted to worker.js', value);
   }
 
   myWorker.onmessage = function(e) {
