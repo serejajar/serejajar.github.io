@@ -5,7 +5,7 @@ onconnect = function(e) {
     port.postMessage(e.data[0]);
   }
 
-  for (var i = 0; i < 100000000; i++) {
+  setTimeout(function functionName() {
     port.postMessage('e.data ' + i);
-  }
+  }, 3000);
 }
