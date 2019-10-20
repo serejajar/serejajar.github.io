@@ -6,11 +6,6 @@ const p = document.querySelector('p.error-msg');
 
 if (window.SharedWorker) {
   const myWorker = new SharedWorker('worker.js');
-  btn.onclick = function() {
-    let {value} = input;
-    myWorker.port.postMessage([ value ]);
-    console.log('Message posted to worker.js', value);
-  }
 
   myWorker.port.onmessage = function(e) {
     console.log('Message from worker.js', e.data)
@@ -20,6 +15,8 @@ if (window.SharedWorker) {
   myWorker.port.onerror = function(e) {
     console.log('Error from worker.js', e)
   }
+
+  myWorker.port.postMessage([ 'value 123' ]);
 } else {
   wrapper.style.display = 'none';
   p.style.display = 'block';
