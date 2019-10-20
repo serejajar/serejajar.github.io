@@ -3,9 +3,10 @@ onconnect = function(e) {
   console.log('e.ports', e.ports[0]);
 
   port.onmessage = function(e) {
-    const workerResult = 'Result: ';
+    console.log('e', e);
+    const workerResult = 'Result';
     port.postMessage(workerResult);
   }
 
-  postMessage('e.data');
+  port.postMessage('e.data');
 }
