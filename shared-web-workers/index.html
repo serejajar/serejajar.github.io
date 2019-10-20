@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="main.js" defer></script>
+    <style media="screen">
+      p.error-msg {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Here you can see the simple Web Worker (WW) implementation. We have two scrips main.js and worker.js. In main.js WW starts running. You can send the message to WW from the page usint the input bellow. WW returns the value without a handling</p>
+    <div>
+      <input id="input" type="text">
+      <button type="button" name="button">Send</button>
+      The message from Web Worker is: <span id="result"></span>
+    </div>
+    <a href="other.html"></a>
+    <p class="error-msg">Your browser doesn't support Web Workers</p>
+  </body>
+</html>
