@@ -16,7 +16,7 @@ if (window.Worker) {
     console.log('Error from worker.js', e)
   }
 
-  myWorker.postMessage([ 'other.js: start message' ]);
+  myWorker.postMessage('other.js');
 } else {
   wrapper.style.display = 'none';
   p.style.display = 'block';

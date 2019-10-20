@@ -1,9 +1,10 @@
+let label = '';
 onmessage = function(e) {
-  postMessage(e.data);
-
+  label = e.data;
+  postMessage('WW saved script name: ' + label);
 }
 
 let i = 0;
 setInterval(function() {
-  postMessage('e.data ' + ++i);
+  postMessage(label + ++i);
 }, 3000);
