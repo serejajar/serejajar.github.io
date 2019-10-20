@@ -6,5 +6,5 @@ onmessage = function(e) {
 
 let i = 0;
 setInterval(function() {
-  postMessage(`${label}: ${++i}`);
+  postMessage(`${label} ${++i}`);
 }, 3000);

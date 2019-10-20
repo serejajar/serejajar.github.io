@@ -8,12 +8,12 @@ if (window.SharedWorker) {
   const myWorker = new SharedWorker('worker.js');
 
   myWorker.port.onmessage = function(e) {
-    console.log('Message from worker.js', e.data)
+    console.log('Message from worker:', e.data)
     result.innerText = e.data;
   }
 
   myWorker.port.onerror = function(e) {
-    console.log('Error from worker.js', e)
+    console.log('Error from worker:', e)
   }
 
 } else {
