@@ -7,8 +7,9 @@ onconnect = function(e) {
     console.log('onmessage', e);
     port.postMessage(e.data[0]);
   }
-
+  
+  let i = 0;
   setInterval(function() {
-    port.postMessage('e.data');
+    port.postMessage('e.data ' + ++i);
   }, 3000);
 }
