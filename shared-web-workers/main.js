@@ -16,7 +16,7 @@ if (window.SharedWorker) {
     console.log('Error from worker.js', e)
   }
 
-  myWorker.port.postMessage([ 'Start message' ]);
+  myWorker.port.postMessage([ 'main.js: start message' ]);
 } else {
   wrapper.style.display = 'none';
   p.style.display = 'block';
