@@ -16,7 +16,6 @@ if (window.SharedWorker) {
     console.log('Error from worker.js', e)
   }
 
-  // myWorker.port.postMessage('other.js');
 } else {
   wrapper.style.display = 'none';
   p.style.display = 'block';
