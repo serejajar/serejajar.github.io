@@ -8,12 +8,12 @@ if (window.Worker) {
   const myWorker = new Worker('worker.js');
 
   myWorker.onmessage = function(e) {
-    console.log('Message from worker.js', e.data)
+    console.log('Message from worker: ', e.data)
     result.innerText = e.data;
   }
 
   myWorker.onerror = function(e) {
-    console.log('Error from worker.js', e)
+    console.log('Error from worker: ', e)
   }
 
   myWorker.postMessage('main.js');
