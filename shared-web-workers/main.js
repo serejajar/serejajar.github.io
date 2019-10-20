@@ -4,15 +4,15 @@ const btn = document.querySelector('button');
 const result = document.getElementById('result')
 const p = document.querySelector('p.error-msg');
 
-if (window.Worker) {
-  const myWorker = new Worker('worker.js');
+if (window.SharedWorker) {
+  const myWorker = new SharedWorker('worker.js');
   btn.onclick = function() {
     let {value} = input;
-    myWorker.postMessage([ value ]);
+    myWorker.port.postMessage([ value ]);
     console.log('Message posted to worker.js', value);
   }
 
-  myWorker.onmessage = function(e) {
+  myWorker.port.onmessage = function(e) {
     console.log('Message from worker.js', e.data)
     result.innerText = e.data;
   }
