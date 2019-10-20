@@ -5,3 +5,5 @@ onconnect = function(e) {
     port.postMessage('workerResult');
   }
 }
+
+port.postMessage('Message from worker');
