@@ -1,10 +1,6 @@
-onconnect = function(e) {
-  const [ port ] = e.ports[0];
-  console.log('e.ports', e.ports);
-  port.onmessage = function(e) {
-    console.log('port.onmessage', e);
-    port.postMessage('workerResult');
-  }
+onmessage = function(e) {
+  console.log('Worker: Message received from main script', e.data);
+  postMessage(e.data);
 }
 
-port.postMessage('Message from worker');
+postMessage('e.data');
