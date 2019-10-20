@@ -9,5 +9,3 @@ onconnect = function(e) {
 
   postMessage('e.data');
 }
-
-postMessage('postMessage for testing');

@@ -16,6 +16,10 @@ if (window.SharedWorker) {
     console.log('Message from worker.js', e.data)
     result.innerText = e.data;
   }
+
+  myWorker.port.onerror = function(e) {
+    console.log('Error from worker.js', e)
+  }
 } else {
   wrapper.style.display = 'none';
   p.style.display = 'block';
