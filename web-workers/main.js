@@ -9,11 +9,11 @@ if (window.Worker) {
   btn.onclick = function() {
     let {value} = input;
     myWorker.postMessage([ value ]);
-    console.log('Message posted to worker.js', value);
+    console.log('Message posted to worker:', value);
   }
 
   myWorker.onmessage = function(e) {
-    console.log('Message from worker.js', e.data)
+    console.log('Message from worker:', e.data)
     result.innerText = e.data;
   }
 } else {
