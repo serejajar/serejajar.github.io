@@ -1,5 +1,8 @@
 let AllAnswers = ({ text }) => (
-  <div>{text}</div>
+  <div>
+    <p>Your answers are: {text}</p>
+
+  </div>
 );
 
 const AllAnswersConnecter = ReactRedux.connect(
