@@ -1,0 +1,54 @@
+{
+  "benzine": {
+    "pricePerLitr": 100,
+    "currency": "euro"
+  },
+  "stateHolidays": {
+    "06-03-*": "6 March (in memory of Melina Mercouri)",
+    "18-04-*": "18 April (International Monuments Day)",
+    "18-05-*": "18 May (International Museums Day)",
+    "* * * * 6,7": "The last weekend of September annually (European Heritage Days)",
+    "28-10-*": "28 October",
+    "* * * * 7": "Every first Sunday from November 1st to March 31st"
+  },
+  "combinedTiket": {
+    "price": {
+      "price": 30,
+      "currency": "euro",
+    },
+    "include": [
+      "agora", "hidrianLibriry", "Likeum", "acropolis"
+    ]
+  },
+  "akropolis": {
+    "openHours": {
+      "from": "10:00",
+      "to": "19:00"
+    },
+    "entrance": {
+      "price": 20,
+      "currency": "euro",
+      "special": "combinedTiket"
+    },
+    "freeEntrance": {
+      "stateHolidays": "all",
+    }
+    "link": "http://odysseus.culture.gr/h/3/eh355.jsp?obj_id=2384"
+  },
+  "benakiMuseum": {
+    "openHours": {
+      "from": "10:00",
+      "to": "19:00"
+    },
+    "entrance": {
+      "price": 20,
+      "currency": "euro",
+      "special": "combinedTiket"
+    },
+    "freeEntrance": {
+      "stateHolidays": [ "18-05-*" ],
+      "* * * * 4": "Каждый четверг",
+    }
+    "link": "https://www.benaki.org"
+  }
+}

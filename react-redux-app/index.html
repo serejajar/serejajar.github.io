@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React-Redux App</title>
+    <script src="../libs/react16.min.js" defer></script>
+    <script src="../libs/react16-dom.min.js" defer></script>
+    <script src="../libs/redux-4.0.4.js" defer></script>
+    <!-- Enable JSX (not for production)-->
+    <script src="../libs/babel-6.26.min.js" defer></script>
+    <script src="../libs/react-redux-7.1.3.js" defer></script>
+    <!-- React components -->
+    <script src="src/index.js" type="text/babel" defer></script>
+    <script src="src/redux/actions.js" type="text/babel" defer></script>
+    <script src="src/redux/store.js" type="text/babel" defer></script>
+    <script src="src/components/AllAnswers.js" type="text/babel" defer></script>
+    <script src="src/components/Answers.js" type="text/babel" defer></script>
+    <script src="src/components/App.js" type="text/babel" defer></script>
+    <script src="src/components/Task.js" type="text/babel" defer></script>
+
+    <script type="text/babel" defer>
+'use strict';
+
+
+
+// actions
+// const ADD_ANSWER = "ADD_ANSWER";
+//
+// const addAnswer = (id, text) => ({
+//   type: ADD_ANSWER,
+//   id,
+//   text
+// });
+
+// store
+// const initialState = [{
+//   id: 0,
+//   labelA: 'His name ',
+//   text: '',
+//   labelB: ' Mark',
+//   corect: 'is',
+// }, {
+//   id: 1,
+//   labelA: 'What ',
+//   text: '',
+//   labelB: ' her name?',
+//   corect: 'is',
+// }, {
+//   id: 2,
+//   labelA: 'How ',
+//   text: '',
+//   labelB: ' you?',
+//   corect: 'are',
+// }];
+
+// function answers(state = initialState, action) {
+//   switch (action.type) {
+//     case ADD_ANSWER: {
+//       const { text, id } = action;
+//       return  state.map((answer, i) => {
+//         if (answer.id == id) {
+//           answer.text = text;
+//         }
+//         return answer;
+//       });
+//     }
+//     default:
+//       return state;
+//   }
+// }
+// const rootReducer = Redux.combineReducers({ answers });
+// const store = Redux.createStore(rootReducer);
+
+// AllAnswers
+// let AllAnswers = ({ text }) => (
+//   <div>{text}</div>
+// );
+//
+// const AllAnswersConnecter = ReactRedux.connect(
+//   function functionName() {
+//     const text = store.getState().answers.map(answer => answer.text).join();
+//     return { text }
+//   },
+// );
+//
+// AllAnswers = AllAnswersConnecter(AllAnswers);
+
+// Task
+// class Task extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       input: ''
+//     };
+//   }
+//
+//   updateInput = input => {
+//     const { onChange, id } = this.props;
+//     onChange(id, input);
+//     this.setState({ input });
+//   };
+//
+//   render() {
+//     const { textA, textB, text, correct, onChange } = this.props;
+//     const { input } = this.state;
+//     return (
+//       <li>
+//         {textA}
+//         <input value={input} onChange={ e => this.updateInput(e.target.value) }/>
+//         {textB}
+//       </li>
+//     );
+//   }
+// }
+
+// App
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//   render() {
+//     const { addAnswer } = this.props;
+//
+//     return (
+//       <div>
+//         <ul className="App">
+//           {store.getState().answers.map((answer) =>
+//             <Task
+//               id={answer.id}
+//               textA={answer.labelA}
+//               correct={answer.corect}
+//               text={answer.text}
+//               textB={answer.labelB}
+//               onChange={addAnswer}
+//             />
+//           )}
+//         </ul>
+//         <AllAnswers />
+//       </div>
+//     );
+//   }
+// }
+//
+// const AppConector = ReactRedux.connect(
+//   null,
+//   { addAnswer }
+// );
+// const AppWithRedux = AppConector(App);
+
+
+// index
+// const { Provider } = ReactRedux;
+//
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <AppWithRedux />
+//   </Provider>,
+//   document.getElementById('root')
+// );
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <p>The small app wich uses React and Redux</p>
+    <div id="root"></div>
+  </body>
+</html>
