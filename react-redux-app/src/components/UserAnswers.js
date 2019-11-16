@@ -7,7 +7,7 @@ let AllAnswers = ({ text }) => (
 
 const AllAnswersConnecter = ReactRedux.connect(
   function functionName() {
-    const text = store.getState().answers.map(answer => answer.text).join();
+    const text = store.getState().answers.map(answer => answer.text).join(', ');
     return { text }
   },
 );
