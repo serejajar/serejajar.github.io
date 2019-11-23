@@ -14,9 +14,12 @@ class User extends React.Component {
       return <p>Hi, {name}!</p>
     } else {
       return (
-        <button className="btn" onClick={this.props.handleLogin}>
-          Log in
-        </button>
+        <div>
+          <p>Note: if you use Firefox 70^ it will <a href="https://support.mozilla.org/en-US/kb/content-blocking">block VK API</a>. Please add exception via clicking on the shield icon near adress bar.</p>
+          <button className="btn" onClick={this.props.handleLogin}>
+            Log in
+          </button>
+        </div>
       )
     }
   }
