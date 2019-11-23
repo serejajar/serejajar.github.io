@@ -143,7 +143,7 @@ class Page extends React.Component {
 class PageContainer extends React.Component {
   render() {
     const { page, user, getPhotos } = this.props
-    
+
     if (user.name === '') {
       return null;
     }
@@ -186,7 +186,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <UserContainer />
-        {/*<PageContainer />*/}
+        <PageContainer />
       </div>
     )
   }
