@@ -21,7 +21,7 @@ function handleLogin() {
         dispatch({
           type: LOGIN_FAIL,
           error: true,
-          payload: new Error('Ошибка авторизации'),
+          payload: new Error('Autorization error'),
         })
       }
     }, 4)

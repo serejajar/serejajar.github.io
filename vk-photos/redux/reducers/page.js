@@ -1,11 +1,11 @@
-const initialState = {
-  year: 2018,
+const initialState2 = {
+  year: 0,
   photos: [],
   isFetching: false,
   error: '',
 }
 
-function pageReducer(state = initialState, action) {
+function pageReducer(state = initialState2, action) {
   switch (action.type) {
     case GET_PHOTOS_REQUEST:
       return { ...state, year: action.payload, isFetching: true, error: '' }

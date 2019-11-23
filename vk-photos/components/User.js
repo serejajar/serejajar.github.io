@@ -3,19 +3,19 @@ class User extends React.Component {
     const { name, error, isFetching } = this.props
 
     if (error) {
-      return <p>Во время запроса произошла ошибка, обновите страницу</p>
+      return <p>Error while log in: {error}</p>
     }
 
     if (isFetching) {
-      return <p>Загружаю...</p>
+      return <p>Please wait...</p>
     }
 
     if (name) {
-      return <p>Привет, {name}!</p>
+      return <p>Hi, {name}!</p>
     } else {
       return (
         <button className="btn" onClick={this.props.handleLogin}>
-          Войти
+          Log in
         </button>
       )
     }

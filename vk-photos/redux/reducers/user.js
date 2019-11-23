@@ -1,10 +1,10 @@
-const initialState = {
+const initialState1 = {
   name: '',
   error: '',
   isFetching: false,
 }
 
-export function userReducer(state = initialState, action) {
+function userReducer(state = initialState1, action) {
   switch (action.type) {
     case LOGIN_REQUEST:
       return { ...state, isFetching: true, error: '' }
