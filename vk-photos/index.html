@@ -15,6 +15,7 @@
     <script src="../libs/redux-thunk-2.3.0.js" defer></script>
 
     <!-- React and Redux components -->
+    <!-- <script src="./components/User.js" type="text/babel" defer></script> -->
     <script type="text/babel" defer>
 
 // USer.js
@@ -23,19 +24,19 @@ class User extends React.Component {
     const { name, error, isFetching } = this.props
 
     if (error) {
-      return <p>Во время запроса произошла ошибка, обновите страницу</p>
+      return <p>Error while log in: {error}</p>
     }
 
     if (isFetching) {
-      return <p>Загружаю...</p>
+      return <p>Please wait...</p>
     }
 
     if (name) {
-      return <p>Привет, {name}!</p>
+      return <p>Hi, {name}!</p>
     } else {
       return (
         <button className="btn" onClick={this.props.handleLogin}>
-          Войти
+          Log in
         </button>
       )
     }
@@ -44,14 +45,6 @@ class User extends React.Component {
     return <div className="ib user">{this.renderTemplate()}</div>
   }
 }
-
-// User.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   error: PropTypes.string,
-//   isFetching: PropTypes.bool.isRequired,
-//   handleLogin: PropTypes.func.isRequired,
-// }
-
 
 
 // UserContainer
@@ -146,19 +139,15 @@ class Page extends React.Component {
   }
 }
 
-// Page.propTypes = {
-//   year: PropTypes.number.isRequired,
-//   photos: PropTypes.array.isRequired,
-//   getPhotos: PropTypes.func.isRequired,
-//   error: PropTypes.string,
-//   isFetching: PropTypes.bool.isRequired,
-// }
-
-
 // vk-photos\components\PageContainer.js
 class PageContainer extends React.Component {
   render() {
-    const { page, getPhotos } = this.props
+    const { page, user, getPhotos } = this.props
+    
+    if (user.name === '') {
+      return null;
+    }
+
     return (
       <Page
         photos={page.photos}
@@ -174,6 +163,7 @@ class PageContainer extends React.Component {
 const pageMapStateToProps = store => {
   return {
     page: store.page,
+    user: store.user,
   }
 }
 
@@ -195,8 +185,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <PageContainer />
         <UserContainer />
+        {/*<PageContainer />*/}
       </div>
     )
   }
@@ -215,6 +205,7 @@ function handleLogin() {
 
     //eslint-disable-next-line no-undef
     VK.Auth.login(r => {
+      console.log('VK.Auth.login', r);
       if (r.session) {
         let username = r.session.user.first_name
 
@@ -226,7 +217,7 @@ function handleLogin() {
         dispatch({
           type: LOGIN_FAIL,
           error: true,
-          payload: new Error('Ошибка авторизации'),
+          payload: new Error('Autorization error'),
         })
       }
     }, 4)
