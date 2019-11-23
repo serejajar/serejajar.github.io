@@ -42,6 +42,7 @@ class User extends React.Component {
     }
   }
   render() {
+    console.log('User');
     return <div className="ib user">{this.renderTemplate()}</div>
   }
 }
@@ -50,6 +51,7 @@ class User extends React.Component {
 // UserContainer
 class UserContainer extends React.Component {
   render() {
+    console.log('UserContainer');
     const { user, handleLogin } = this.props
     return (
       <User
@@ -108,7 +110,7 @@ class Page extends React.Component {
     const { photos, isFetching, error } = this.props
 
     if (error) {
-      return <p className="error">Во время загрузки фото произошла ошибка</p>
+      return <p className="error">Error while request photo: {error}</p>
     }
 
     if (isFetching) {
@@ -125,13 +127,23 @@ class Page extends React.Component {
     }
   }
 
+  renderHeader = () => {
+    const { year, photos } = this.props
+    if (year) {
+      return `${year} год [${photos.length}]`
+    }
+
+    return `Click on a year button to get your photos`;
+  }
+
   render() {
+    console.log('Page');
     const { year, photos } = this.props
     return (
       <div className="ib page">
         <p>{this.renderButtons()}</p>
         <h3>
-          {year} год [{photos.length}]
+          {this.renderHeader()}
         </h3>
         {this.renderTemplate()}
       </div>
@@ -142,9 +154,10 @@ class Page extends React.Component {
 // vk-photos\components\PageContainer.js
 class PageContainer extends React.Component {
   render() {
+    console.log('PageContainer');
     const { page, user, getPhotos } = this.props
 
-    if (user.name === '') {
+    if (!user.name) {
       return null;
     }
 
@@ -183,6 +196,7 @@ PageContainer = pageConnector(PageContainer);
 // src="src/components/App.js"
 class App extends React.Component {
   render() {
+    console.log('App');
     return (
       <div className="app">
         <UserContainer />
@@ -324,7 +338,7 @@ function userReducer(state = initialState1, action) {
 
 // vk-photos\redux\reducers\page.js
 const initialState2 = {
-  year: 2018,
+  year: 0,
   photos: [],
   isFetching: false,
   error: '',
