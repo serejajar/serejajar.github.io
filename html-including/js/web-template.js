@@ -1,5 +1,4 @@
 (function() {
-  console.time('app');
   const elements = document.querySelectorAll('[web-template]');
 
   for (let i = 0; i < elements.length; i++) {
@@ -21,6 +20,4 @@
       xhr.send();
     }
   }
-  console.timeEnd('app');
-
 })();
