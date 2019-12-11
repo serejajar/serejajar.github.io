@@ -4,7 +4,6 @@
   for (let i = 0; i < elements.length; i++) {
     const wrapper = elements[i];
     const file = wrapper.getAttribute('web-template');
-    // let data = wrapper.innerHTML;
 
     if (file) {
       let xhr = new XMLHttpRequest();
