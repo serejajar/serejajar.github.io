@@ -2,7 +2,10 @@
   const elements = document.querySelectorAll('[web-template]');
 
   for (let i = 0; i < elements.length; i++) {
-    const file = elements[i].getAttribute('web-template');
+    const wrapper = elements[i];
+    const file = wrapper.getAttribute('web-template');
+    // let data = wrapper.innerHTML;
+
     if (file) {
       let xhr = new XMLHttpRequest();
       const url = `components/${file}`;
@@ -10,10 +13,10 @@
         if (xhr.status != 200) {
           console.log(`Ошибка ${xhr.status}: ${xhr.statusText}`);
         } else {
-          console.log(`Готово, получили ${xhr.response.length} байт`);
+          wrapper.innerHTML = xhr.response;
         }
       };
-      xhr.open('GET', url, false);
+      xhr.open('GET', url, true);
       xhr.send();
     }
   }
