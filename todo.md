@@ -13,3 +13,27 @@ ReactJS
 https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318
 https://jaredpalmer.com/formik - валидация форм
 bind в конструкторе, разобрать
+reactPerf время рендеринга компонета реакт
+
+
+JSON Web Token
+https://gist.github.com/zmts/802dc9c3510d79fd40f9dc38a12bccfc
+https://player.vimeo.com/video/151208427
+https://habr.com/ru/post/466929/
+https://jwt.io/
+
+
+https://redux.js.org/recipes/using-immutablejs-with-redux
+
+Парадигмы програмирования:
+логическое програмирование
+реактивное програмирование
+
+Декларативное програмирование:
+ - функциональное програмирование (HASKEL, ramda JS, lodash JS )
+
+императивное програмирование
+объектно ориентированное програмирование
+
+WEBSQL,
+indexDB

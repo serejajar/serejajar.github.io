@@ -26,6 +26,7 @@ const initialState = [{
 // <Task correct="is" textB=' your wife a singer?' />
 // <Task textA='I ' correct="am"  textB=' busy' />
 
+// reducers
 function answers(state = initialState, action) {
   switch (action.type) {
     case ADD_ANSWER: {
