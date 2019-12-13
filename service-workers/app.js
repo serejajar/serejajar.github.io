@@ -25,7 +25,13 @@ cache.keys().then(function(keys) {
       console.log(url.indexOf(name));
     });
 
-    checkbox.checked = !!urls.find(url => url.indexOf(name) !== -1);
+    if (urls.find(url => url.indexOf(name) !== -1)) {
+      checkbox.checked = true;
+      messageEl.innerHTML = 'Saved';
+    } else {
+      checkbox.checked = false;
+      messageEl.innerHTML = 'Not saved';
+    }
 
     checkbox.onclick = function() {
       if (checkbox.checked) {
