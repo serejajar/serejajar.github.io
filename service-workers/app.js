@@ -9,11 +9,14 @@ if ('serviceWorker' in navigator) {
 
 const inputs = document.querySelectorAll('input[type="checkbox"]');
 
-
-caches.keys().then(function(list) {
-  console.log('caches.keys()', list);
-});
-
+caches.open('test-SW').then(function(cache) {
+  cache.keys().then(function(keys) {
+    console.log('keys', keys);
+    keys.forEach(function(request) {
+      console.log('request', request);
+    });
+  });
+})
 
 for (var i = 0; i < inputs.length; i++) {
   inputs[i].onclick = function() {
@@ -22,7 +25,6 @@ for (var i = 0; i < inputs.length; i++) {
     const messageEl = parent.querySelector('span');
     const dataImg = parent.getAttribute('data-image');
     const name = `./gallery/${dataImg}.jpg`;
-    console.log(checkbox.checked, name);
 
     if (checkbox.checked) {
       caches.open('test-SW').then(function(cache) {
@@ -33,7 +35,6 @@ for (var i = 0; i < inputs.length; i++) {
     } else {
       caches.open('test-SW').then(function(cache) {
         cache.delete(name).then(function(isDeleted) {
-          console.log('cache.delete', isDeleted);
           if (isDeleted) {
             messageEl.innerHTML = 'Not saved';
           }

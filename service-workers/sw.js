@@ -10,15 +10,12 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('fetch 333', event.request.url);
+  console.log('333333333');
   event.respondWith(caches.match(event.request).then(function(response) {
-    console.log('caches.match', response);
-    
     if (response !== undefined) {
       return response;
     } else {
       return fetch(event.request).then(function (response) {
-        console.log('fetch response', response);
         if (response.status != 404) {
           let responseClone = response.clone();
 
