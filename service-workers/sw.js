@@ -1,13 +1,13 @@
-// self.addEventListener('install', (event) => {
-//   event.waitUntil(
-//     caches.open('test-SW').then((cache) => {
-//       return cache.addAll([
-//         './index.html',
-//         './app.js',
-//       ]);
-//     })
-//   );
-// });
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open('test-SW').then((cache) => {
+      return cache.addAll([
+        './index.html',
+        './app.js',
+      ]);
+    })
+  );
+});
 
 // self.addEventListener('fetch', function(event) {
 //   console.log('333333333', event.request.url);

@@ -11,7 +11,7 @@ const inputs = document.querySelectorAll('input[type="checkbox"]');
 
 caches.open('test-SW').then(function(cache) {
   cache.keys().then(function(keys) {
-    console.log('KEYS', keys);
+    // console.log('KEYS', keys);
     const urls = keys.map(function(item) {
       return item.url;
     });
@@ -36,9 +36,9 @@ caches.open('test-SW').then(function(cache) {
           cache.add(name).then(function() {
             messageEl.innerHTML = 'Saved';
 
-            cache.keys().then(function(keys) {
-              console.log('keys', keys);
-            });
+            // cache.keys().then(function(keys) {
+            //   console.log('keys', keys);
+            // });
           });
         } else {
           cache.delete(name).then(function(isDeleted) {
@@ -46,9 +46,9 @@ caches.open('test-SW').then(function(cache) {
               messageEl.innerHTML = 'Not saved';
             }
 
-            cache.keys().then(function(keys) {
-              console.log('keys', keys);
-            });
+            // cache.keys().then(function(keys) {
+            //   console.log('keys', keys);
+            // });
           });
         }
       }
