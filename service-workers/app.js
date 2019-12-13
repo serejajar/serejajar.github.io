@@ -21,17 +21,17 @@ for (var i = 0; i < inputs.length; i++) {
     const parent = checkbox.parentNode.parentNode;
     const messageEl = parent.querySelector('span');
     const dataImg = parent.getAttribute('data-image');
-    console.log(checkbox.checked, dataImg);
+    const name = `./gallery/${dataImg}.jpg`;
+    console.log(checkbox.checked, name);
 
     if (checkbox.checked) {
       caches.open('test-SW').then(function(cache) {
-        const name = `./gallery/${dataImg}.jpg`;
-        console.log('IMG', name);
         cache.add(name);
         messageEl.innerHTML = 'Saved';
       })
     } else {
       caches.delete(name).then(function(isDeleted) {
+        console.log('isDeleted', isDeleted);
         if (isDeleted) {
           messageEl.innerHTML = 'Not saved';
         }
