@@ -24,12 +24,10 @@ for (var i = 0; i < inputs.length; i++) {
     console.log(checkbox.checked, dataImg, );
 
     if (checkbox.checked) {
-      caches.open('test-SW').then(function (cache) {
-        const img = new Image();
+      caches.open('test-SW').then(function(cache) {
         const name = `/gallery/${dataImg}.jpg`;
-        img.src = name;
         console.log('IMG', name, img);
-        cache.put(name, img);
+        cache.add(name);
         messageEl.innerHTML = 'Saved';
       })
     } else {
