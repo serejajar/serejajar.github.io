@@ -22,9 +22,7 @@ caches.open('test-SW').then(function(cache) {
       const dataImg = parent.getAttribute('data-image');
       const name = `./gallery/${dataImg}.jpg`;
 
-      urls.find(url => {
-        console.log(url.indexOf(name));
-      });
+      console.log(urls.find(url => url.indexOf(name) !== -1);
 
       if (urls.find(url => url.indexOf(name) !== -1)) {
         checkbox.checked = true;
@@ -36,27 +34,23 @@ caches.open('test-SW').then(function(cache) {
 
       checkbox.onclick = function() {
         if (checkbox.checked) {
-          // caches.open('test-SW').then(function(cache) {
-            cache.add(name).then(function() {
-              messageEl.innerHTML = 'Saved';
+          cache.add(name).then(function() {
+            messageEl.innerHTML = 'Saved';
 
-              cache.keys().then(function(keys) {
-                console.log('keys', keys);
-              });
-            });;
-          // });
-        } else {
-          // caches.open('test-SW').then(function(cache) {
-            cache.delete(name).then(function(isDeleted) {
-              if (isDeleted) {
-                messageEl.innerHTML = 'Not saved';
-              }
-
-              cache.keys().then(function(keys) {
-                console.log('keys', keys);
-              });
+            cache.keys().then(function(keys) {
+              console.log('keys', keys);
             });
-          // });
+          });
+        } else {
+          cache.delete(name).then(function(isDeleted) {
+            if (isDeleted) {
+              messageEl.innerHTML = 'Not saved';
+            }
+
+            cache.keys().then(function(keys) {
+              console.log('keys', keys);
+            });
+          });
         }
       }
     }
