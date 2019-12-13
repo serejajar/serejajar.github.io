@@ -26,9 +26,9 @@ for (var i = 0; i < inputs.length; i++) {
     if (checkbox.checked) {
       caches.open('test-SW').then(function (cache) {
         const img = new Image();
-        const name = `${dataImg}.jpg`;
+        const name = `/gallery/${dataImg}.jpg`;
         img.src = name;
-        console.log('IMG', img);
+        console.log('IMG', name, img);
         cache.put(name, img);
         messageEl.innerHTML = 'Saved';
       })
