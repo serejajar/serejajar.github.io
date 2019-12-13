@@ -8,6 +8,10 @@ if ('serviceWorker' in navigator) {
 }
 
 const inputs = document.querySelectorAll('input[type="checkbox"]');
+
+console.log('caches.keys()', caches.keys());
+
+
 for (var i = 0; i < inputs.length; i++) {
   inputs[i].onclick = function() {
     const checkbox = this;
@@ -26,7 +30,7 @@ for (var i = 0; i < inputs.length; i++) {
         messageEl.innerHTML = 'Saved';
       })
     } else {
-      caches.delete(cacheName).then(function(isDeleted) {
+      caches.delete(name).then(function(isDeleted) {
         if (isDeleted) {
           messageEl.innerHTML = 'Not saved';
         }
