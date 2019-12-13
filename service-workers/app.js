@@ -26,8 +26,10 @@ for (var i = 0; i < inputs.length; i++) {
 
     if (checkbox.checked) {
       caches.open('test-SW').then(function(cache) {
-        cache.add(name);
-        messageEl.innerHTML = 'Saved';
+        cache.add(name).then(function(aaa) {
+          console.log('cache.add', aaa);
+          messageEl.innerHTML = 'Saved';
+        });;
       })
     } else {
       caches.delete(name).then(function(isDeleted) {
