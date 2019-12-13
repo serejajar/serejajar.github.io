@@ -25,7 +25,7 @@ for (var i = 0; i < inputs.length; i++) {
 
     if (checkbox.checked) {
       caches.open('test-SW').then(function(cache) {
-        const name = `/gallery/${dataImg}.jpg`;
+        const name = `./gallery/${dataImg}.jpg`;
         console.log('IMG', name);
         cache.add(name);
         messageEl.innerHTML = 'Saved';
