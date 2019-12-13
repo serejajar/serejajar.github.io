@@ -24,9 +24,6 @@ for (var i = 0; i < inputs.length; i++) {
 
           cache.keys().then(function(keys) {
             console.log('keys', keys);
-            keys.forEach(function(request) {
-              console.log('request', request);
-            });
           });
         });;
       })
@@ -36,12 +33,9 @@ for (var i = 0; i < inputs.length; i++) {
           if (isDeleted) {
             messageEl.innerHTML = 'Not saved';
           }
-          
+
           cache.keys().then(function(keys) {
             console.log('keys', keys);
-            keys.forEach(function(request) {
-              console.log('request', request);
-            });
           });
         });
       })
