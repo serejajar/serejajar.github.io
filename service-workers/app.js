@@ -26,18 +26,19 @@ for (var i = 0; i < inputs.length; i++) {
 
     if (checkbox.checked) {
       caches.open('test-SW').then(function(cache) {
-        cache.add(name).then(function(aaa) {
-          console.log('cache.add', aaa);
+        cache.add(name).then(function() {
           messageEl.innerHTML = 'Saved';
         });;
       })
     } else {
-      caches.delete(name).then(function(isDeleted) {
-        console.log('isDeleted', isDeleted);
-        if (isDeleted) {
-          messageEl.innerHTML = 'Not saved';
-        }
-      });
+      caches.open('test-SW').then(function(cache) {
+        cache.delete(name).then(function(isDeleted) {
+          console.log('cache.delete', isDeleted);
+          if (isDeleted) {
+            messageEl.innerHTML = 'Not saved';
+          }
+        });
+      })
     }
   }
 }
