@@ -38,3 +38,6 @@ indexDB
 
 Компоненты:
 https://www.webcomponents.org/introduction
+
+Offline mode?
+https://developer.mozilla.org/en-US/docs/Web/Manifest

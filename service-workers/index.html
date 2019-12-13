@@ -2,10 +2,27 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Service Worker</title>
+    <title>Service Workers</title>
     <script src="app.js" defer></script>
   </head>
   <body>
-    <img src="./gallery/tower-clock.jpg">
+    <h2>Ofline mode basic ipmlementation. You can "save" an image and disable network to check if it shown.</h2>
+    <div data-image='firefox'>
+      <img src="./gallery/firefox.jpg">
+      <h3>
+        <input type="checkbox">
+        Status: <span>Not saved</span>
+      </h3>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div data-image='chrome'>
+      <img src="./gallery/chrome.jpg">
+      <h3>
+        <input type="checkbox">
+        Status: <span>Not saved</span>
+      </h3>
+    </div>
   </body>
 </html>

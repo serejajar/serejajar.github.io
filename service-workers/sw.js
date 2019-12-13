@@ -1,25 +1,13 @@
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open('v1').then((cache) => {
+    caches.open('test-SW').then((cache) => {
       return cache.addAll([
         './index.html',
         './app.js',
-        './gallery/tower-clock.jpg',
-        './gallery/default.jpg',
       ]);
     })
   );
 });
-
-self.addEventListener('activate', (event) => {
-  console.log('activate', event.request);
-});
-
-self.addEventListener('message', (event) => {
-  console.log('message', event.request);
-});
-
-
 
 self.addEventListener('fetch', function(event) {
   console.log('fetch 222', event.request.url);
@@ -30,11 +18,14 @@ self.addEventListener('fetch', function(event) {
     } else {
       return fetch(event.request).then(function (response) {
         console.log('fetch response', response);
-        let responseClone = response.clone();
+        if (response.status != 404) {
+          let responseClone = response.clone();
 
-        caches.open('v1').then(function (cache) {
-          cache.put(event.request, responseClone);
-        });
+          caches.open('test-SW').then(function (cache) {
+            cache.put(event.request, responseClone);
+          })
+        }
+
         return response;
       }).catch(function () {
         console.log('CATCH !!!');
@@ -42,12 +33,4 @@ self.addEventListener('fetch', function(event) {
       });
     }
   }));
-});
-
-self.addEventListener('sync', (event) => {
-  console.log('sync', event.request);
-});
-
-self.addEventListener('push', (event) => {
-  console.log('push', event.request);
 });
