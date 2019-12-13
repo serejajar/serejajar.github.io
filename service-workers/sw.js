@@ -28,6 +28,7 @@ self.addEventListener('fetch', function(event) {
       return response;
     } else {
       return fetch(event.request).then(function (response) {
+        console.log('response', response);
         let responseClone = response.clone();
 
         caches.open('v1').then(function (cache) {
@@ -35,6 +36,7 @@ self.addEventListener('fetch', function(event) {
         });
         return response;
       }).catch(function () {
+        console.log('CATCH !!!');
         return caches.match('./gallery/default.jpg');
       });
     }
