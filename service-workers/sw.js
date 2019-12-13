@@ -22,7 +22,7 @@ self.addEventListener('message', (event) => {
 
 
 self.addEventListener('fetch', function(event) {
-  console.log('fetch', event.request.url);
+  console.log('fetch 123', event.request.url);
   event.respondWith(caches.match(event.request).then(function(response) {
     if (response !== undefined) {
       return response;
