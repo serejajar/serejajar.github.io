@@ -23,7 +23,7 @@ caches.open('test-SW').then(function(cache) {
       const dataImg = parent.getAttribute('data-image');
       const name = `./gallery/${dataImg}.jpg`;
 
-      console.log(urls.find(url => url.indexOf(name) !== -1);
+      console.log(urls.find(url => url.indexOf(name) !== -1));
 
       if (urls.find(url => url.indexOf(name) !== -1)) {
         checkbox.checked = true;
