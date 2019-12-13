@@ -10,9 +10,10 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('fetch 222', event.request.url);
+  console.log('fetch 333', event.request.url);
   event.respondWith(caches.match(event.request).then(function(response) {
     console.log('caches.match', response);
+    
     if (response !== undefined) {
       return response;
     } else {

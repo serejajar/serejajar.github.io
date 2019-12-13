@@ -9,7 +9,10 @@ if ('serviceWorker' in navigator) {
 
 const inputs = document.querySelectorAll('input[type="checkbox"]');
 
-console.log('caches.keys()', caches.keys());
+
+caches.keys().then(function(list) {
+  console.log('caches.keys()', list);
+});
 
 
 for (var i = 0; i < inputs.length; i++) {
