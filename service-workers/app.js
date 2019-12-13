@@ -9,15 +9,6 @@ if ('serviceWorker' in navigator) {
 
 const inputs = document.querySelectorAll('input[type="checkbox"]');
 
-caches.open('test-SW').then(function(cache) {
-  cache.keys().then(function(keys) {
-    console.log('keys', keys);
-    keys.forEach(function(request) {
-      console.log('request', request);
-    });
-  });
-})
-
 for (var i = 0; i < inputs.length; i++) {
   inputs[i].onclick = function() {
     const checkbox = this;
@@ -30,6 +21,13 @@ for (var i = 0; i < inputs.length; i++) {
       caches.open('test-SW').then(function(cache) {
         cache.add(name).then(function() {
           messageEl.innerHTML = 'Saved';
+
+          cache.keys().then(function(keys) {
+            console.log('keys', keys);
+            keys.forEach(function(request) {
+              console.log('request', request);
+            });
+          });
         });;
       })
     } else {
@@ -38,6 +36,13 @@ for (var i = 0; i < inputs.length; i++) {
           if (isDeleted) {
             messageEl.innerHTML = 'Not saved';
           }
+          
+          cache.keys().then(function(keys) {
+            console.log('keys', keys);
+            keys.forEach(function(request) {
+              console.log('request', request);
+            });
+          });
         });
       })
     }
