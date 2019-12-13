@@ -23,21 +23,20 @@ self.addEventListener('message', (event) => {
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(caches.match(event.request).then(function(response) {
-    return new Response('Hello from your friendly neighbourhood service worker!');
-    // if (response !== undefined) {
-    //   return response;
-    // } else {
-    //   return fetch(event.request).then(function (response) {
-    //     let responseClone = response.clone();
-    //
-    //     caches.open('v1').then(function (cache) {
-    //       cache.put(event.request, responseClone);
-    //     });
-    //     return response;
-    //   }).catch(function () {
-    //     return caches.match('/gallery/default.jpg');
-    //   });
-    // }
+    if (response !== undefined) {
+      return response;
+    } else {
+      return fetch(event.request).then(function (response) {
+        let responseClone = response.clone();
+
+        caches.open('v1').then(function (cache) {
+          cache.put(event.request, responseClone);
+        });
+        return response;
+      }).catch(function () {
+        return caches.match('/gallery/default.jpg');
+      });
+    }
   }));
 });
 
