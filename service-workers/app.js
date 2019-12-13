@@ -11,6 +11,7 @@ const inputs = document.querySelectorAll('input[type="checkbox"]');
 
 caches.open('test-SW').then(function(cache) {
   cache.keys().then(function(keys) {
+    console.log('KEYS', keys);
     const urls = keys.map(function(item) {
       return item.url;
     });
