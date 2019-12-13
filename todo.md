@@ -28,12 +28,13 @@ https://redux.js.org/recipes/using-immutablejs-with-redux
 Парадигмы програмирования:
 логическое програмирование
 реактивное програмирование
-
 Декларативное програмирование:
  - функциональное програмирование (HASKEL, ramda JS, lodash JS )
-
 императивное програмирование
 объектно ориентированное програмирование
 
 WEBSQL,
 indexDB
+
+Компоненты:
+https://www.webcomponents.org/introduction
