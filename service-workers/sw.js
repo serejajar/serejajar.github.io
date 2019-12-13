@@ -35,7 +35,7 @@ self.addEventListener('fetch', function(event) {
         });
         return response;
       }).catch(function () {
-        return caches.match('/gallery/default.jpg');
+        return caches.match('./gallery/default.jpg');
       });
     }
   }));
