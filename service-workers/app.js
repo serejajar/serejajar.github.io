@@ -18,10 +18,10 @@ caches.keys().then(function(list) {
 for (var i = 0; i < inputs.length; i++) {
   inputs[i].onclick = function() {
     const checkbox = this;
-    const parent = checkbox.parentNode;
+    const parent = checkbox.parentNode.parentNode;
     const messageEl = parent.querySelector('span');
     const dataImg = parent.getAttribute('data-image');
-    console.log(checkbox.checked, dataImg, );
+    console.log(checkbox.checked, dataImg);
 
     if (checkbox.checked) {
       caches.open('test-SW').then(function(cache) {
