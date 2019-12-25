@@ -18,14 +18,6 @@ const initialState = [{
   corect: 'are',
 }];
 
-// <Task textA='His name ' correct="is"  textB=' Mark' />
-// <Task textA='What ' correct="is"  textB=' her name?' />
-// <Task textA='How ' correct="are"  textB=' you?' />
-// <Task textA='Where ' correct="are"  textB=' your kids?' />
-// <Task textA='He ' correct="is"  textB=' not thirty-five years old.?' />
-// <Task correct="is" textB=' your wife a singer?' />
-// <Task textA='I ' correct="am"  textB=' busy' />
-
 // reducers
 function answers(state = initialState, action) {
   switch (action.type) {

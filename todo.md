@@ -14,6 +14,19 @@ https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318
 https://jaredpalmer.com/formik - валидация форм
 bind в конструкторе, разобрать
 reactPerf время рендеринга компонета реакт
+Если вы создаёте серверный сайт с Node.js, попробуйте Next.js.
+Если вы создаёте статический контент-ориентированный сайт, попробуйте Gatsby.
+https://reacttraining.com/react-router/web/guides/code-splitting - динамическая подгрузка модулей (изучить тему)
+
+ReactJS анимация
+https://ru.reactjs.org/docs/faq-styling.html
+
+Формы и валидация в реакте
+https://jaredpalmer.com/formik/docs/api/form
+
+ReactJS стили
+https://react-bootstrap.github.io/components/dropdowns/
+https://github.com/styled-components/styled-components
 
 
 JSON Web Token
