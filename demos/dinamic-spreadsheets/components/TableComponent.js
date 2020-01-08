@@ -1,6 +1,11 @@
+// import React from 'react';
+// import PropTypes from 'prop-types'
+// import { Table, Form, Button } from 'react-bootstrap';
+// import { RowContent } from './';
+
 const { Table } = ReactBootstrap;
 
-class TableComponent extends React.Component {
+/* export */ class TableComponent extends React.Component {
   render() {
     const {
       columns = [],

@@ -1,3 +1,9 @@
+// import React from 'react';
+// import PropTypes from 'prop-types'
+// import { connect } from 'react-redux'
+// import { TableComponent } from '../components';
+// import { changeColumnTitle, changeRowValue, changeRowTotalValue } from '../store';
+
 class TableContainer extends React.Component {
   render() {
     const {
@@ -39,6 +45,7 @@ const mapDispatchToProps = dispatch => ({
   changeRowTotalValue: total => dispatch(changeRowTotalValue(total))
 })
 
+// export default connect(
 TableContainer = ReactRedux.connect(
   pageMapStateToProps,
   mapDispatchToProps,

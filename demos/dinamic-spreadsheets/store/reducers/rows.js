@@ -1,4 +1,7 @@
-function rowsReducer(state = { data: {}, total: 10 }, action) {
+// import { Map } from 'immutable';
+// import { CHANGE_ROWS_VALUE, CHANGE_ROW_TOTAL_VALUE } from '../actions/RowsActions'
+
+/* export */ function rowsReducer(state = { data: {}, total: 10 }, action) {
   switch (action.type) {
     case CHANGE_ROWS_VALUE: {
       const { prop, title } = action.payload

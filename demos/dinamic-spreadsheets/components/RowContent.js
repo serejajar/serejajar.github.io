@@ -1,4 +1,8 @@
-class RowContent extends React.Component {
+// import React from 'react'
+// import PropTypes from 'prop-types'
+// import { Form } from 'react-bootstrap'
+
+/* export */ class RowContent extends React.Component {
   constructor(props) {
     super(props);
     this.rowOnChange = this.rowOnChange.bind(this);

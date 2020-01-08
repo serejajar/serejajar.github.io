@@ -1,4 +1,8 @@
-function columnReducer(state = [], action) {
+// import { List } from 'immutable';
+// import { ADD_COLUMN, CHANGE_COLUMN_TITLE } from '../actions/ColumnActions'
+
+
+/* export */function columnReducer(state = [], action) {
   switch (action.type) {
     case ADD_COLUMN: {
       let newData = action.payload

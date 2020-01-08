@@ -1,6 +1,11 @@
+// import React from 'react';
+// import Popup from "reactjs-popup";
+// import { Button } from 'react-bootstrap';
+// import { ColumnFormContainer } from '../containers';
+
 const Popup = reactjsPopup;
 
-class ColumnFormPopup extends React.Component {
+/* export */ class ColumnFormPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isPopupOpen: false };

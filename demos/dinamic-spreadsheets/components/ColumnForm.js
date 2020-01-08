@@ -1,3 +1,7 @@
+// import React from 'react';
+// import PropTypes from 'prop-types'
+// import { List } from 'immutable';
+// import { Form, Button, InputGroup } from 'react-bootstrap';
 const { Form, Button, InputGroup } = ReactBootstrap;
 
 const messages = {
@@ -6,7 +10,7 @@ const messages = {
   success: 'The option is correct'
 }
 
-class ColumnForm extends React.Component {
+/* export */ class ColumnForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -174,12 +178,12 @@ class ColumnForm extends React.Component {
           )}
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group controlId="formBasicCheckbox">
           <Form.Check
             type="checkbox"
             label="Required"
             onChange={(e) => this.handleInput(e, 'isRequired')}
-            />
+          />
         </Form.Group>
         <Button
           type="submit"
