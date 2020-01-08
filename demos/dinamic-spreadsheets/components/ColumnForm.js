@@ -68,7 +68,7 @@ const messages = {
     if (notUnique) {
       message = messages.notUnique
       isValid = false
-    } else if (!value) {
+    } else if (!value || !value.trim()) {
       message = messages.empty
       isValid = false
     } else {
