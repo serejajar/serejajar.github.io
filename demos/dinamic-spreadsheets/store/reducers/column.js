@@ -1,7 +1,7 @@
 // import { List } from 'immutable';
 // import { ADD_COLUMN, CHANGE_COLUMN_TITLE } from '../actions/ColumnActions'
 
-// const reduxState = localStorage.getItem('reduxState')
+const reduxState = localStorage.getItem('reduxState')
 const columnInitialState = reduxState ? JSON.parse(reduxState).columns : [];
 console.log('column initialState', columnInitialState);
 
