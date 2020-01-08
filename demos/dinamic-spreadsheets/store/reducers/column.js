@@ -1,10 +1,10 @@
 // import { List } from 'immutable';
 // import { ADD_COLUMN, CHANGE_COLUMN_TITLE } from '../actions/ColumnActions'
 
-const reduxState = localStorage.getItem('reduxState')
-const initialState = reduxState ? JSON.parse(reduxState).columns : [];
+// const reduxState = localStorage.getItem('reduxState')
+// const initialState = reduxState ? JSON.parse(reduxState).columns : [];
 
-/* export */function columnReducer(state = initialState, action) {
+/* export */function columnReducer(state = [], action) {
   switch (action.type) {
     case ADD_COLUMN: {
       let newData = action.payload
