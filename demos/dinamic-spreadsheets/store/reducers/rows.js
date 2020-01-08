@@ -1,11 +1,12 @@
 // import { Map } from 'immutable';
 // import { CHANGE_ROWS_VALUE, CHANGE_ROW_TOTAL_VALUE } from '../actions/RowsActions'
 
-const reduxState = localStorage.getItem('reduxState')
-const initialState = reduxState ? JSON.parse(reduxState).rows : {
+const default = {
   data: {},
   total: 10
-};
+}
+const reduxState = localStorage.getItem('reduxState')
+const initialState = reduxState ? JSON.parse(reduxState).rows : default;
 
 /* export */function rowsReducer(state = initialState, action) {
   switch (action.type) {
