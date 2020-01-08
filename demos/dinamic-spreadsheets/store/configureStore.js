@@ -5,7 +5,6 @@
 
 /* export */const store = Redux.createStore(rootReducer, Redux.applyMiddleware(ReduxThunk.default, reduxLogger.default))
 
-// store.subscribe(() => {
-//   console.log('store.getState()', store.getState());
-//   localStorage.setItem('reduxState', JSON.stringify(store.getState()))
-// })
+store.subscribe(() => {
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+})

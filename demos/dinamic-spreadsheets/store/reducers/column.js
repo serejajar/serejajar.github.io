@@ -2,9 +2,10 @@
 // import { ADD_COLUMN, CHANGE_COLUMN_TITLE } from '../actions/ColumnActions'
 
 // const reduxState = localStorage.getItem('reduxState')
-// const initialState = reduxState ? JSON.parse(reduxState).columns : [];
+const columnInitialState = reduxState ? JSON.parse(reduxState).columns : [];
+console.log('column initialState', columnInitialState);
 
-/* export */function columnReducer(state = [], action) {
+/* export */function columnReducer(state = columnInitialState, action) {
   switch (action.type) {
     case ADD_COLUMN: {
       let newData = action.payload
