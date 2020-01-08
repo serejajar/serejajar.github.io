@@ -5,7 +5,7 @@
 
 const Popup = reactjsPopup;
 
-/* export */ class ColumnFormPopup extends React.Component {
+/* export */class ColumnFormPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isPopupOpen: false };

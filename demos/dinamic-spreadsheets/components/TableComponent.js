@@ -5,7 +5,7 @@
 
 const { Table } = ReactBootstrap;
 
-/* export */ class TableComponent extends React.Component {
+/* export */class TableComponent extends React.Component {
   render() {
     const {
       columns = [],

@@ -10,7 +10,7 @@ const messages = {
   success: 'The option is correct'
 }
 
-/* export */ class ColumnForm extends React.Component {
+/* export */class ColumnForm extends React.Component {
   constructor(props) {
     super(props);
 
