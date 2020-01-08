@@ -3,5 +3,4 @@
 // import logger from 'redux-logger'
 // import thunk from 'redux-thunk'
 
-/* export */
-const store = Redux.createStore(rootReducer, Redux.applyMiddleware(ReduxThunk.default, reduxLogger.default))
+/* export */const store = Redux.createStore(rootReducer, Redux.applyMiddleware(ReduxThunk.default, reduxLogger.default))
