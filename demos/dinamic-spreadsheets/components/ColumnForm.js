@@ -10,8 +10,8 @@ const messages = {
   success: 'The option is correct'
 }
 
-/* export */class ColumnForm extends React.Component {
-  constructor(props) {
+/*export*/ class ColumnForm extends React.Component {
+  constructor(props) {const { Form, Button, InputGroup } = ReactBootstrap;
     super(props);
 
     this.state = {
@@ -44,7 +44,7 @@ const messages = {
         isValid: false,
         message: messages.empty,
         value: ''
-      })
+      }).toJS()
     })
   }
 
@@ -157,14 +157,16 @@ const messages = {
                     isValid={option.isValid}
                     required
                   />
-                  <InputGroup.Append>
-                    <Button
-                      variant="outline-secondary"
-                      onClick={() => this.deleteOption(i)}
-                    >
-                      X
-                    </Button>
-                  </InputGroup.Append>
+                  {i > 0 && (
+                    <InputGroup.Append>
+                      <Button
+                        variant="outline-secondary"
+                        onClick={() => this.deleteOption(i)}
+                      >
+                        X
+                      </Button>
+                    </InputGroup.Append>
+                  )}
                   <Form.Control.Feedback
                     type={option.isValid ? 'valid' : 'invalid'}
                   >
@@ -183,8 +185,9 @@ const messages = {
             type="checkbox"
             label="Required"
             onChange={(e) => this.handleInput(e, 'isRequired')}
-          />
+            />
         </Form.Group>
+
         <Button
           type="submit"
           variant="success"
