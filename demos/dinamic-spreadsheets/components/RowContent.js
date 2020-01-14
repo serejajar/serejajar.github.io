@@ -20,7 +20,7 @@
         <td>{iRow + 1}</td>
         {columns.map((column, iCol) => {
           const propKey = `column${iCol + 1}_${iRow + 1}`
-          const value = rows[propKey]
+          const value = rows[propKey] || ''
           return (
             <td key={`column${iCol}`}>
               {column.type === 'select' ? (
