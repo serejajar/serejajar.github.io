@@ -2,7 +2,7 @@
 // import PropTypes from 'prop-types'
 // import { Form, Button, ButtonToolbar } from 'react-bootstrap';
 // import { TitleInput, RequiredCheckbox, TypeSelector } from './'
-const { Form, Button, InputGroup } = ReactBootstrap;
+const { Form, Button, ButtonToolbar } = ReactBootstrap;
 
 /*export*/ function ColumnForm(props) {
   const { addColumn, closePopup } = props
