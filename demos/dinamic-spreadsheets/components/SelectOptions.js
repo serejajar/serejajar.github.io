@@ -2,6 +2,8 @@
 // import PropTypes from 'prop-types'
 // import Immutable from 'immutable';
 // import { Form, InputGroup, Button } from 'react-bootstrap';
+const { InputGroup } = ReactBootstrap;
+
 
 const messages = {
   empty: 'The options should\'t be empty, otherwise it will be IGNORED!',
