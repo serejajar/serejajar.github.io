@@ -5,6 +5,7 @@
 // import { App } from './components/App';
 
 const { Provider } = ReactRedux;
+const { useState } = React;
 
 ReactDOM.render(
   <Provider store={store}>
