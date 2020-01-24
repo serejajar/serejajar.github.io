@@ -11,7 +11,7 @@ const messages = {
 }
 
 /*export*/ class ColumnForm extends React.Component {
-  constructor(props) {const { Form, Button, InputGroup } = ReactBootstrap;
+  constructor(props) {
     super(props);
 
     this.state = {

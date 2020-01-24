@@ -4,25 +4,16 @@
 // import { TableComponent } from '../components';
 // import { changeColumnTitle, changeRowValue, changeRowTotalValue } from '../store';
 
-class TableContainer extends React.Component {
-  render() {
-    const {
-      columns,
-      rows,
-      changeColumnTitle,
-      changeRowValue,
-      changeRowTotalValue
-    } = this.props
-    return (
-      <TableComponent
-        columns={columns}
-        rows={rows}
-        changeColumnTitle={changeColumnTitle}
-        changeRowValue={changeRowValue}
-        changeRowTotalValue={changeRowTotalValue}
-      />
-    );
-  }
+function TableContainer(props) {
+  return (
+    <TableComponent
+      columns={props.columns}
+      rows={props.rows}
+      changeColumnTitle={props.changeColumnTitle}
+      changeRowValue={props.changeRowValue}
+      changeRowTotalValue={props.changeRowTotalValue}
+    />
+  );
 }
 
 TableContainer.propTypes = {

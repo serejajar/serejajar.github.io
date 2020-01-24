@@ -6,7 +6,6 @@ const rowsInitialState = reduxState ? JSON.parse(reduxState).rows : {
   data: {},
   total: 10
 };
-console.log('rows initialState', rowsInitialState);
 
 
 /* export */function rowsReducer(state = rowsInitialState, action) {
