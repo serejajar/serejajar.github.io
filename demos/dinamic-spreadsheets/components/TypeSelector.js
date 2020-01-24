@@ -4,7 +4,7 @@
 // import { SelectOptions } from './'
 
 
-export function TypeSelector(props) {
+/*export*/ function TypeSelector(props) {
   const { setType, type, options, setOptions } = props
 
   return (

@@ -3,7 +3,7 @@
 // import { Form } from 'react-bootstrap';
 
 
-export function TitleInput(props) {
+/*export*/ function TitleInput(props) {
   const { setTitle, title} = props
 
   return (

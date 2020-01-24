@@ -28,11 +28,7 @@
               >
                 <option></option>
                 {column.options.map(o=> (
-                  <option
-                    key={o}
-                  >
-                    {o}
-                  </option>
+                  <option key={o}>{o}</option>
                 ))}
               </Form.Control>
             ) : (

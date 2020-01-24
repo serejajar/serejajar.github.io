@@ -9,7 +9,7 @@ const messages = {
   success: 'The option is correct'
 }
 
-export function SelectOptions(props) {
+/*export*/ function SelectOptions(props) {
   const { options, setOptions } = props
 
   function handleOptionChange(e, i) {

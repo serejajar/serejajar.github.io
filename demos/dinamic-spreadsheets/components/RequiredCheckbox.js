@@ -3,7 +3,7 @@
 // import { Form } from 'react-bootstrap';
 
 
-export function RequiredCheckbox(props) {
+/*export*/ function RequiredCheckbox(props) {
   const { setRequired } = props
   console.log(Form.Check);
   return (
