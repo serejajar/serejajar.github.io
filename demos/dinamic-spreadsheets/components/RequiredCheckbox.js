@@ -5,7 +5,6 @@
 
 /*export*/ function RequiredCheckbox(props) {
   const { setRequired } = props
-  console.log(Form.Check);
   return (
     <Form.Group controlId="formBasicCheckbox">
       <Form.Check
