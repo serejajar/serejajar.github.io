@@ -29,6 +29,10 @@ https://react-bootstrap.github.io/components/dropdowns/
 https://github.com/styled-components/styled-components
 
 
+React form
+https://react-hook-form.com/
+https://final-form.org/docs/final-form/getting-started
+
 JSON Web Token
 https://gist.github.com/zmts/802dc9c3510d79fd40f9dc38a12bccfc
 https://player.vimeo.com/video/151208427

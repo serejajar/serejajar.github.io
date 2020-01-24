@@ -3,13 +3,11 @@
 // import { TableContainer } from '../containers';
 // import { ColumnFormPopup } from './index';
 
-/* export */class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <ColumnFormPopup />
-        <TableContainer />
-      </div>
-    );
-  }
+/*export*/ function App() {
+  return (
+    <div>
+      <ColumnFormPopup />
+      <TableContainer />
+    </div>
+  );
 }

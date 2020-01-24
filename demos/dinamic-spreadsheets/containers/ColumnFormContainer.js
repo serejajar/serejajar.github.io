@@ -4,16 +4,15 @@
 // import { ColumnForm } from '../components'
 // import { addColumn } from '../store'
 
-class ColumnFormContainer extends React.Component {
-  render() {
-    const { addColumn, closePopup } = this.props
-    return (
-      <ColumnForm
-        addColumn={addColumn}
-        closePopup={closePopup}
-      />
-    );
-  }
+function ColumnFormContainer(props) {
+  const { addColumn, closePopup } = props
+
+  return (
+    <ColumnForm
+      addColumn={addColumn}
+      closePopup={closePopup}
+    />
+  );
 }
 
 // export default connect(

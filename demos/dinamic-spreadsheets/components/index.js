@@ -3,3 +3,7 @@ export * from './ColumnForm';
 export * from './ColumnFormPopup';
 export * from './TableComponent';
 export * from './RowContent';
+export * from './TitleInput';
+export * from './TypeSelector';
+export * from './RequiredCheckbox';
+export * from './SelectOptions';
