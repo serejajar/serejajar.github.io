@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Immutable JS</title>
+        <script src="../../libs/immutable-3.8.2.js"></script>
+    </head>
+    <body>
+        <script>
+
+
+const { List, Set } = Immutable;
+const empty = List();
+// console.log('empty', empty);
+
+const jsArr = [1, 2, 3, 4, 5]
+const listFromJSArr = List(jsArr)
+// console.log('listFromJSArr', listFromJSArr);
+
+const arrayIterator = jsArr[Symbol.iterator]()
+const listFromCollectionArray = List(arrayIterator)
+// console.log('arrayIterator', jsArr[Symbol.iterator]);
+
+// Static Methods
+// console.log('List.isList', List.isList(listFromJSArr), List.isList([]));
+// console.log('List.of', List.of(1, 2, 3));
+
+// Persistent changes
+// console.log('set', List([0,1,2]).set(30, 'aaaa').toJS());
+// console.log('delete()', List([0,1,2]).set(30, 'aaaa').delete(0).toJS());
+// console.log('insert()', List([ 0, 1, 2, 3, 4 ]).insert(1, 'inserted').toJS());
+// console.log('clear()', List([ 1, 2, 3, 4 ]).clear().toJS());
+// console.log('push()', List([ 1, 2, 3, 4 ]).push('add', 'to', 'end').toJS());
+// console.log('pop()', List([ 1, 2, 3, 4 ]).pop().toJS());
+// console.log('unshift()', List([ 1, 2, 3, 4 ]).unshift('add', 'to', 'start').toJS());
+// console.log('shift()', List([ 1, 2, 3, 4 ]).shift().toJS());
+// console.log('update()', List([ 'a', 'b', 'c', 'd' ]).update(0, v => v.toUpperCase()).toJS());
+// console.log('update() with func as one arg', List([ 1, 2, 3 ])
+//   .map(x => x + 1)
+//   .filter(x => x % 2 === 0)
+//   .update(c => c.reduce((sum, x) => sum + x, 0))
+// );
+console.log('setSize()', List([ 'a', 'b', 'c', 'd' ]).setSize(21).toJS());
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

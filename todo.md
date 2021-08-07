@@ -1,3 +1,9 @@
+- ReactJS: Почему нельзя объявлять state = {} вне конструктора? https://daveceddia.com/where-initialize-state-react/
+- ReactJS: Отличие Component и Pureconponent на примере?
+- React-Router: react router Cannot GET /page https://ui.dev/react-router-cannot-get-url-refresh/
+- JS: fb = e => { log('aaa') } или fn() { log('aaa') } (потеря this)
+- 
+
 https://developer.mozilla.org/en-US/docs/Web/API/Window/dump
 https://developer.mozilla.org/ru/docs/DOM/Using_web_workers - передача данных (переменных)
 this и bind apply, call https://medium.com/@stasonmars/%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%BE-%D0%BE-%D1%82%D0%BE%D0%BC-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-this-%D0%B2-javascript-a13b4b6ec9ac
