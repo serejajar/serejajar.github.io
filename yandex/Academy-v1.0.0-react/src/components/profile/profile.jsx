@@ -9,7 +9,7 @@ const Profile = ({ user }) => {
     </React.Fragment>
   )
 }
-
+// Нужно исправить: proptypes -> propTypes
 Profile.proptypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,

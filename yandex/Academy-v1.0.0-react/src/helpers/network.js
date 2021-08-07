@@ -1,3 +1,4 @@
+// Можно лучше: getData нигде не используется
 export const getData = (endPoint, API_ROOT) => {
   return fetch(`${API_ROOT}/${endPoint}`)
     .then(res => {

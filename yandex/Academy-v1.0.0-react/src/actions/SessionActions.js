@@ -1,6 +1,7 @@
 import { checkCredentials } from '../helpers/session'
 
 export const LOG_IN = 'LOG_IN';
+// Можно лучше: LOG_OUT нигде не используется
 export const LOG_OUT = 'LOG_OUT';
 export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
 

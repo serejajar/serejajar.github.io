@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Можно лучше: data не используется
 const NotFound = ({ data }) => {
   return (
     <React.Fragment>

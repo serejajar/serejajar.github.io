@@ -5,13 +5,15 @@ module.exports = {
     output: {
         filename: `bundle.js`,
         // eslint-disable-next-line no-undef
-        path: path.join(__dirname, `public`)
+        path: path.join(__dirname, `public`),
+        publicPath: '/'
     },
     devServer: {
         // eslint-disable-next-line no-undef
         contentBase: path.join(__dirname, `public`),
         open: false,
         port: 3000,
+        historyApiFallback: true,
     },
     module: {
         rules: [

@@ -15,6 +15,7 @@ export default (state = initialState, action) => {
         },
         errorMessage: '',
       }
+    // Можно лучше: LOG_OUT нигде не используется
     case LOG_OUT:
       return {
         ...state,

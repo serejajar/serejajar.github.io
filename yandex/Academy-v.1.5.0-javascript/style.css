@@ -29,7 +29,7 @@ input[type="submit"]:hover {
 	opacity: .8;
 }
 .columns {
-	height: 100vh;
+	height: 100vh; /* Жестко заданный размер контейнера разрушает вид. Попробуй уменьшить высоту окна браузера чтобы увидеть. */
 	display: flex;
 	justify-content: space-around;
 }

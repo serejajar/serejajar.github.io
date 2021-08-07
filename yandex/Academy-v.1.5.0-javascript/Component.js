@@ -20,12 +20,14 @@ class Component {
 		this.setEventListener();
 		return this._element;
 	}
+	// Можно лучше: removeItem нигде не используется, думаю его можно удалить
 	removeItem() {
 		this.removeEventListener();
 		this._element.remove();
 		this._element = null;
 	}
 
+	// Отлично!: Избежать ошибки при вызове отсутствующего метода - это хорошая идея.
 	setEventListener() {}
 	removeEventListener() {}
 
