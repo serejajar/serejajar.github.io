@@ -6,6 +6,29 @@
 Вы можете начать с добавления рутов для аутентификации. Вначале вы можете не использовать данные из базы, а добавить их уже на следующем шаге.
 
 ----------
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = await findUserByUsername(username);
+
+  if (!user || hash(password) !== user?.password) {
+    const params = new URLSearchParams("");
+    params.append("authError", "true");
+    return res.status(400).redirect(`/?${params.toString()}`);
+  }
+
+  const sessionId = await createSession(user.id);
+
+  res.cookie("sessionId", sessionId, { httpOnly: true }).status(200).redirect("/");
+});
+
+router.get("/logout", async (req, res) => {
+  await deleteSession(req.cookies["sessionId"]);
+  res.status(204).clearCookie("sessionId").redirect("/");
+});
+
+
+
 
 Отлично! Вы добавили код для аутентификации!
 
@@ -19,6 +42,25 @@
     Отлично! Теперь используйте хеш пароля при сравнении паролей в руте /login.
 
 ------------------
+router.post("/signup", async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = await findUserByUsername(username);
+
+  if (user) {
+    const params = new URLSearchParams("");
+    params.append("authError", encodeURI(`Username ${username} is exsist, please login`));
+    return res.status(400).redirect(`/?${params.toString()}`);
+  }
+
+  const [id] = await db("users")
+    .insert({ username, password: hash(password) })
+    .returning("id");
+
+  const sessionId = await createSession(id);
+
+  res.cookie("sessionId", sessionId, { httpOnly: true }).status(201).redirect("/");
+});
 
 
 Все верно! Следующим шагом нужно сделать логику регистрации /signup, но теперь из введенного пароля нужно создать хеш, который будет и записан в базу вместо самого пароля.
@@ -31,4 +73,45 @@
 
     На следующем шаге, нужно получить id созданого пользователя и создать для него сессию.
 
+        Вы можете вернуть id нового пользователя и создать ему сессию в /signup с редиректом на главную страницу. Код такой же как и в /login.
+
+            Верните id с помощью returning и сохраните его в переменной, которую можно использовать в создании сессии. https://knexjs.org/#Builder-returning
+
+
+            Отлично! Теперь у вас есть аутентификация. Осталась мелочь, добавить коды ответа при успешной (или нет) работе рута. Выглядит это так:
+            res.cookie("sessionId", sessionId, { httpOnly: true }).status(201).redirect("/");
+            Для ошибки аутентификации соответственно нужно возвращать код 400. Так же добавьте коды http ответов для рута /login
+
     А теперь выведите повторяющийся код для создания хеша в отдельную функцию. Поместите эту функцию в отдельный файл и экспортируйте его в index.js
+
+--------------
+У вас есть массив TIMERS с данными таймеров. Вам нужно создать таблицу для таймеров, где вы будете хранить те же самые значения, что и в этом объекте.
+
+--------------
+
+Нужно создать таблицу для таймеров, а потом добавить возможность связать таймер(ы) с определенным пользователем.
+
+--------------
+
+#Не работает база данных#
+
+А что находится в базе данных в данной таблице?
+
+-------
+
+Проверьте, пожалуйста, подключение к базе данных. Для этого вам нужно добавить следующий код ниже конфигурации knex.
+
+const { Client } = require("pg");
+
+(async () => {
+   await client.connect();
+   try {
+     const res = await client.query("SELECT * FROM users");
+     console.log(res.rows);
+   } catch (err) {
+     console.error(err);
+   }
+   client.end();
+})();
+
+--------
