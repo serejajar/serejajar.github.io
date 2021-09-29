@@ -1,3 +1,9 @@
+6. Express.js
+- основная или бонусная часть
+
+
+-----------------
+
 Здесь нужно реализовать функции для обработки запросов со стороны клиента.
 
 Первая обработчик для запроса GET /api/timers - он должен возвращать список активных/неактивных таймеров, в зависимости от переданного в query-параметрах параметра isActive
@@ -5,3 +11,60 @@
 Второй запрос должен из req.body получать данные для создания нового таймера, создавать его и добавлять в массив TIMERS. Эта функция должна вернуть id созданного таймера.
 
 ----
+Основная часть:
+
+В целом все верно, код хорошо написан, есть разделение кода и используется router. Вам плюсик за использование кодов сообщений от сервера. Но есть маленькая ошибка которую нужно исправить:
+
+
+
+Основная часть принята. Будете делать бонусную?
+
+
+-------------------
+Проверить отправляет ли /api/timers/ активные/неактивные таймеры
+
+Дублирующего кода не должно быть. Например, в /api/timers/ можно создать переменную isActive с самим условием и фильтровать таймеры по этому условию.
+
+router.get("/", (req, res) => {
+  if (req.query.isActive === "true") {
+    DB.forEach((timer) => {
+      if (!timer.isActive) return;
+      timer.progress = Date.now() - timer.start;
+    });
+
+    res.json(DB.filter((timer) => timer.isActive));
+    return;
+  }
+
+  res.json(DB.filter((timer) => !timer.isActive));
+});
+
+      router.get("/", (req, res) => {
+        const isActive = req.query.isActive === "true";
+
+        if (isActive) {
+          /* здесь ваш код */
+        }
+
+        /* отправка ответа только один раз */
+        res.json(DB.filter((timer) => timer.isActive === isActive));
+
+      });
+
+      Примерно так. Но я написал этот код и подумал что уже к мелочам придираюсь)))
+
+------------------
+В router.post("/:id/stop") не совсем понятно зачем добавлен этот код в блок catch :
+
+router.post("/:id/stop", (req, res) => {
+    DB.forEach((timer) => {
+      if (timer.id !== req.params.id) return;
+
+      timer.end = Date.now();
+      timer.isActive = false;
+      timer.duration = timer.end - timer.start;
+      delete timer.progress;
+    });
+
+    res.status(204).json(DB);
+});
