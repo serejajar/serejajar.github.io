@@ -30,6 +30,6 @@ function oddNumber(a, b) {
   console.log(random);
 }
 
-for (let i = 0; i < 10000; i++) {
+for (let i = 0; i < 100; i++) {
   oddNumber(2, 5)
 }
