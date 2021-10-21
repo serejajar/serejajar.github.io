@@ -13,7 +13,7 @@
 К числу, полученному вам ранее, вам нужно прибавить min чтобы число было между min и max.
 
 
-function oddNumber(a, b) {
+function oddNumber(n, m) {
   let min = Math.min(a, b);
   let max = Math.max(a, b);
 
