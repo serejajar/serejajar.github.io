@@ -2,7 +2,6 @@
 
 - trim()
 - не срабатывает для jpg файлов
-
     Попробуйте добавить в запрос для файлов следующую опцию:
     axios.get(filePath, { responseType: 'arraybuffer'}
 
