@@ -34,7 +34,12 @@ https://learn.javascript.ru/function-basics#vozvrat-znacheniya
     export default filter;
     После этого ошибка с экспортом должна пропасть. Напишите если нужна будет еще моя помощь.
 
-
+- не используют array.filter
+const filter = (array, field, value) => {
+    return array.filter(item => (
+        item[field] === value
+    ));
+}
 
 
 
