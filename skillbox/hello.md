@@ -118,20 +118,6 @@ git clone git@gitlab.skillbox.ru:ВАШ_ЛОГИН/js_advanced.git
 ------------------------
 ​Давно вы не писали, нужна помощь по данной задаче?
 ------------------------
+К сожалению, нет. Все сообщения связанные с обучением должно происходить только в рамках чата. И есть строгое правило насчет обсуждения ДЗ только в расках своего модуля.
 
-Думаю вам будет немного удобнее  их ипользовать в дальнейшем. Пример использования:
-
-container.innerHTML = `
-        <h1>${data.name}</h1>
-        <p class="p">Gender: ${data.gender}</p>
-        <a href="/?category=${category}&id=${id}" class="btn"></a>
-        <h2 class="title">Physical characteristics</h2>
-        <ul class="list">
-            <li class="item">Birthyear: ${data.birth_year}</li>
-            <li class="item">Eye color: ${data.eye_color}</li>
-            <li class="item">Hair color: ${data.hair_color}</li>
-            <li class="item">Skin color: ${data.skin_color}</li>
-            <li class="item">Height: ${data.height}</li>
-            <li class="item">Mass: ${data.mass}</li>
-        </ul>
-    `;
+Насколько я вижу вы делаете задание связанное с одним из модулей курса, и ошиблись с чатом, т.к. пишите  в чате для курсовой работы. Напишите мне в чате модуля чтобы я смог ответить на ваш вопрос.
