@@ -21,6 +21,15 @@
 
 const simbol = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '<', '>', '/', '?', '\'', '|', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}']
 https://learn.javascript.ru/regular-expressions
+---
+Хочу порекомендовать в качестве самостоятельного изучени встроенный метод trim
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim
+
+А так же квантификаторы в регулярных выражениях
+https://learn.javascript.ru/regexp-quantifiers
+
+Думаю, это поможет улучшить подобный код:
+---
 
 ###
 Старое:

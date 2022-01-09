@@ -40,6 +40,11 @@ https://learn.javascript.ru/string
 
 Также обратите внимание на вот этот абзац. Думаю вам это пригодиться в дальнейшей учебе и работе:
 https://learn.javascript.ru/string#izmenenie-registra
+---
+В качестве доп. изучения рекомендую эти статьи и задачи к ней. Хотя вы уже знаете пр if/else практика не бывает лишней.
+
+https://learn.javascript.ru/operators
+https://learn.javascript.ru/ifelse
 
 
 ###
