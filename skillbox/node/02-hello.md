@@ -17,6 +17,9 @@
 
 ###
 Рекомендовать
+---
+toLocaleDateString и toLocaleTimeString
+---
 Можете глянуть на метод toISOString, с ним можно сделать это задание без использования сторонних библиотек.
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
 ---
