@@ -1,3 +1,7 @@
+-ругается на импорт картинок, css:
+Попробуйте добавить вот эти конфиги для обработки файлов:
+https://jestjs.io/docs/next/code-transformation#transforming-images-to-their-path
+
 ###
 Похвалить и отклонить:
 Первое задание выполнено на отлично!

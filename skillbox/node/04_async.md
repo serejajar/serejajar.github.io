@@ -24,6 +24,9 @@
 
 ###
 Рекомендовать
+Этот код можно сделать значительно проще используя array.sort() и взять первый и последний элементы полученного массива.
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+---
 Сортировка с помощью
 https://lodash.com/docs/4.17.15#sortBy
 ---
