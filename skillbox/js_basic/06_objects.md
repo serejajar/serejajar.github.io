@@ -3,15 +3,32 @@
 - нет файла src/index.js
 Не наблюдаю файла index.js в вашем репозитории. Забыли запушить код или нужна моя помощь?
 
+- не работает из-за экспорта
+    Это ошибка связанная с экспортом функции, ее можно быстро поправить. Вот так:
 
+    export default filter;
+    После этого ошибка с экспортом должна пропасть. Напишите если нужна будет еще моя помощь.
+
+- не используют array.filter
+const filter = (array, field, value) => {
+    return array.filter(item => (
+        item[field] === value
+    ));
+}
 
 ###
 Принять, похвалить:
 Отлично! Все тесты прошли успешно, и я принимаю ДЗ.
+
+
 ---
 
 ###
 Посоветовать
+Рекомендую вам так же изучить метод массива filter, с ним можно намного проще выполнить эту задачу.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+---
 
 Я рекомендую вам, в качестве дополнительного материала к изучению, вот эту статью:
 https://learn.javascript.ru/logical-operators#ne
@@ -30,18 +47,7 @@ https://learn.javascript.ru/function-basics#vozvrat-znacheniya
 
 ###
 Другое
-- не работает из-за экспорта
-    Это ошибка связанная с экспортом функции, ее можно быстро поправить. Вот так:
 
-    export default filter;
-    После этого ошибка с экспортом должна пропасть. Напишите если нужна будет еще моя помощь.
-
-- не используют array.filter
-const filter = (array, field, value) => {
-    return array.filter(item => (
-        item[field] === value
-    ));
-}
 
 
 
