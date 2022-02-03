@@ -43,6 +43,27 @@ container.innerHTML = `
 
 ###
 Прочее
+- [object Object]
+Вы тут добавляете напрямую данные:
+
+let parsedArray = JSON.parse(localStorageData);
+    console.log(parsedArray);
+    container.append(parsedArray);
+А в parsedArray находится массив, т.е. каждое дело нужно добавить перебрав массив в цикле используя функцию createTodoItem.
+
+    Вы эту логику добавляете в саму функцию обработчик кнопки "Добавить дело", а нужно гораздо проще сделать  Скопировать код для добавления дела и вставить его в цикл, который в свою очередь, нужно поместить в createTodoApp. Это выглядит примерно вот так:
+
+    function createTodoApp(container, title = 'Список дел', todoArray = []) {
+    let todoAppTitle = createAppTitle(title);
+    let todoItemForm = createTodoItemForm();
+    let todoList = createTodoList();
+
+    for (var i = 0; i < todoArray.length; i++) {
+      const todoItem = createTodoItem(todoArray[i].name)
+      todoList.append(todoItem.item);
+    }
+    С помощью это кода при первом открывании страницы сразу будут добавлены дела.
+---
 
 Я не знаю как сделать:
   Вначале ознакомьтесь с этой статьей (часть про localStorage), попробуйте сделать демку. После этого напишите мне и приступим к добавлению localStorage в ваш код.

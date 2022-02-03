@@ -25,7 +25,7 @@ const filter = (array, field, value) => {
 
 ###
 Посоветовать
-Рекомендую вам так же изучить метод массива filter, с ним можно намного проще выполнить эту задачу.
+Рекомендую вам так же изучить метод массива filter, с ним можно немного проще выполнить эту задачу.
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 ---
