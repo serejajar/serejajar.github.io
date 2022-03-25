@@ -6,3 +6,7 @@
 
 node
 -TypeError: Cannot destructure property 'username' of 'req.body' as it is undefined.
+
+Общее
+- husky и его отключение
+Попробуйте добавить флаг--no-verify когда будете создавать коммит.
