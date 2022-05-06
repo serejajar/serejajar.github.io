@@ -35,7 +35,7 @@ https://yandex.ru/blog/mapsapi/vidzhet-yandeks-kart-dlya-vashikh-saytov-v-odin-k
 
 - При запуске есть вот такое сообщение.
 
-- Сохраниение значения карты в локальное хранилище 
+- Сохраниение значения карты в локальное хранилище
 Можете сохранить значение в локальное хранилище, а затем отобразить его "по умолчанию" в поле ввода. При изменении этого значения на другое нужно переписать значение в локальном хранилище.
 
 ###
@@ -47,5 +47,20 @@ https://yandex.ru/blog/mapsapi/vidzhet-yandeks-kart-dlya-vashikh-saytov-v-odin-k
 
 
 
-###
-Старое
+Видел ваше сообщение еще днем, но не всегда имею возможность просмотреть видео.
+
+И вы правы, только методом POST. Я писал создателю курса об этой ошибке в readme, судя по всему нужно написать еще раз   
+
+Попробуйте вот так работать с login:
+
+fetch('http://localhost:3000/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  },
+  body: JSON.stringify({
+    login: 'developer',
+    password: 'skillbox'
+  })
+})
+Рад знакомству!
