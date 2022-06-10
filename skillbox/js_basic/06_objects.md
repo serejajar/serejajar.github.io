@@ -44,6 +44,11 @@ https://learn.javascript.ru/object#tasks
 Так же рекомендую прочитать про возврат значения в функции (return). Особенно важно понять этот материал т.к. вы будете сталкиваться с ним постоянно.
 https://learn.javascript.ru/function-basics#vozvrat-znacheniya
 
+---
+Можете почитать также эту статью про доступ через квадратные скобки
+
+https://learn.javascript.ru/object#kvadratnye-skobki
+
 
 ###
 Другое
