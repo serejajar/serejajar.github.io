@@ -55,7 +55,10 @@ https://learn.javascript.ru/string#izmenenie-registra
 
 https://learn.javascript.ru/operators
 https://learn.javascript.ru/ifelse
+---
+Рекомендую почитать дополнительно про оператор ИЛИ:
 
+https://learn.javascript.ru/logical-operators#ili
 
 ###
 Вопросы
