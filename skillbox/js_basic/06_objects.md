@@ -19,8 +19,6 @@ const filter = (array, field, value) => {
 ###
 Принять, похвалить:
 Отлично! Все тесты прошли успешно, и я принимаю ДЗ.
-
-
 ---
 
 ###
@@ -28,6 +26,14 @@ const filter = (array, field, value) => {
 Рекомендую вам так же изучить метод массива filter, с ним можно немного проще выполнить эту задачу.
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+
+function filter(nameObject, termKey, termValue) {
+  return nameObject.filter(function (search) {
+    return search[termKey] == termValue;
+  });
+}
+
+export default filter;
 ---
 
 Я рекомендую вам, в качестве дополнительного материала к изучению, вот эту статью:
