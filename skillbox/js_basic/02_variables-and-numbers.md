@@ -63,7 +63,11 @@ https://learn.javascript.ru/number#okruglenie
 
 https://learn.javascript.ru/operators
 ---
+Дополнительно рекомендую вам изучить вот эти статьи и решить задачи внизу статей для повторения пройденного материала.
 
+https://learn.javascript.ru/operators
+
+https://learn.javascript.ru/number#okruglenie
 
 
 ###
