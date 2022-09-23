@@ -59,7 +59,9 @@ toLocaleDateString и toLocaleTimeString
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
 ---
 Я обычно советую какой-то материал для дополнительного изучения, но, честно говоря, сейчас не знаю что вам посоветовать. Думаю, вы и так знаете как найти документацию к интересующей вас библиотеке
-
+---
+Вы так же можете использовать .toISOString() для подобных задач, чтобы не высчитывать отдельно месяц, дни и пр.
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
 
 ###
 Прочее
