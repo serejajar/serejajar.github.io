@@ -71,6 +71,7 @@ https://lodash.com/docs/4.17.15#sortBy
 
 - Не используют promise.All
     Также вы можете посмотреть Promise.all, он может упростить логику кода.
+    https://learn.javascript.ru/promise-api#promise-all
 
 - Используют цикл вместо sort()
     Этот код можно сделать значительно проще используя array.sort() и взять первый и последний элементы полученного массива.
