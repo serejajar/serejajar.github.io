@@ -31,7 +31,8 @@ https://jestjs.io/docs/next/code-transformation#transforming-images-to-their-pat
     После это проверьте работу тестов.
 ---
 # как выходить из цикла после первой удачной проверки
-
+Можете использовать метод cypress each с if/else внутри функции обработчика, но ничего страшного, для этого задания это не критично.
+https://docs.cypress.io/api/commands/each
 
 # нет npm test для 2-го ДЗ
 Подготовьте, пожалуйста, package.json чтобы можно было запустить тесты во втором задании с помощью команды:

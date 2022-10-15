@@ -90,6 +90,6 @@ module.exports = function () {
   const a = day.toISOString().split('T')
   return {
     date: a[0],
-    time: b[1], // убрать секунды и символы в конце
+    time: a[1], // убрать секунды и символы в конце
   }  
 }
