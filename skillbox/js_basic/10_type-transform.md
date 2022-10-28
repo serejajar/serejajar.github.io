@@ -59,6 +59,13 @@ function byField(field) {
 }
 Еще один простой вариант - объединить свойства name, surname и lastname и затем сортировать по ФИО.
 
+# не работает событие submit!
+Тут проблема скрыта в работе самой формы. Событие submit сработает после клика по кнопке в форме с type="submit":
+
+<input type="submit">
+Подробнее о форме и об этом поведении:
+https://learn.javascript.ru/forms-submit
+
 
 ###
 Другое
