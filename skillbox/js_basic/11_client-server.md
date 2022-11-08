@@ -41,7 +41,16 @@ http://caniuse.com
 
 ###
 Вопросы
-#Зачем мне в index.html еще ссылки делать, index.html?page=10? Что значит page 10?
+# Как избавиться от обновления сраницы.
+Используйте replaceState. Его использование не перезагружает страницу. Вот пример использованя:
+
+window.history.replaceState({}, '','/dashboard?page=1');
+
+https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState
+
+Такая ошибка обычно происходит когда не запущен сам сервер TODO. Проверьте, пожалуйста, запущен ли он и работает корректно.
+
+# Зачем мне в index.html еще ссылки делать, index.html?page=10? Что значит page 10?
 Это постраничная навигация. Когда очень много статей то весь массив данных делится на блоки или "страницы", например по 10 постов в запросе. Например:
 
 https://gorest.co.in/public-api/posts?page=1 (тоже самое что и https://gorest.co.in/public-api/posts) вернет первые 10 постов.
