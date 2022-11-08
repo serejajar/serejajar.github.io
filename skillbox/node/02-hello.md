@@ -93,3 +93,22 @@ module.exports = function () {
     time: a[1], // убрать секунды и символы в конце
   }  
 }
+
+
+----
+function currentDateTime() {
+  const dateFormatter = new Intl.DateTimeFormat("fr-CA");
+
+  const timeFormatter = new Intl.DateTimeFormat("ru", {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  });
+
+  const currentDate = new Date();
+
+  return {
+    date: dateFormatter.format(currentDate),
+    time: timeFormatter.format(currentDate),
+  };
+}

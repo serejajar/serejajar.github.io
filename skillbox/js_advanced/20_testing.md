@@ -38,6 +38,30 @@ https://docs.cypress.io/api/commands/each
 Подготовьте, пожалуйста, package.json чтобы можно было запустить тесты во втором задании с помощью команды:
 npm run e2e
 
+# но, при достижении нужного результата в 3 и 4 тесте выпадает ошибка, которую я не могу никак перехватить
+Вы в самом цикле все карточки проверяете на соответствие класса, поэтому этот тест всегда будет падать. Тут вы можете сохранить индекс карты в переменную и потом сравнить значения 1-й карт и сохраненной. Аот как это решил другой студент:
+
+it('Проверка нахождение не пары', () => {
+        cy.document().then(document => {
+            const first = document.querySelectorAll('.back')[0].textContent;
+            let i = 1;
+            let flag = true;
+
+            while (flag) {
+                cy.get('.front').eq(0).click();
+                cy.get('.front').eq(i).click();
+                const second = document.querySelectorAll('.back')[i].textContent;
+                if (first !== second) {
+                    flag = false;
+                    break;
+                }
+                ++i;
+            }
+            cy.get('.back').eq(0).should('not.have.class', 'back--active')
+            cy.get('.back').eq(i).should('not.have.class', 'back--active')
+        });
+    })
+
 ###
 Отклонить:
 ---

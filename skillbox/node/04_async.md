@@ -43,7 +43,7 @@ await axios.get(urlRequest + name, {
 В целом подход верный, и вам плюсик за то что самостоятельно разобрались с задачей, но есть исправления:
 
 ###
-Рекомендовать
+Рекомендации
 Этот код можно сделать значительно проще используя array.sort() и взять первый и последний элементы полученного массива.
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 ---

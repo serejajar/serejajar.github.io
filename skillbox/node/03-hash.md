@@ -150,3 +150,50 @@ node index ./test-files/cat-lonely.jpg
 
 Для этих файлов присутствует соответствующий файл с корректным хешем, но ваш скрипт пишет обратное. Напишите, пожалуйста, если нужна будет помощь с этой задачей.
 ---
+# Решение 1
+import fs from "fs";
+import crypto from 'crypto';
+
+let file = null;
+
+try {
+  file = fs.readFileSync(process.argv[2]);
+} catch (e) {
+  process.exit(100);
+}
+
+const hash = crypto.createHash("sha256").update(file).digest("hex");
+const sha256 = `${process.argv[2]}.sha256`;
+
+let fileSha256 = null;
+
+try {
+  fileSha256 = fs.readFileSync(sha256, "utf8");
+} catch (e) {
+  process.exit(101);
+}
+
+console.log('hash = ', hash);
+console.log('fileSha256 = ', fileSha256);
+
+if (hash !== fileSha256.trim()) {
+  process.exit(102);
+} else {
+  process.exit(0);
+}
+
+# Решение 2
+const fs = require('fs');
+const crypto = require('crypto');
+const file = process.argv[2];
+const shaFile = `${file}.sha256`;
+
+fs.readFile(file, (err, data) => {
+  if (err) process.exit(100);
+  const hash = crypto.createHash('sha256').update(data).digest('hex');
+  fs.readFile(shaFile, 'utf8', (err, data) => {
+    if (err) process.exit(101);
+    if (hash != data.trim()) process.exit(102);
+    else console.log(data);
+  });
+});
