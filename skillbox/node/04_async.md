@@ -50,8 +50,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 Сортировка с помощью
 https://lodash.com/docs/4.17.15#sortBy
 ---
+Цикла в вашем коде можно избежать если использовать Promise.all.
+
+https://learn.javascript.ru/promise-api#promise-all
+---
 В качестве доп. задания можете попробовать получить все данные со всех страниц используя свойство next из запроса.
 ---
+
 ###
 Прочее
 5. Асинхронный код
