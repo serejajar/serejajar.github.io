@@ -50,6 +50,25 @@ moveTank([false, false, false, false, false, false, false, false, false, false])
 
 Тут каждая строка "танк..." это вызов  console.log. У вас же выдает только одну строку:
 
+
+Пример решения:
+function moveTank(roadMines) {
+  let countDamage = 0;
+
+  for (let position = 0; position < roadMines.length; position++) {
+    if (roadMines[position]) {
+      countDamage++;
+      if (countDamage === 1) {
+        console.log('Танк поврежден');
+      } else {
+        console.log(`Танк переместился на ${position + 1}`);
+        console.log('Танк уничтожен');
+        break;
+      }
+    }
+    console.log(`Танк переместился на ${position + 1}`);
+  }
+}
 ---
 # 4-я задача (дня января)
 Да есть в тестах ошибки, но давайте сначала закончим с задачей с днями, а потом исправим остальные. Тесты падают так как используют и ожидают название дня недели в нижнем регистре. Сравните с примером из описания задачи:
