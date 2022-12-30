@@ -1,25 +1,12 @@
-const fs = require("fs");
-const crypto = require("crypto");
+function januaryDays(firstWeekDay) {
+  let week = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
 
-let fileName = process.argv[2];
-console.log('fileName:', fileName);
-try {
-  let fileContent = fs.readFileSync(fileName);
+  let indexWeek = week.indexOf (firstWeekDay);
 
-  try {
-    let hashContent = fs.readFileSync(fileName + `.sha256`);
-    const hash = crypto.createHash("sha256");
-    hash.update(fileContent);
-    let fileToHash = hash.digest("hex");
-    if (fileToHash != hashContent.toString().trim()) {
-      console.log(102);
-      process.exit(102);
-    }
-  } catch (e) {
-    console.log(101);
-    process.exit(101);
+  for (let i = 0; i < 31; ++i) {
+    let day = (indexWeek + i) % 7;
+    console.log(`${i + 1} января, ${week[day]}`);
   }
-} catch (e) {
-  console.log(100);
-  process.exit(100);
 }
+
+januaryDays("понедельник")

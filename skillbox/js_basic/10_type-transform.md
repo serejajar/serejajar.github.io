@@ -15,6 +15,34 @@
 
 https://learn.javascript.ru/promise-basics
 ---
+Возможно вам будет чуть удобнее использовать шаблонные строки при создании элементов html. Вот пример использования:
+
+container.innerHTML = `<h1 class="test">${name}</h1`;
+Такая запись может значительно сократить код исключив из него создание элемента и добавление аттрибутов и классов.
+---
+Еще один прием это весь повторяющийся код перенести в функции. Например код обработчиков события ввода текста:
+
+inputName.addEventListener('input',testEventHandller);
+inputSurname.addEventListener('input',testEventHandller);
+
+function testEventHandller = (e) {
+    e.target.classList.remove('mb-10');
+    e.target.classList.remove('is-invalid');
+    e.target.classList.add('is-valid');
+
+    if(input.value == ''){
+            input.classList.remove('is-valid');  
+    }
+}
+
+Почитать про объект события e вы можете в этой статье:
+
+https://learn.javascript.ru/introduction-browser-events#obekt-sobytiya
+
+Про свойство e.target которое содержит ссылку на сам элемент:
+
+https://developer.mozilla.org/ru/docs/Web/API/Event/target
+---
 Хочу посоветовать вам поизучать регулярные выражения. Они довольно сложные для новичка, но их использование поможет существенно упростить поиск символов в строке и избежать вот такого перечисления символов:
 
  const simbol = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '<', '>', '/', '?', '\'', '|', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}']

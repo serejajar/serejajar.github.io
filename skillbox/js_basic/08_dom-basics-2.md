@@ -77,13 +77,29 @@ https://learn.javascript.ru/localstorage#demo-localstorage
 Вы тут добавляете напрямую данные:
 
 let parsedArray = JSON.parse(localStorageData);
-    console.log(parsedArray);
-    container.append(parsedArray);
+console.log(parsedArray);
+container.append(parsedArray);
+
 А в parsedArray находится массив, т.е. каждое дело нужно добавить перебрав массив в цикле используя функцию createTodoItem.
 
-    Вы эту логику добавляете в саму функцию обработчик кнопки "Добавить дело", а нужно гораздо проще сделать  Скопировать код для добавления дела и вставить его в цикл, который в свою очередь, нужно поместить в createTodoApp. Это выглядит примерно вот так:
 
-    function createTodoApp(container, title = 'Список дел', todoArray = []) {
+# Как это выглядит в "живую"
+Вы эту логику добавляете в саму функцию обработчик кнопки "Добавить дело",  можно гораздо проще сделать передав список дел для отрисовки в createTodoApp в качестве аргумента. Это выглядит вот так:
+
+В index.html мы получаем список дел из локального хранилища и передаем его в функцию createTodoApp.
+
+<script>
+  const todos = /* тут получаем список дел из локального хранилища */
+
+  document.addEventListener('DOMContentLoaded', function(){
+      createTodoApp(document.getElementById('todo-app'),'Мои дела', todos);
+  });
+</script>
+
+
+В todo-app.js, в функции createTodoApp мы отображаем список дел:
+
+function createTodoApp(container, title = 'Список дел', todoArray = []) {
     let todoAppTitle = createAppTitle(title);
     let todoItemForm = createTodoItemForm();
     let todoList = createTodoList();
@@ -92,7 +108,23 @@ let parsedArray = JSON.parse(localStorageData);
       const todoItem = createTodoItem(todoArray[i].name)
       todoList.append(todoItem.item);
     }
-    С помощью это кода при первом открывании страницы сразу будут добавлены дела.
+
+...
+
+С помощью это кода при первом открывании страницы сразу будут добавлены дела.
+
+#  Как добавить новое дело
+Добавляя новое дело вам нужно сделать следующее:
+
+1. Получить массив дел из localstorage (у вас уже готово)
+2. Добавить дело в виде объекта в этот массив.
+3. Сохранить новое значение в localstorage.
+
+todoList.append(todoItem.item);
+todoArray.push({ name: todoItemForm.input.value, done: false  })
+
+localStorage.setItem('name', JSON.stringify(todoArray));
+
 ---
 Их не нужно удалять, просто добавляйте их если нет ничего в локальном хранилище, в противном случае отображайте дела из локального хранилища.
 ---
