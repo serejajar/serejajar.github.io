@@ -38,3 +38,13 @@ git commit -m 'commit description'
 4. Запушить изменения в репозиторий:
 
 git push
+
+# git config --global
+git-у перед использованием нужно сообщить ваш емейл и имя/никнейм. Нужно запустить по очереди следующие команды:
+
+1) Тут вам нужно указать емейл запустив команду где вместо you@example.com ваш емейл
+
+git config --global user.email "you@example.com"
+2) Тут нужно указать имя или никнейм
+
+git config --global user.name "Your Name"

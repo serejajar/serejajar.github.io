@@ -62,6 +62,8 @@ https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Da
 ---
 Вы так же можете использовать .toISOString() для подобных задач, чтобы не высчитывать отдельно месяц, дни и пр.
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+--
+Библиотека momentjs считается deprecated и больше не поддерживается разработчиками. Можно использовать аналоги:  luxon, date-fns, daysjs. Либо встроенный в js объект Date
 
 ###
 Прочее
