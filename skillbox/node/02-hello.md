@@ -37,7 +37,7 @@
 
 ###
 Принять:
-Отлично, все выполнено по условиям ДЗ! Вам плюсик что сами разобрались с задачей.
+Отлично, все выполнено по условиям ДЗ! Вам плюсик что сами разобрались с задачей. ДЗ принято
 ---
 Вам плюсик что сами разобрались с задачей.
 
@@ -57,11 +57,29 @@ toLocaleDateString и toLocaleTimeString
 ---
 Можете глянуть на метод даты toISOString, с ним можно сделать это задание без использования сторонних библиотек.
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+
+module.exports = function () {
+  const day = new Date()
+  const a = day.toISOString().split('T')
+  return {
+    date: a[0],
+    time: a[1], // убрать секунды и символы в конце
+  }  
+}
 ---
 Я обычно советую какой-то материал для дополнительного изучения, но, честно говоря, сейчас не знаю что вам посоветовать. Думаю, вы и так знаете как найти документацию к интересующей вас библиотеке
 ---
 Вы так же можете использовать .toISOString() для подобных задач, чтобы не высчитывать отдельно месяц, дни и пр.
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+
+module.exports = function () {
+  const day = new Date()
+  const a = day.toISOString().split('T')
+  return {
+    date: a[0],
+    time: a[1], // убрать секунды и символы в конце
+  }  
+}
 --
 Библиотека momentjs считается deprecated и больше не поддерживается разработчиками. Можно использовать аналоги:  luxon, date-fns, daysjs. Либо встроенный в js объект Date
 
@@ -87,14 +105,7 @@ https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Da
 
 Вся логика по получению данных даты должна хранится в фале date.js в index.js происходит только получение этих данных и их вывод.
 
-module.exports = function () {
-  const day = new Date()
-  const a = day.toISOString().split('T')
-  return {
-    date: a[0],
-    time: a[1], // убрать секунды и символы в конце
-  }  
-}
+
 
 
 ----
