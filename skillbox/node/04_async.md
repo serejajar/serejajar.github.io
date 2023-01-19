@@ -19,6 +19,11 @@ await axios.get(urlRequest + name, {
 Проверил исправления, но вывод все равно содержит неправильные данные (undefined, [object Object])
 
 
+###
+Вопросы
+
+# ReferenceError: fetch is not defined
+fetch api появилось в nodejs 18 версии.
 
 ###
 Принять

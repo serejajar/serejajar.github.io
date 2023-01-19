@@ -152,3 +152,51 @@ npm test
 ----------
 В принципе все верно, но у вашей функции должно быть два аргумента: массив с обычным емейлами и массив с блокированными емейлами.
 ---
+
+function filter(mailList, badMail) {
+  let finishMail = [];
+
+  for (let i of mailList) {
+    if (!badMail.includes(i)) {
+      finishMail.push(i);
+    }
+  }
+
+  return finishMail;
+}
+
+export default filter;
+
+
+
+----
+function calculate(sum, items, promo = null) {
+  if (promo === 'ДАРИМ300') {
+    if (sum <= 300) {
+      sum = 0;
+    } else {
+      sum -= 300;
+    }
+  }
+
+  if (items >= 10) {
+    let procent = sum / 100 * 5;
+    sum -= procent;
+  }
+
+  if (sum > 50000) {
+    let addedIndex = sum - 50000;
+    let procentAddedIndex = addedIndex / 100 * 20;
+    sum -= procentAddedIndex;
+  }
+
+  if (sum >= 20000 && promo === 'СКИДКА15') {
+    let sumProcent = sum / 100 * 15;
+    sum -= sumProcent;
+  }
+
+  return sum;
+}
+
+calculate(30000, 1, 'СКИДКА15');
+export default calculate;

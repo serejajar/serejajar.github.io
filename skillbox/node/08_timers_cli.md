@@ -26,6 +26,40 @@ minimist?
 ---------
 
 
+# Как сделать одну команду
+Вот пример реализации от другого студента. Тут исходя из аргумента вызываются различные функции:
+
+switch (process.argv[2]) {
+  case "signup":
+    sendCredentials("signup")
+      .then((res) => console.log(chalk.bold.green(`\n   ✅  ${res}\n`)))
+      .catch((err) => console.log(chalk.bold.red(`\n   ⛔️  ${err.message}\n`)));
+    break;
+А тут сама реализация функции которая вызывает ввод от inquirer, и отправляет полученные данные на сервер.
+
+const questions = {
+  username: {
+    message: "Username: ",
+  },
+  password: {
+    type: "password",
+    message: "Password: ",
+    mask: "*",
+  },
+};
+
+async function sendCredentials(endpoint) {
+  const promptRes = await inquirer.prompt(questions);
+
+  const apiRes = await fetch(`${server}/${endpoint}`, {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(promptRes),
+  });
+
+  return apiRes.json();
+}
+
 
 Ранее app.get("/") возвращал верстку html страницы, но теперь он не нужен, так как страниц в CLI-приложении нет. Перенесите серверную часть из прошлого задания и проверьте ее с помощью программы Постман. После перейдем к созданию авторизации.
 
