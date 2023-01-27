@@ -102,3 +102,42 @@ https://learn.javascript.ru/promise-api#promise-all
 
 
 Вам нужно объединить массивы с результатами в один общий массив. Затем получить все имена из этого массива. И последнее вам нужно найти минимальный и максимальный рост. Напишите если нужна более подробная информация как это реализовать в коде.
+
+
+----
+const axios = require("axios");
+
+if (process.argv.length <= 2) {
+  console.error("Must have 1 or more arguments");
+  process.exit(0);
+}
+
+const data = [];
+
+const characters = process.argv.slice(2);
+
+const requests = characters.map((el) => axios(`https://swapi.dev/api/people/?search=${el}`));
+
+(async () => {
+  await Promise.allSettled(requests).then((results) => {
+    results.forEach((result, num) => {
+      if (result.status == "fulfilled") {
+        if (!result.value.data.results.length) console.log(`No results found for ${characters[num]}`);
+        result.value.data.results.forEach((character) => data.push(character));
+      }
+
+      if (result.status == "rejected") {
+        console.log(`${characters[num]}: ${result.reason}`);
+      }
+    });
+  });
+
+  data.sort((x, y) => x.height - y.height);
+
+  const allNames = data.map((el) => el.name).sort();
+
+  console.log("Total result: ", data.length);
+  console.log("All: ", ...allNames);
+  console.log(`Min height: ${data[0].name}, ${data[0].height} cm.`);
+  console.log(`Max height: ${data.at(-1).name}, ${data.at(-1).height} cm.`);
+})();

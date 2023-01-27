@@ -109,6 +109,7 @@ module.exports = function () {
 
 
 ----
+
 function currentDateTime() {
   const dateFormatter = new Intl.DateTimeFormat("fr-CA");
 
@@ -125,3 +126,31 @@ function currentDateTime() {
     time: timeFormatter.format(currentDate),
   };
 }
+
+---
+# используют date-fns неправильно
+Вам плюсик за использование библиотеки date-fns, но минус что вы склеиваете дату и время с помощью нескольких методов. Тут вам лучше использовать встроенный метод формат
+
+const { format } = require("date-fns");
+
+function currentDateTime () {
+  const current = Date.now();
+
+  const time = format(current, "HH:mm:ss");
+  const date = format(current, "yyyy-MM-dd");
+
+  return { date, time }
+}
+const { format } = require("date-fns");
+
+function currentDateTime () {
+  const current = Date.now();
+
+  const time = format(current, "HH:mm:ss");
+  const date = format(current, "yyyy-MM-dd");
+
+  return { date, time }
+}
+
+
+module.exports = currentDateTime;
