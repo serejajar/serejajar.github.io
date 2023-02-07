@@ -104,7 +104,7 @@ https://learn.javascript.ru/promise-api#promise-all
 Вам нужно объединить массивы с результатами в один общий массив. Затем получить все имена из этого массива. И последнее вам нужно найти минимальный и максимальный рост. Напишите если нужна более подробная информация как это реализовать в коде.
 
 
-----
+#решение 1
 const axios = require("axios");
 
 if (process.argv.length <= 2) {
@@ -141,3 +141,65 @@ const requests = characters.map((el) => axios(`https://swapi.dev/api/people/?sea
   console.log(`Min height: ${data[0].name}, ${data[0].height} cm.`);
   console.log(`Max height: ${data.at(-1).name}, ${data.at(-1).height} cm.`);
 })();
+
+# решение 2
+import fetch from 'node-fetch';
+
+const url = 'https://swapi.dev/api/people/?search=';
+const responseArray = process.argv.splice(2);
+
+const showResult = async () => {
+  if (responseArray.length < 1) {
+    throw new Error('There are no response.');
+  }
+  const responsedPeople = async () => await Promise.all(responseArray.map(name => getPerson(name)));
+  const normalizedPeopleArray = (await responsedPeople()).flat(Infinity);
+  const {total, maxName, minName, min, max, names} = prepareResult(normalizedPeopleArray);
+
+  console.log(`
+    Total results: ${total}
+    All: ${names}
+    Min height: ${minName}, ${min} cm.
+    Max height: ${maxName}, ${max} cm.
+  `);
+};
+
+
+try {
+  showResult();
+} catch (err) {
+  console.error(err);
+}
+
+const getPerson = (name) => {
+  return new Promise((resolve, reject) => {
+    try {
+      (async () => {
+        const body = await fetch(`${url}${name}`);
+        const data = await body.json();
+        resolve(data.results);
+      })();
+    } catch (err) {
+      return reject(err);
+    }
+  });
+};
+
+const prepareResult = (arr) => {
+  if (arr.length === 0) {
+    throw new Error('No such person.')
+  }
+  const heightSorted = arr.sort((a, b) => Number(a.height) - Number(b.height));
+
+  return {
+    total: arr.length,
+    names: arr
+      .map(el => el.name)
+      .sort()
+      .join(', '),
+    min: heightSorted[0].height,
+    max: heightSorted[heightSorted.length - 1].height,
+    minName: heightSorted[0].name,
+    maxName: heightSorted[heightSorted.length - 1].name,
+  }
+};
