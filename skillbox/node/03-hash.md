@@ -32,6 +32,8 @@
 
 
 ### Вопросы
+# стримы
+Стримы это отдельная тема которую вы будете проходить в конце курса, но вам плюсик что вы интересуетесь ими сейчас, хотя и для этой задачи вам достаточно использовать readFileSync.
 
 # не совпадают хеши 2-х файлов. Так и не смог найти где ошибся..
 В тестовых файлах в директории test-files есть ошибки: два файла cat.txt и LICENSE могут не проходить тесты, если Вы используете windows. Это связанно с отличием в символе переноса строки для Linux и Windows, вот статья если интересно:
@@ -201,4 +203,42 @@ fs.readFile(file, (err, data) => {
     if (hash != data.trim()) process.exit(102);
     else console.log(data);
   });
+});
+
+# Решение 3 (readable straem)
+const crypto = require("crypto");
+const fs = require("fs");
+
+const filename = process.argv[2];
+
+const hash = crypto.createHash("sha256");
+const input = fs.createReadStream(filename);
+
+input.on("error", (err) => {
+  console.error(err);
+  process.exit(100);
+});
+
+input.on("readable", () => {
+  const val = input.read();
+
+  if (val) hash.update(val);
+  else {
+    let hashSumWithoutSpace;
+    try {
+      hashSumWithoutSpace = fs.readFileSync(filename + ".sha256", "utf8", (error, data) => {
+        return data.trim();
+      });
+    } catch (err) {
+      // console.error(err);
+      process.exit(101);
+    }
+
+    if (hash.digest("hex") === hashSumWithoutSpace.trim()) {
+      return console.log("OK");
+    } else {
+      console.error(102);
+      return process.exit(102);
+    }
+  }
 });
