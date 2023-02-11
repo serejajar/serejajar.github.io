@@ -69,6 +69,27 @@ https://github.com/axios/axios
 В качестве доп. материала к изучению рекомендую вам изучить часто используемую библиотеку node-fetch
 https://github.com/node-fetch/node-fetch
 
+Сразу напишу некоторые рекомендации по следующему дз:
+
+1. Сразу выполняйте часть с аутентификацией, она все равно нужна будет в следующих модулях.
+
+2. Рекомендации по структуре кода:
+
+- директория middlewares - здесь в каждом файле отдельно опишите нужные middlewares: для авторизации, для проверки авторизации и так далее
+
+- директория routes - здесь в каждом файле опишите обработчики для апи: timers.js - апи для таймеров, auth.js - для авторизации (логин, регистрация и так далее)
+
+- директория services - здесь будут функции для работы с данными. В этой директории добавьте директорию memory. Она будет отвечать за работу у с данными, которые просто хранятся в памяти. Далее мы ее расиширим, когда будем работать с базами данных. В ней реализуйте все необходимые функции: создание таймера, остановка, поиск и так далее. Эти функции должны использовать обработчики из routes.
+
+index.js - в этом файле Вы создаете объект приложения express, подключаете все нужные middlewares и routes и запускаете его
+
+3. Для активных таймеров нужно вычислять поле progress, за время проверки работ я видел много странных реализаций этого функционала, но как правило было неправильно, хотя правильный способ вроде как самый простой: вычисляйте поле progress для каждого полученного таймера в момент запроса просто как разницу: Date.now() - timer.start
+
+4. Во всех обработчиках таймеров нужно учитывать id текущего пользователя, т.е. пользователь должен получать только таймеры, которые он создал и останавливать только свои
+
+
+
+
 ###
 Прочее
 - trim()
@@ -226,7 +247,7 @@ input.on("readable", () => {
   else {
     let hashSumWithoutSpace;
     try {
-      hashSumWithoutSpace = fs.readFileSync(filename + ".sha256", "utf8", (error, data) => {
+      hashSumWithoutSpace = fs.readFileSync(filename  ".sha256", "utf8", (error, data) => {
         return data.trim();
       });
     } catch (err) {
@@ -242,3 +263,56 @@ input.on("readable", () => {
     }
   }
 });
+
+
+# бонусное дз
+const fs = require("fs");
+const axios = require("axios");
+
+const filePath = process.argv[2];
+const hashFilePath = filePath  ".sha256";
+
+try {
+  new URL(filePath);
+  Promise.all([
+    axios.get(filePath, { responseType: "arraybuffer" }).then((resp) => resp.data),
+    axios.get(hashFilePath).then((resp) => resp.data),
+  ])
+    .then(([file, hashFile]) => verify(file, hashFile))
+    .catch(({ message, config: { url } }) => {
+      errorHandler(message, url);
+    });
+} catch {
+  try {
+    const file = fs.readFileSync(filePath);
+    const hashFile = fs.readFileSync(hashFilePath, "utf8").trim();
+
+    verify(file, hashFile);
+  } catch ({ message, path }) {
+    errorHandler(message, path);
+  }
+}
+
+// файл с вспомогательными функциями
+const crypto = require("crypto");
+
+function verify(file, hashFile) {
+  const hash = crypto.createHash("sha256");
+  hash.update(file);
+
+  if (hash.digest("hex") !== hashFile.trim()) {
+    console.error("ERROR! File and his hash sum do not match :(");
+    process.exit(102);
+  }
+
+  console.log("Verification was successful!");
+}
+
+function errorHandler(message, path) {
+  console.error(message);
+
+  if (path.includes(".sha256")) {
+    process.exit(101);
+  }
+  process.exit(100);
+}
