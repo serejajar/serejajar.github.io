@@ -38,6 +38,16 @@ function randomArray(count, n, m) {
   console.log(arr);
 }
 
+# 2-я задача (перевернутая строка)
+function reverseString(str) {
+  let arrayStr = str.split('');
+
+  arrayStr.reverse();
+
+  let str2 = arrayStr.join('');
+  console.log(str2);
+}
+
 # 3-я задача (танк)
 - неправильное количество console.log
 У вас все верно написано, кроме одной мелочи. В ДЗ подразумевается что будет такой вывод для вот этого массива:

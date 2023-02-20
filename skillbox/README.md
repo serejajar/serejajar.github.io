@@ -8,3 +8,6 @@ node
 -TypeError: Cannot destructure property 'username' of 'req.body' as it is undefined.
 
 Общее
+
+# NODEJS
+- советы перед задачей с хешем
