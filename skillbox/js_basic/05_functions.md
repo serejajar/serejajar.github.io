@@ -198,5 +198,4 @@ function calculate(sum, items, promo = null) {
   return sum;
 }
 
-calculate(30000, 1, 'СКИДКА15');
 export default calculate;
