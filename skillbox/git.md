@@ -58,3 +58,12 @@ git config --global user.email "you@example.com"
 2) Тут нужно указать имя или никнейм
 
 git config --global user.name "Your Name"
+
+# конфликты
+Это последствия не решенного конфликта при слиянии двух веток или коммитов. Что такое конфликт можете почитать здесь:
+
+https://githowto.com/ru/creating_a_conflict
+
+Как решать конфликты описано здесь:
+
+https://githowto.com/ru/resolving_conflicts

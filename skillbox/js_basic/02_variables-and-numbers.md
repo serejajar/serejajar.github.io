@@ -5,6 +5,20 @@
 Подробно о каждом задании:
 
 Напишите если нужна моя помощь для этих исправлений.
+
+# первая задача
+let x1 = -5;
+let y1 = 8;
+let x2 = 10;
+let y2 = 5;
+
+let width = Math.abs(x2 - x1);
+let height = Math.abs(y2 - y1);
+
+let area = width * height;
+
+console.log(area);
+
 ---
 2-я задача:
 - проверить 0.12346

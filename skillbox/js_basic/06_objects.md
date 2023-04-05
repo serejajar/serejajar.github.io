@@ -28,7 +28,7 @@ const filter = (array, field, value) => {
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
 function filter(nameObject, termKey, termValue) {
-  return nameObject.filter(function (search) {
+  return nameObject.filter((search) => {
     return search[termKey] == termValue;
   });
 }

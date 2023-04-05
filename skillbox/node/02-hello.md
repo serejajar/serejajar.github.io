@@ -34,6 +34,10 @@
         Вы можете использовать .toISOString() или получить отдельно год, месяц, день и время и "склеить" их в строку.
         Будет полезно: https://learn.javascript.ru/date#poluchenie-komponentov-daty
 
+# cannot use import outside a module
+Чтобы исправить эту ошибку вы можете использовать require() как в видеоуроках или добавить следующую строку в package.json
+
+"type": "module",
 
 ###
 Принять:
