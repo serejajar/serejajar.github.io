@@ -46,6 +46,24 @@ function findMostProfitableClient(income) {
 # ArrayTop
 Тут интересно что алгоритм поиска нескольких минимальных величин findBottomElements основанный на методе sort() работает в разы быстрее чем findTopElements
 
+# почемуто фильтруют undefined
+Вы можете проверить в чем проблема добавив вызов main() в скрипте и, при запуске, вы увидите что список не верный (например, 4-е элемента вместо 5-и).
+
+
+И решается это исправлением  return:
+
+function findTopElements(inputArray, numberOfElements) {
+  const topElements = new Array(numberOfElements);
+  /* ваш код */
+
+  return topElements;
+}
+
+
+
+
+
+# код
 function findMaxUnderBoundary(inputArray, topBoundary) {
   let currentMax = -Infinity; // заменяем +Infinity на -Infinity
   for (let k = 0; k < inputArray.length; k++) {

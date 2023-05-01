@@ -1,12 +1,43 @@
-function januaryDays(firstWeekDay) {
-  let week = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
+function loadResourse(src) {
+    //JS
+    if(src.endsWith('.js')) {
+      return import(src);
+    }
+    //CSS
+    if(src.endsWith('.css')) {
+        if(cssPromises[src]) {
+          
+        }
+    }
+    //Данные сервера
+    return fetch(src).then(res => res.json());
+}
 
-  let indexWeek = week.indexOf (firstWeekDay);
 
-  for (let i = 0; i < 31; ++i) {
-    let day = (indexWeek + i) % 7;
-    console.log(`${i + 1} января, ${week[day]}`);
+---
+class User {
+  constructor(name, callback) {
+    this.name = name;
+    this.callback = callback
+  }
+
+  sayHi() {
+    this.callback.call(this);
+  }
+  sayHi2() {
+    this.callback(this);
   }
 }
 
-januaryDays("понедельник")
+function test() {
+  console.log('Мое имя - ', this.name);
+  console.log('THIS', this)
+}
+
+// Использование:
+let user = new User("Иван", test);
+let user2 = new User("Не иван", test.bind(this)); // Имя не должно быть выведено так как тут this равно window
+
+
+user.sayHi();
+user2.sayHi2();
