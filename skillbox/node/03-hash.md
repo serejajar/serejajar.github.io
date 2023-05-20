@@ -301,3 +301,70 @@ function errorHandler(message, path) {
   }
   process.exit(100);
 }
+
+# node-fetch. Я тут по быстрому накидал ко, и, как вы можете заметить в коде присутсвует async/await вместе с промисами.В реальной работе лучше использовать один подход.
+
+const fs = require("fs");
+const dir = process.argv[2];
+const hashFilePath = dir + ".sha256";
+const crypto = require("crypto");
+const hash = crypto.createHash("sha256");
+const fetch = require("node-fetch");
+
+function read() {
+  try {
+    new URL(dir);
+    Promise.all([
+      fetch(dir),
+      fetch(hashFilePath),
+    ]).then(async ([file, hashFile]) => {
+        if (file.status !== 200) {
+          console.log('100');
+          process.exit(100);
+        }
+        if (hashFile.status !== 200) {
+          console.log('101');
+          process.exit(101);
+        }
+
+        return [await file.buffer(), await hashFile.text()]
+      })
+      .then(([file, hashFile]) => {
+        console.log(file, hashFile);
+        checkHash(file, hashFile);
+      })
+      .catch((error) => {
+        // errorHandler("файла не существует", dir);
+        console.log("error.message", error.message);
+      });
+  } catch {
+    try {
+      const file = fs.readFileSync(dir);
+      const copyFile = fs.readFileSync(hashFilePath, "utf-8").trim();
+      checkHash(file, copyFile);
+    } catch ({ message, path }) {
+      errorHandler(message, path);
+    }
+  }
+}
+
+function checkHash(file, fileHash) {
+  const originHash = hash.update(file).digest("hex");
+
+  if (originHash !== fileHash.trim()) {
+    process.exit(102);
+  } else {
+    console.log("programm`s successfully finished");
+  }
+}
+
+function errorHandler(message, path) {
+  console.error(message);
+
+  if (path.includes(".sha256")) {
+    process.exit(101);
+  }
+  process.exit(100);
+}
+
+read();
