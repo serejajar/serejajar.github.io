@@ -1,9 +1,16 @@
 # Что можно исправить
+- Так же обратите внимание на блок if без фигурных скобок:
+if (Object.done == true) item.classList.add('list-group-item-success');
+
+Будьте особенно внимательны если используете if без фигурных скобок, так как частая ошибка студентов это перенос кода на следующую строку:
+if (условие)
+  этот код сработает даже если условие будет false
+https://learn.javascript.ru/coding-style#figurnye-skobki
 
 - Обратите внимание на return в блоке if:
 
 if (localData !== null && localData !== '')
-        return JSON.parse(localData);
+    return JSON.parse(localData);
 
 Тут return будет возвращаться всегда так как интерпретатор воспринимает этот код вот так:
 if (условие) {}
@@ -12,7 +19,15 @@ return переменная
 Тут лучше  добавить фигурные скобки в блоке if или перенести  return на ту же строку что и if. Подробнее:
 https://learn.javascript.ru/coding-style#figurnye-skobki
 
-- А вот эта статья поможет немного улучшить вот такой код:
-if (localData !== null && localData !== '')
-
+- if (localData !== null && localData !== '')
+Вот этот код поможет немного улучшить эта статья:
 https://learn.javascript.ru/ifelse#preobrazovanie-k-logicheskomu-tipu
+
+- С помощью оператора "!" (не) вы можете не сравнивать прямо с ""===", например:
+if(!firstCard ) {
+https://learn.javascript.ru/logical-operators#ne
+
+- Вижу вы используете написание названий переменных с заглавной буквы,  поэтому хочу вам порекомендовать вот эти статьи к прочтению:
+https://learn.javascript.ru/variables#variable-naming
+
+https://learn.javascript.ru/function-basics#function-naming

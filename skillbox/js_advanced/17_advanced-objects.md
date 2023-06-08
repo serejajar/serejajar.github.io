@@ -1,3 +1,13 @@
+Все выполнено по условиям ДЗ. Вам плюсик что не забыли сделать подсветку красным при ошибочном значении, а так же за лаконичный код! ДЗ принято.
+
+Рекомендации:
+- Рекомендую также прочитать статью с более детальным описанием прототипного наследования. Для закрепления материала можете еще решить задачи расположенные в конце статьи.
+https://learn.javascript.ru/prototype-inheritance
+
+- Рекомендую так же прочитать статью про типы в js:
+
+https://learn.javascript.ru/types
+
 ###
 Отклонить
 - нет вывода свойств HTMLInputElement
@@ -26,22 +36,7 @@ HTMLElement
 
 let proto = window[String(input.value).trim()].prototype;
 
-###
-Принять
-Все выполнено по условиям ДЗ. Вам плюсик что не забыли сделать подсветку красным при ошибочном значении, а так же за лаконичный код! ДЗ принято.
 
-###
-Похвалить
-
-
-###
-Рекомендации:
-Рекомендую также прочитать статью с более детальным описанием прототипного наследования. Для закрепления материала можете еще решить задачи расположенные в конце статьи.
-https://learn.javascript.ru/prototype-inheritance
----
-Рекомендую так же прочитать статью про типы в js:
-
-https://learn.javascript.ru/types
 
 ###
 Другое
@@ -57,36 +52,59 @@ https://learn.javascript.ru/types
 
 
 ---
-button.addEventListener("click", async e => {
-  e.preventDefault()
+const input = document.getElementById('input');
+const button = document.getElementById('button');
+let list = document.getElementById('listPrototype');
+let propertyName = '';
 
-  //обрезаем входное значение
-  const inputValue = inputField.value.trim()
+button.addEventListener('click', (e) => {
+  e.preventDefault();
 
-  try {
-    if (inputValue.endsWith(".js")) {
-      //пользователь загружает класс из модуля
-      const module = await import(inputValue)
+  if (input.value.toLowerCase().includes('.js', -3)) {
+    importFilePrototype(input.value);
+  }
+  else {
+    valid(input.value);
+  }
 
-      // получаем от него свойство по умолчанию
-      const defaultExport = module.default
-
-      //проверяем, является ли это классом
-      if (typeof defaultExport === "function") {
-        handlePrototypeChain(defaultExport.prototype)
-      } else {
-        toggleClass(inputField, true)
-      }
-    } else if (
-      inputValue in window ||
-      typeof window[inputValue] === "function"
-    ) {
-      handlePrototypeChain(window[inputValue].prototype, inputField)
-    } else {
-      toggleClass(inputField, true)
+  function valid(obj) {
+    if (typeof window[obj] === 'function') {
+      enumerationPrototype(window[input.value]);
     }
-  } catch (error) {
-    console.error(error)
-    toggleClass(inputField, true)
+    else {
+      input.style.color = 'red';
+    }
+  }
+
+  async function importFilePrototype(path) {
+    // если успешно
+    try {
+      const module = await import(path);
+      valid(module.default);
+    } catch (e) {
+      if (e instanceof TypeError)
+        input.style.color = 'red';
+    }
   }
 })
+
+function enumerationPrototype(obj) {
+  while (obj.prototype !== undefined) {
+    listAdd(obj);
+    obj = Object.getPrototypeOf(obj);
+  }
+}
+
+function listAdd(obj) {
+  propertyName = obj.prototype.constructor.name;
+  let $li = document.createElement('li');
+  $li.innerHTML = propertyName;
+  list.appendChild($li);
+  let $_ol = document.createElement('ol');
+  for (let property in obj) {
+    let $_li = document.createElement('li');
+    $_li.innerHTML = property + " " + typeof property;
+    $_ol.appendChild($_li);
+    list.appendChild($_ol);
+  }
+}

@@ -25,8 +25,6 @@ https://learn.javascript.ru/function-basics#function-naming
 https://learn.javascript.ru/operators
 https://learn.javascript.ru/ifelse
 
-- Для самостоятельного изучения также можете изучить статью про if/else.
-
 - Хотя вы правильно использовали условный оператор, можете еще дополнительно решить задачи из вот этой статьи. Практика никогда не бывает лишней.
 https://learn.javascript.ru/ifelse#tasks
 

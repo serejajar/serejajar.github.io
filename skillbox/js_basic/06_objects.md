@@ -1,3 +1,34 @@
+Отлично! Все тесты прошли успешно, и я принимаю ДЗ.
+
+Рекомендации:
+Рекомендую вам так же изучить метод массива filter, с ним можно немного проще выполнить эту задачу.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+
+function filter(arr, option, value) {
+  return arr.filter((obj) => {
+    return obj[option] == value;
+  });
+}
+
+export default filter;
+
+- Я рекомендую вам, в качестве дополнительного материала к изучению, вот эту статью:
+https://learn.javascript.ru/logical-operators#ne
+
+Изучение этого материал позволит избежать подобного кода:
+typeof obj[key] !== 'undefined'
+
+- Рекомендую вам, в качестве дополнительного материала к изучению, вот эту статью и задачи к ней:
+https://learn.javascript.ru/object
+https://learn.javascript.ru/object#tasks
+
+- Так же рекомендую прочитать про возврат значения в функции (return). Особенно важно понять этот материал т.к. вы будете сталкиваться с ним постоянно.
+https://learn.javascript.ru/function-basics#vozvrat-znacheniya
+
+- Можете почитать также эту статью про доступ через квадратные скобки
+https://learn.javascript.ru/object#kvadratnye-skobki
+
 ###
 Отклонить:
 - нет файла src/index.js
@@ -27,9 +58,9 @@ const filter = (array, field, value) => {
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
-function filter(nameObject, termKey, termValue) {
-  return nameObject.filter((search) => {
-    return search[termKey] == termValue;
+function filter(arr, option, value) {
+  return arr.filter((obj) => {
+    return obj[option] == value;
   });
 }
 
