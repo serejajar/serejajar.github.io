@@ -16,7 +16,7 @@ https://learn.javascript.ru/promise-basics
 container.innerHTML = `<h1 class="test">${name}</h1`;
 Такая запись может значительно сократить код исключив из него создание элемента и добавление аттрибутов и классов.
 
-- Еще один прием это весь повторяющийся код перенести в функции. Например код обработчиков события:
+- Еще один прием это весь повторяющийся код перенести в функции. Например, код обработчиков события:
 
 $sortAgeBtn.addEventListener('click', handler)
 $sortFIOBtn.addEventListener('click', handler)
