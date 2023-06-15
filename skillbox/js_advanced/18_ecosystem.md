@@ -12,22 +12,23 @@
 Рекомендации:
 - Это задание можно сделать без использования сторонних библиотек для определения типа карты. Вот решение основанное на регулярных выражениях:
 let ccCardType = ''
-  const ccCardTypePatterns = {
-    amex: /^3/,
-    visa: /^4/,
-    mastercard: /^5/,
-    disc: /^6/,
-    mir: /^2/,
 
-    genric: /(^1|^7|^8|^9|^0)/,
-  }
+const ccCardTypePatterns = {
+  amex: /^3/,
+  visa: /^4/,
+  mastercard: /^5/,
+  disc: /^6/,
+  mir: /^2/,
 
-  for (const cardType in ccCardTypePatterns) {
-    if (ccCardTypePatterns[cardType].test(ccValue)) {
-      ccCardType = cardType
-      break
-    }
+  genric: /(^1|^7|^8|^9|^0)/,
+}
+
+for (const cardType in ccCardTypePatterns) {
+  if (ccCardTypePatterns[cardType].test(ccValue)) {
+    ccCardType = cardType
+    break
   }
+}
 
 
 - В качестве самостоятельного обучения можете изучить также и регулярные выражения:
