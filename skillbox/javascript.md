@@ -24,7 +24,7 @@ https://learn.javascript.ru/coding-style#figurnye-skobki
 https://learn.javascript.ru/ifelse#preobrazovanie-k-logicheskomu-tipu
 
 - С помощью оператора "!" (не) вы можете не сравнивать прямо с ""===", например:
-if(!firstCard ) {
+if(!firstCard) {
 https://learn.javascript.ru/logical-operators#ne
 
 - Вижу вы используете написание названий переменных с заглавной буквы,  поэтому хочу вам порекомендовать вот эти статьи к прочтению:

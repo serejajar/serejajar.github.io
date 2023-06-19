@@ -13,12 +13,6 @@ function filter(arr, option, value) {
 
 export default filter;
 
-- Я рекомендую вам, в качестве дополнительного материала к изучению, вот эту статью:
-https://learn.javascript.ru/logical-operators#ne
-
-Изучение этого материал позволит избежать подобного кода:
-typeof obj[key] !== 'undefined'
-
 - Рекомендую вам, в качестве дополнительного материала к изучению, вот эту статью и задачи к ней:
 https://learn.javascript.ru/object
 https://learn.javascript.ru/object#tasks
