@@ -31,3 +31,7 @@ https://learn.javascript.ru/logical-operators#ne
 https://learn.javascript.ru/variables#variable-naming
 
 https://learn.javascript.ru/function-basics#function-naming
+
+- Возможно, в дальнейшем, вам будет чуть удобнее использовать шаблонные строки при создании элементов html. Вот пример использования:
+
+container.innerHTML = `<h1>${name}</h1`;
