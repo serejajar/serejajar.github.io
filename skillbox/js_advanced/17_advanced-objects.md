@@ -5,7 +5,6 @@
 https://learn.javascript.ru/prototype-inheritance
 
 - Рекомендую также прочитать статью про типы в js:
-
 https://learn.javascript.ru/types
 
 ###
