@@ -50,6 +50,9 @@ https://learn.javascript.ru/regular-expressions
 
 ---
 
+# { passive: true }
+Скопируй из описания
+
 # Не используют квантификаторы {}
 Хочу порекомендовать в качестве самостоятельного изучени встроенный метод trim
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim
@@ -59,8 +62,6 @@ https://learn.javascript.ru/regexp-quantifiers
 
 Думаю, это поможет улучшить подобный код:
 
-
-# Вопросы:
 
 # Не используют ИЛИ
 Хотя вы использовали квантификаторы в регулярных выражениях можете так же глянуть альтернацию (или), это поможет упростить этот код.
