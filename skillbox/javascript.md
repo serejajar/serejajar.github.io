@@ -35,3 +35,10 @@ https://learn.javascript.ru/function-basics#function-naming
 - Возможно, в дальнейшем, вам будет чуть удобнее использовать шаблонные строки при создании элементов html. Вот пример использования:
 
 container.innerHTML = `<h1>${name}</h1`;
+
+-
+event.key.match(expectedString) ? null : event.preventDefault();
+
+Тернарный оператор ? можно заменить на &&:
+
+event.key.match(expectedString) && event.preventDefault();
