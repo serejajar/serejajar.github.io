@@ -73,6 +73,40 @@ https://qna.habr.com/q/358490
 2. Проверить для каждого поля ввода подходит ли значение. Если не подходит, то создать текст с ошибкой.
 3. Если есть ошибки, то вывести их. Если их нет, то вызвать функцию добавления студента.
 
+Вот пример:
+addForm.addEventListener('submit', function(event){
+    event.preventDefault() //отмена стандартное действие формы т.е. чтоб не было перехода по ссылке
+
+    //валидация
+    if ($nameInp.value.trim() == ""){ //валидация на пустое поле, с помощью trim убираем пробелы
+        alert('Имя не введено!')
+        return
+    }
+    if ($surenameInp.value.trim() == ""){ //валидация на пустое поле, с помощью trim убираем пробелы
+        alert('Отчество не введено!')
+        return
+    }
+    if ($lastnameInp.value.trim() == ""){ //валидация на пустое поле, с помощью trim убираем пробелы
+        alert('Фамилия не введено!')
+        return
+    }
+    if ($ageInp.value.trim() == ""){ //валидация на пустое поле, с помощью trim убираем пробелы
+        alert('Возраст не введен!')
+        return
+    }
+
+
+    studentsList.push({
+        name: $nameInp.value.trim(), //добавление из инпута имени
+        surename: $surenameInp.value.trim(), //добавляем из инпута surename
+        lastname: $lastnameInp.value.trim(), //добавляем из инпута lastname
+        age: parseInt($ageInp.value.trim()), //преобразуем в строку и добавляем из инпута age
+        hobby: $hobbyInp.value.trim() ////добавляем из инпута hobby
+    })
+    renderStudentsTable(studentsList); //запуск функции
+});
+
+
 # Как сортировать по ФИО
 Самое простое решение это сортировать только по фамилии. Что-то вроде этого:
 
