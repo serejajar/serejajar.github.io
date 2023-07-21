@@ -1,6 +1,19 @@
 Работа выполнена на отлично и вам плюсик за использование библиотеки inquirer. ДЗ принято.
 
 
+Рекомендации к следующему ДЗ
+- Map() может не коректно работать с ObjectId. Поэтому лучше использовать метод toString() при сохранении пользователя в req:
+
+function getUserByCredentials(db, username, password) {
+  return db
+    .collection("users")
+    .findOne({ name: username, password: hash(password.trim()) }, { name: 1, password: 0 })
+    .then((user) => {
+      user._id = user._id.toString();
+      return user;
+    });
+}
+
 
 
 ###

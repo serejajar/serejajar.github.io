@@ -36,8 +36,7 @@ https://learn.javascript.ru/function-basics#function-naming
 
 container.innerHTML = `<h1>${name}</h1`;
 
--
-event.key.match(expectedString) ? null : event.preventDefault();
+- event.key.match(expectedString) ? null : event.preventDefault();
 
 Тернарный оператор ? можно заменить на &&:
 
