@@ -8,3 +8,6 @@ npm -v
 node -v
 
 Вывод должен быть примерно таким:
+
+# ReferenceError: fetch is not defined
+fetch api появилось в nodejs 18 версии.

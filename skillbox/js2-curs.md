@@ -174,7 +174,40 @@ export function getLastMonthTransactions(data, month) {
 # почему постоянно обновляется страница / держат файлы вперемешку
 Судя по всему у вас это происходит из-за того что вы держите код сервера и клиента в одной папке. При добавлении/изменении данных в базу данных (в файл db.json, который эмулирует БД) у вас срабатывал watch режим webpack-a.  Можно конечно отключить watch режим и при изменениях перезагружать вашу страницу вручную, но я настоятельно вам рекомендую держать код сервера и клиента раздельно. Так меньше будете путаться в коде да и минимизируете возможные ошибки, например как эта.
 
-# Ошибка с картами
+# объект ymap3 не определен
+Вебпак не видит эту переменную так как скрипт добавлен на саму страницу, тут самое простое решение это установить вот эту библиотеку:
+
+npm i ymaps
+
+
+И далее использовать ее для загрузки скрипта от Яндекс.Карт:
+
+import ymaps from 'ymaps';
+
+export async function renderMap(mapData) {
+  const maps = await ymaps.load(
+    'https://api-maps.yandex.ru/2.1/?apikey=04a1662a-2115-4736-a95d-a9f299ca73cb&lang=ru_RU'
+  );
+  let myMap = new maps.Map('map', {
+    center: [55.76, 37.64],
+    zoom: 11,
+  });
+
+  myMap.behaviors.disable('scrollZoom');
+
+  for (let i of mapData) {
+    let myGeoObject = new maps.GeoObject({
+      geometry: {
+        coordinates: [i[0], i[1]],
+        type: 'Point',
+      },
+    });
+    myMap.geoObjects.add(myGeoObject);
+  }
+}
+
+
+# Ошибка с картами ??
 Это известная проблема, про которую пишут и на npm:
 
 https://www.npmjs.com/package/ymaps#known-issues
@@ -182,6 +215,7 @@ https://www.npmjs.com/package/ymaps#known-issues
 Тут вам проще всего использовать cdn библиотеку от Яндекса которую нужно добавить в шапку страницы, как и показано у них в документации.
 
 https://yandex.ru/dev/maps/jsapi/doc/3.0/dg/concepts/load.html
+
 
 # Я добавил карты, но они платные
 Попробуйте добавить не всю карту используя API, а виджет, думаю  этого будет достаточно для приложения. Вот пример для Яндекс::
