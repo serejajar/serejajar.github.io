@@ -4,8 +4,8 @@
 
 Вам плюсик  за хороший код, и за использование router!   
 
-Что можно исправть:
-- В руте обновления таймера можно использовать метод findOneAndUpdate() с опцией returnNewDocument вместо двух findOne и updateOne.
+Что можно исправить:
+- В руте POST /api/timers/:id/stop таймера можно использовать метод findOneAndUpdate() с опцией returnNewDocument вместо двух findOne и updateOne.
 https://www.mongodb.com/docs/manual/reference/method/db.collection.findOneAndUpdate/
 - добавление $inc: { progress: 1000 }, это будет работать не для всех таймеров.
 - duration таймеров не должны храниться в базе из=за большой нагрузки, или они каждый раз высчитываются основываясь от времени старта и текущего времени.

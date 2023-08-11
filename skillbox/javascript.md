@@ -41,3 +41,7 @@ container.innerHTML = `<h1>${name}</h1`;
 Тернарный оператор ? можно заменить на &&:
 
 event.key.match(expectedString) && event.preventDefault();
+
+
+# почему в моем файле 'exercise-2' name и substr перечеркиваются
+Так ваш редактор кода подсвечивает не рекомендуемые к использованию методы.

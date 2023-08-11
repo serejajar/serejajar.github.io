@@ -2,7 +2,7 @@
 
 
 Рекомендации к следующему ДЗ
-- Map() может не коректно работать с ObjectId. Поэтому лучше использовать метод toString() при сохранении пользователя в req:
+- Map() может не корректно работать с ObjectId. Поэтому лучше использовать метод toString() при сохранении пользователя в req:
 
 function getUserByCredentials(db, username, password) {
   return db
