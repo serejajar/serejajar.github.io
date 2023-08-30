@@ -1,3 +1,7 @@
+Спасибо за выполненную работу. Тесты пройдены отлично и мы можем идти дальше!
+
+
+
 # ArrayMax.js
 function findSmallestTransaction(transactions) {
   let smallest = transactions[0];
