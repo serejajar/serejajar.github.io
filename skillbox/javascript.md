@@ -3,21 +3,9 @@
 if (Object.done == true) item.classList.add('list-group-item-success');
 
 Будьте особенно внимательны если используете if без фигурных скобок, так как частая ошибка студентов это перенос кода на следующую строку:
-if (условие)
-  этот код сработает даже если условие будет false
-https://learn.javascript.ru/coding-style#figurnye-skobki
-
-#
-- Обратите внимание на return в блоке if:
-
-if (localData !== null && localData !== '')
-    return JSON.parse(localData);
-
-Тут return будет возвращаться всегда так как интерпретатор воспринимает этот код вот так:
-if (условие) {}
-return переменная
-
-Тут лучше  добавить фигурные скобки в блоке if или перенести  return на ту же строку что и if. Подробнее:
+if (false)
+  console.log('этот код сработает')
+  console.log('а этот код сработает даже если условие будет false')
 https://learn.javascript.ru/coding-style#figurnye-skobki
 
 # Этот код можно чуть улучшить используя знания о преобразовании к логическому типу (true/false) в условии if()
@@ -65,3 +53,9 @@ https://learn.javascript.ru/function-basics
 Рекомендую изучить эту статью:
 
 https://learn.javascript.ru/default-browser-action
+
+# serve выдает ошибку связанную с безопасностью PSSecurityException
+Теперь ваша оболочка PowerShell не позволяет вам выполнять «возможно» вредоносные сценарии, поэтому вам необходимо изменить политику выполнения, просто введите следующее:
+Set-ExecutionPolicy Unrestricted
+
+Возможно, для этого вам потребуется запустить свой терминал от имени администратора.
