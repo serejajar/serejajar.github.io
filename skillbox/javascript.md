@@ -43,6 +43,16 @@ https://learn.javascript.ru/strict-mode
 
 https://learn.javascript.ru/function-basics
 
+#
+- Само условие уже возвращает true или false, поэтому в примерах ниже условный оператор не нужен
+
+return value <= 0 ? false : true;
+
+Правильно вот так:
+
+return value <= 0
+
+
 ------
 # почему в моем файле 'exercise-2' name и substr перечеркиваются
 Так ваш редактор кода подсвечивает не рекомендуемые к использованию методы.
@@ -59,3 +69,10 @@ https://learn.javascript.ru/default-browser-action
 Set-ExecutionPolicy Unrestricted
 
 Возможно, для этого вам потребуется запустить свой терминал от имени администратора.
+
+# Как добавить класс элементу
+Вы можете добавить css класс c помощью метода classList.add(). Например:
+
+el.classList.add('ваш-класс')
+
+https://learn.javascript.ru/styles-and-classes#classname-i-classlist

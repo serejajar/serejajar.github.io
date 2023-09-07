@@ -144,7 +144,13 @@ https://learn.javascript.ru/url
 
 3. Отобразить эти данные на странице
 
+# Как создать дату из строки полученой из свойства updatedAt
+Чтобы превратить строку в дату вы можете использовать метод Date.parse(str).
 
+https://learn.javascript.ru/date#razbor-stroki-s-datoy
+
+Далее с помощью методов Date вы можете создать саму необходимую дату.
+https://learn.javascript.ru/date#poluchenie-komponentov-daty
 
 
 ###
