@@ -245,3 +245,16 @@ export async function renderMap(mapData) {
 # Какие сборщики можно использовать?
 
 Тут нет ограничений. Я рекомендую вебпак так как это популярный сборщик и опыт работы с ним пригодится вам в дальнейшем.
+
+# как использовать svg
+{
+  test: /\.(?:|gif|png|jpg|jpeg|svg)$/,
+  use: [
+    {
+      loader: "file-loader",
+      options: {
+        name: `./img/${filename("[ext]")}`,
+      },
+    },
+  ],
+},
