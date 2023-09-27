@@ -52,6 +52,13 @@ return value <= 0 ? false : true;
 
 return value <= 0
 
+#
+Вы можете вместо  методов проверки и добавления  использовать метод toggle:
+
+element.classList.toggle("mystyle");
+
+Метод toggle добавит класс элементу, или уберет этот класс если он уже есть у элемента.
+
 
 ------
 # почему в моем файле 'exercise-2' name и substr перечеркиваются

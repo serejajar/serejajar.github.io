@@ -126,6 +126,85 @@ function renderClient(id, name, surname, lastName, dateTime, lastChange, contact
 
 2) Сбор данных и отправка на бэк.
 
+Вот так примерно выглядит получение всех данных контактов
+
+Создание элементов (селект и инпут) вы можете сделать в JS используя createElement, classList.add, setAttribute.
+
+$addClientAddContactBtn.addEventListener('click', () => {
+  const $addContactInpGrp = document.createElement('div');
+  const $addContactInp = document.createElement('input');
+  const $addOptionTel = document.createElement('option');
+  const $addOptionAdTel = document.createElement('option');
+  const $addOptionMail = document.createElement('option');
+  const $addOptionVk = document.createElement('option');
+  const $addOptionFb = document.createElement('option');
+  const $addSelectCloseBtnMod = document.createElement('div');
+  const $addSelectCloseBtn = document.createElement('button');
+  const $addSelect = document.createElement('select');
+
+  $addContactInpGrp.classList.add('input-group');
+  $addContactInp.classList.add('form-control', 'add-input');
+  $addSelect.classList.add('form-select', 'input-group-text');
+  $addSelectCloseBtnMod.classList.add('input-group-text');
+  $addSelectCloseBtn.classList.add('btn-close');
+
+  $addOptionTel.setAttribute('selected', '');
+  $addOptionTel.setAttribute('value', 'tel');
+  $addOptionAdTel.setAttribute('value', 'adTel');
+  $addOptionMail.setAttribute('value', 'mail');
+  $addOptionVk.setAttribute('value', 'vk');
+  $addOptionFb.setAttribute('value', 'fb');
+
+  $addOptionTel.textContent = 'Телефон';
+  $addOptionAdTel.textContent = 'Доп. телефон';
+  $addOptionMail.textContent = 'Email';
+  $addOptionVk.textContent = 'Vk';
+  $addOptionFb.textContent = 'Facebook';
+
+  $addContactInp.placeholder = 'Введите данные контакта';
+
+  $changeClientAddContactBtnCont.prepend($addContactInpGrp);
+  $addClientAddContactBtnCont.prepend($addContactInpGrp);
+  $addContactInpGrp.append($addSelect);
+  $addContactInpGrp.append($addContactInp);
+  $addContactInpGrp.append($addSelectCloseBtnMod);
+  $addSelectCloseBtnMod.append($addSelectCloseBtn);
+  $addSelect.append($addOptionTel);
+  $addSelect.append($addOptionAdTel);
+  $addSelect.append($addOptionMail);
+  $addSelect.append($addOptionVk);
+  $addSelect.append($addOptionFb);
+
+  $addSelectCloseBtn.addEventListener('click', () => {
+    $addContactInpGrp.remove();
+  });
+  $closeBtn.addEventListener('click', () => {
+    $addContactInpGrp.remove();
+  });
+  $addClientRemoveBtn.addEventListener('click', () => {
+    $addContactInpGrp.remove();
+  });
+  $addClientSaveBtn.addEventListener('click', () => {
+    $addContactInpGrp.remove();
+  });
+});
+
+
+Сбор данных контактов вы сможете получить используя JS:
+
+function getContactsArr() {
+  const contactsArr = [];
+  const contactTypes = document.querySelectorAll('.form-select');
+  const contactValues = document.querySelectorAll('.add-input');
+
+  contactTypes.forEach((el) => {
+    contactsArr.push({ type: el.value });
+  });
+
+  for (let i = 0; i < contactValues.length; ++i) contactsArr[i].value = contactValues[i].value;
+  return contactsArr;
+}
+
 ###
 Вопросы по доп. заданиям:
 

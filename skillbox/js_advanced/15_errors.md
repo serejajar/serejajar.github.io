@@ -38,28 +38,74 @@ window.addEventListener('offline', (event) => {
 npm start
 2) Открыть страницу http://localhost:3000  в браузере. Это пустая страница с которой идут запросы на сервер за массивом с данными. Помимо массива с данными этот запрос выдает ошибки в случайном порядке. Эти ошибки вам и нужно обработать для второго задания.
 
+# Как сформулировать в коде невалидной json я не совсем понимаю
+
+Добавьте параметр json_invalid в ссылку, так запрос будет всегда возвращать "битый" json.
+
+http://localhost:3000/api/products?status=200&json_invalid=true
+
+Только не забудьте его удалить перед отправкой на проверку.
+
+# как отловить ошибку с невалидным JSON
+В случае с ошибкой json response.status не будет содержать код ошибки, так как ответ от сервера будет успешным. Это звучит не логично, но сами сервера пишут точно такие же люди, и подобные коды устанавливают они же. И как вы понимаете никто не застрахован от ошибок   . Тут вам нужно обернуть res.json() в try/catch и если выдаст ошибку обработать ее.
+
+Вот пример (промисы):
+return fetch(src)
+  .then((res) => {
+    if (res.status === 404) return null;
+    if (res.status === 500) return "Need retry";
+    return res.json();
+  })
+  .then((res) => {
+    if (res.error) throw new Error(res.error);
+    return res;
+  })
+  .catch((e) => {
+    if (e instanceof SyntaxError) {
+      return "Invalid JSON";
+    } else if (e instanceof Error) console.log(e.message);
+    return null;
+  })
+  .then((data) => data);
+
+
+Вот пример:
+try {
+  let response = null;
+
+    for (let i = 0; i < 3; i++) {
+        response = await getServerData('/api/products');
+
+        if (response.status !== 500) break
+
+        if (response.status === 500 && i === 2) {
+            throw new Error('Server error');
+        }
+    }
+
+    if (response.status === 404 || response.data.products.length == 0) {
+        throw new TypeError('No data');
+    }
+
+    const productsList = createProductsList(response.data.products);
+    appContainer.append(productsList);
+} catch(e) {
+    const notificationContainer = document.getElementById('notifications');
+
+    if (e.message === 'Unexpected end of JSON input') {
+        createNotification(notificationContainer);
+    }
+
+    if (e.message === 'No data') {
+        createNotification(notificationContainer, 'Список товаров пуст');
+    }
+
+    if (e.message === 'Server error') {
+        createNotification(notificationContainer);
+    }
+
+    throw e;
+}
+
 ###
 Прочее
-
-
-2-е задание:
-- api/products?status=200&json_invalid=true неработает
-    ...
-
-        Это в самом начале звучит нелогично, но сами сервера пишут точно такие же люди, и подобные коды устанавливают они же. И как вы понимаете никто не застрахован от ошибок.
-
-        А теперь представьте себе ситуацию когда на сервере был отправлен запрос и при формировании ответа ни одной ошибки не было обнаружено. Естественно с сервера был послан успешный ответ, хоть и содержащий пустоту. Это довольно распространённый вариант ошибки которую вам нужно знать и уметь ее перехватить.
-
-
-
-Проверить это можно если открыть страницу, и если перейти в офллайн режим в консоли разработчии, то вы должны будете увидеть данное сообщение.
----
-Для запуска тестов перейдите в папку задания и выполните команду
-
-npm test
-Для запуска сервера аналогично перейдите в папку задания и выполните команду
-
-npm start
-
-
----
