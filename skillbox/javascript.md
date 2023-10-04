@@ -13,6 +13,12 @@ if (localData !== null && localData !== '')
 Рекомендую к изучению статью про преобразование к логическому типу в условии if/else:
 https://learn.javascript.ru/ifelse#preobrazovanie-k-logicheskomu-tipu
 
+#
+Если переменная содержит true/false вы можете обойтись без сравнения "==="
+if (obj.done) {
+Также рекомендую к изучению статью про преобразование к логическому типу в условии if/else:
+https://learn.javascript.ru/ifelse#preobrazovanie-k-logicheskomu-tipu
+
 # С помощью оператора "!" (не) вы можете не сравнивать прямо с ""===", например:
 if(!firstCard) {
 https://learn.javascript.ru/logical-operators#ne
