@@ -44,6 +44,25 @@ https://learn.javascript.ru/settimeout-setinterval
 Тест падает из-за того что тест ожидает значение из поля ввода сразу после клика по кнопке запуска таймера.
 
 
+# 4-е задание. Как сделать кнопку 
+Вот пример подобной кнопки:
+
+​В файле html вам нужно создать сам элемент кнопки:
+
+<body>
+    <button class="btn">
+        Показать список
+    </button>
+</body>
+Далее в коде находим эту кнопку и добавляем на нее обработчик клика:
+
+let button = document.querySelector('.btn');
+console.log(button);
+
+button.addEventListener('click', (event) => {
+    createStudentList(allStudents);
+});
+
 ###
 Прочее
 
