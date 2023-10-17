@@ -17,3 +17,5 @@ https://stackoverflow.com/questions/38664229/disable-babel-strict-mode-from-webp
           },
         ],
 },
+
+# не уверен что получилось минифицировать SVG файлы
