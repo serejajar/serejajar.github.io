@@ -16,6 +16,7 @@ https://learn.javascript.ru/custom-errors
 - Можете почитать и вот эту статью, тут более подробно описывается работа с промисами
 https://learn.javascript.ru/promise-basics#potrebiteli-then-catch-finally
 
+PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать чате в следующем модуле.
 
 
 # как показать изображение до того как оно загрузилось

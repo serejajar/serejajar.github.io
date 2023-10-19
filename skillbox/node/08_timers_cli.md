@@ -14,6 +14,7 @@ function getUserByCredentials(db, username, password) {
     });
 }
 
+PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать чате в следующем модуле.
 
 
 ###

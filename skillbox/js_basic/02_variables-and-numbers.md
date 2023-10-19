@@ -27,6 +27,9 @@ https://learn.javascript.ru/number#okruglenie
 https://learn.javascript.ru/operators
 https://learn.javascript.ru/number
 
+PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать чате в следующем модуле.
+
+
 ------------------
 ### Вопросы и остальное
 

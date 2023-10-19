@@ -27,6 +27,8 @@ https://learn.javascript.ru/prototype-inheritance
 - Рекомендую также прочитать статью про типы в js:
 https://learn.javascript.ru/types
 
+PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать чате в следующем модуле.
+
 
 ---
 
