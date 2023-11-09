@@ -17,3 +17,16 @@ describe('CDP Protocol - Events', () => {
         await browser.debug()
     })
 });
+
+# не могу никак кастомный сервис подключить, хотя из примеров работает
+Скорее всего, дело в том как вы импортируете сам RequestService. Нужно вот так:
+
+const { RequestService } = require('./RequestService')
+
+И в самом файле нужно экспортировать класс:
+
+class RequestService { ... }
+
+module.exports = {
+    RequestService: RequestService
+}
