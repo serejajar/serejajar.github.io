@@ -16,3 +16,15 @@ const driver = new Builder().forBrowser('chrome').build();
 Но обратите внимание что данная строка после импорта класса Builder. Иначе мы не сможем использовать класс раньше времени.
 
 Теперь попробуйте запусти команду npm run test, все должно вновь начать работать)
+
+# INFO devtools: Connect Puppeteer with browser on port 62426
+0-0] 2023-11-04T10:30:03.840Z ERROR @wdio/runner: FetchError: Failed to fetch browser webSocket URL from http://localhost:62426/json/version: request
+to http://localhost:62426/json/version failed, reason: connect ECONNREFUSED ::1:62426
+
+https://t.me/c/1791694905/33/486
+
+проблема решилась добавлением хука в конфиг файл wdio
+
+beforeSession: () => {
+  dns.setDefaultResultOrder('ipv4first');
+},

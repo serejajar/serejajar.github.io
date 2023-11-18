@@ -48,6 +48,35 @@ res.setHeader('Content-type', 'application/pdf')
 https://koenvangilst.nl/blog/generating-a-pdf-with-express
 
 # Как сделать подсветку заголовка по поисковой строке
+Вот пример с knex используя метод where:
+
+https://knexjs.org/guide/query-builder.html#where
+
+let query = knex("notes").where({ owner_id: dbUser.id });
+
+if (req.query.search) {
+      query = query.where("title", "like", `%${req.query.search}%`);
+}
+const notes = await query;
+
+res.json(notes);
+
+Пример собственной рализации
+
+router.get("/note", async (req, res) => {
+  const filter = { ...req.query, limit: 20 };
+  const notes = await db.findNotes(filter, req.user.id);
+
+  if (filter.search) {
+    const regex = new RegExp(filter.search, "gi");
+    notes.forEach((note) => {
+      note.title = note.title.replace(regex, `<mark>$&</mark>`);
+    });
+  }
+
+  return res.json({ data: notes });
+});
+
 Если вы хотите сделать эту логику на стороне фронтэнда, то вы можете создать функцию highlightSearchResult в файл lib.js
 
 export const highlightSearchResult = (title, searchQuery) => {

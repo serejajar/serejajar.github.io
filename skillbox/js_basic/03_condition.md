@@ -11,8 +11,6 @@ https://learn.javascript.ru/ifelse#uslovnyy-operator
 if (переменная == true)
 https://learn.javascript.ru/ifelse#preobrazovanie-k-logicheskomu-tipu
 
-- Рекомендую почитать дополнительно про оператор ИЛИ:
-https://learn.javascript.ru/logical-operators#ili
 
 Рекомендации:
 - В качестве доп. изучения рекомендую эти статьи и задачи к ней. Хотя вы уже знаете про if/else практика не бывает лишней.
@@ -29,7 +27,10 @@ https://learn.javascript.ru/string
 Также обратите внимание на вот этот абзац. Думаю вам это пригодиться в дальнейшей учебе и работе:
 https://learn.javascript.ru/string#izmenenie-registra
 
-PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать чате в следующем модуле.
+- Рекомендую почитать дополнительно про оператор ИЛИ:
+https://learn.javascript.ru/logical-operators#ili
+
+PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
 
 ### Вопросы
