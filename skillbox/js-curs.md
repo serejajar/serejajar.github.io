@@ -90,29 +90,79 @@ https://www.npmjs.com/package/serve
 serve
 Вот так это выглядит:
 
-# Как удалить/изменить клиента.
-Для того чтобы изменить/удалить клиента вам нужно
+# Как удалить/изменить клиента без получения аттрибута .
+то вы можете при отрисовки строки таблицы  сразу добавлять функции обработчики для кнопок удаления и изменения клиента. Как это выглядит в коде:
 
-1) Получить его id по клику на строчку таблицы.
-
-2) После этого сделать запрос к серверу за этим клиентом используя его id. Для удаления вам нужно отправить другой запрос DELETE /api/client/{id}
-
-3) Получить данные клиента и открыть саму модалку, где его можно редактировать и сохранить по кнопке в форме.
-
-Как это выглядит в коде:
-
-function renderClient(id, name, surname, lastName, dateTime, lastChange, contacts) {
-
+function renderClient({ id, name, surname, lastName, dateTime, lastChange, contacts }) {
   ...
-
   changeButton.addEventListener('click', function () {
-    /* тут вызов вашей функции для изменения клиента */
+    /* тут вызов вашей функции для изменения клиента в который вы передаете объект с данными клиента и функцию  для отправки запроса changeOnServer */
+    createModalForm('Изменить данные', changeOnServer, { id, name, surname, lastName, dateTime, lastChange, contacts  });
   })
   deleteButton.addEventListener('click', function () {
-    /* тут вызов вашей функции для удаления клиента */
+    /* тут вызов вашей функции для удаления клиента в который вы передаете id в качестве аргумента */
+    deleteClient(id);
+  })
+}
+
+# Как отрисовать таблицу
+Для этого вам нужно создать функцию renderClient в которой будут создаваться элементы для отображения клиентов. Эта функция будет вызвана для каждого клиента в createTable
+
+function createTable(staffLIst) {
+  staffLIst.forEach((client) => {
+    const clientTr = renderClient(client);
+    tbody.append(clientTr);
+
+    //Здесь код который убирает прелоадер после загрузки таблицы
+    let preloader = document.getElementById("preloader");
+    preloader.style.display="none";
+  })
+}
+
+
+
+function renderClient(client) {
+  const tr = document.createElement('tr'),
+    tdId = document.createElement('td'),
+    tdFIO = document.createElement('td'),
+    tdDateCreature = document.createElement('td'),
+    tdDateChanges = document.createElement('td'),
+    tdContacts = document.createElement('td'),
+    tdToChange = document.createElement('td'),
+    tdDelete = document.createElement('td');
+
+  tdId.innerHTML = client.id;
+  tdFIO.innerHTML = client.surname + ' ' + client.name + ' ' + client.lastName;
+  tdDateCreature.innerHTML = client.createdAt;
+  tdDateChanges.innerHTML = client.updatedAt;
+
+  /* тут нужно реализовать создание  changeButton deleteButton с помощью createElement */
+  changeButton.addEventListener('click', function () {
+    /* тут вызов вашей функции для изменения клиента в который вы передаете объект с данными клиента и функцию  для отправки запроса changeOnServer */
+    createModalForm('Изменить данные', changeOnServer, client);
+  })
+  deleteButton.addEventListener('click', function () {
+    /* тут вызов вашей функции для удаления клиента в который вы передаете id в качестве аргумента */
+    deleteClient(id);
   })
 
+
+  client.contacts.forEach((el) => {    // Здесь перебираем список контактов клиента
+    const svgIcon = createSvgIcon(el); // Здесь передаем объект из списка в функцию создания иконки
+                                       // и сохраняем ее в переменную
+    tdContacts.append(svgIcon);        // Здесь вставляем иконку в нашу яйчейку
+  })
+
+  tr.append(tdId);
+  tr.append(tdFIO);
+  tr.append(tdDateCreature);
+  tr.append(tdDateChanges);
+  tr.append(tdContacts);
+  tr.append(tdToChange);
+  tr.append(tdDelete);
+  return tr
 }
+
 # Почему не всегда отображается изменения в таблице.
 Это происходит из-за того что вы неправильно работаете с fetch. Это асинхронная функция которую нужно обработать с помощью  async/await, чтобы дождаться получения данных, а уже затем делать рендер таблицы.
 
@@ -205,7 +255,7 @@ function getContactsArr() {
   return contactsArr;
 }
 
-# Как сделать чтобы ученики сохранялись и добавлялись в таблицу с помощью api
+# Как сделать чтобы клиенты сохранялись и добавлялись в таблицу с помощью api
 Тут вам нужно дождаться получения данных, а уже затем делать рендер таблицы. Т.е. вы вызываете функцию init, получаете в ней данные в переменную staffLIst, а затем вам нужно вызвать функцию отрисовки таблицы (например createTable).
 
 const init = async () => {
@@ -233,13 +283,13 @@ addButton.addEventListener('click', function addClient() {
   createModalForm('Новый клиент', saveToServer);
 });
 
-Вот так это будет выглядеть для кнопки редактирования
+Вот так это будет выглядеть для кнопки редактирования где changeOnServer это функция для изменения клиента (см. ниже).
 
 changeButton.addEventListener('click', function addClient() {
   createModalForm('Изменить данные', changeOnServer, { /* объект с данными клиента */ });
 });
 
-В случае если данные клиента присутсвуеют, то вы отображаете форму с данными из объекта, в противоположном случае отображаете пустую форму.
+В случае если данные клиента присутствуют, то вы отображаете форму с данными из объекта, в противоположном случае отображаете пустую форму.
 
 Чтобы добавить существующему клиенту еще один контакт вам нужно передалить немного ваш код чтобы вместо клонирования элемента элементы создавались с помощью createElement. Для этого рекомендую код для контакта вынести в отдельную функцию и вызывать ее
 
