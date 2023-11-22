@@ -59,3 +59,5 @@ PS: Также будем рады вашему отзыву о работе к�
     }
   ]
 }
+
+https://vercel.com/docs/projects/project-configuration#routes

@@ -7,10 +7,6 @@
 
 https://learn.javascript.ru/ifelse#uslovnyy-operator
 
-- Обратите внимание на преобразование к логическому типу - это поможет немного упростить вот такой код:
-if (переменная == true)
-https://learn.javascript.ru/ifelse#preobrazovanie-k-logicheskomu-tipu
-
 
 Рекомендации:
 - В качестве доп. изучения рекомендую эти статьи и задачи к ней. Хотя вы уже знаете про if/else практика не бывает лишней.
