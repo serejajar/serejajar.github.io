@@ -154,6 +154,28 @@ function findMaxValue(array, key) {
 Тут вы можете так же упростить логику и в findMaxValue возвращать array.length.
 
 
+#  Как отобразить список для из локального хранилища 
+В todo-app.js, в функции createTodoApp вам нужно получить и затем отобразить список дел из локальноного хранилища:
+
+function createTodoApp(container, title = 'Список дел', key) {
+    let todoAppTitle = createAppTitle(title);
+    let todoItemForm = createTodoItemForm();
+    let todoList = createTodoList();
+
+    ...
+
+    let localData = localStorage.getItem(listName)
+
+    if (localData !== null && localData !=='') {
+      todoArray = JSON.parse(localData)
+
+      for (const itemlist of todoArray) {
+        let todoItem = createTodoItem(itemlist);
+        todoList.append(todoItem.item);
+      }
+
+    }
+Тут до цикла вам нужно получить список дел из локального хранилища и сохранить его в переменную, где храниться массив с объектами дел (todoArray).
 
 
 
