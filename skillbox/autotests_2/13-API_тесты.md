@@ -24,7 +24,8 @@ describe('PetStore Homework', () => {
         expect(upload.message).contain(pathToFile)
     })
 
-Файл clientFactory:
+
+### Файл clientFactory:
 
 import PetController from "./controllers/pet.controller.js";
 import UserController from "./controllers/user.controller.js";
@@ -56,3 +57,31 @@ export default class ClientFactory {
 }
 
 Удачи в дальнейшей работе и обучении. Вы неплохо пишите тесты, мне было приятно проверять ваши работы.
+
+# используют стримы
+Вы не совсем правильно работаете со стримами, да и здесь можно сделать проще используя fs.readFile. Вот как сделал это другой студент, добавив логику с загрузкой файла в сам метод uploadImage:
+
+async uploadImage(petId, imagePath, additionalMetadata, filename) {
+        const form = new FormData();
+        form.append('additionalMetadata', additionalMetadata);
+        form.append('file', await fs.readFile(imagePath), { filename: filename });
+
+        return (await new RequestBuilder()
+            .url(this.params.baseUrl)
+            .path(`/pet/${petId}/uploadImage`)
+            .headers({ headers: form.getHeaders(),
+                body: form
+            })
+            .get()).body
+      }
+
+
+И в самом тесте только вызов этого метода client.pet.uploadImage:
+
+it.only("Test 1. Upload file", async () => {
+    const client = new ClientFactory();
+    const response = await client.pet.uploadImage(2, './__tests__/for_upload.jpeg', 'data', 'for_upload.jpeg');
+
+    expect(response.message).toContain('for_upload.jpeg');
+    expect(response.message).toContain('data');
+  });

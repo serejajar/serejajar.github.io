@@ -45,3 +45,13 @@ res.sendStatus(500); // equivalent to res.status(500).send('Internal Server Erro
 А так как на клиенте ожидается JSON, то и выдает эту ошибку при парсинге строки "ОК", так как эта строка не является JSON.
 
 Вы можете заменить метод sendStatus на res.status(200).send('{}') или использовать res.status(200).json(timer) и этой ошибки не будет.
+
+# cannot use import outside a module
+Чтобы исправить эту ошибку вы можете использовать require() как в видеоуроках или добавить следующую строку в package.json
+
+"type": "module",
+
+# почему в Node.js используется импорт/экспорт CommonJS (require), а не ES6 (import)?
+Так сложилось исторически, но require уже уходит в прошлое. Чтобы использовать модули в nodejs вам нужно добавить следующую строку в package.json
+
+"type": "module",
