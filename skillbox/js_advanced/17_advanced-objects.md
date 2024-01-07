@@ -37,7 +37,53 @@ PS: Если у вас появятся вопросы по этому ДЗ, т�
 
 let proto = window[String(input.value).trim()].prototype;
 
+# Не понимаю что нужно сделать
+Вы можете получить его вот так:
 
+window[input.value].prototype;
+
+Т.е. вам нужно:
+
+1. Проверить является ли свойство функцией-конструктором:
+
+typeof window[input.value] === 'function'
+
+
+btn.addEventListener("click", function () {
+  if (typeof window[input.value] === 'function') {
+    enumerationPrototype(window[input.value]);
+  }
+  else {
+    input.style.color = 'red';
+  }
+});
+
+
+2. Далее вам нужно вывести на страницу с помощью функции addToList все если obj.prototype существует
+
+function enumerationPrototype(obj) {
+  while (obj.prototype !== undefined) {
+    addToList(obj);
+    obj = Object.getPrototypeOf(obj);
+  }
+}
+
+3. И в самой функции добавления списка вы используете свойство obj.prototype.constructor.name
+
+function addToList(obj) {
+  propertyName = obj.prototype.constructor.name;
+  let $li = document.createElement('li');
+  $li.innerHTML = propertyName;
+  document.body.appendChild($li);
+  let $_ol = document.createElement('ol');
+
+  for (let property in obj) {
+    let $_li = document.createElement('li');
+    $_li.innerHTML = property + " " + typeof property;
+    $_ol.appendChild($_li);
+    document.body.appendChild($_ol);
+  }
+}
 
 ###
 Другое
