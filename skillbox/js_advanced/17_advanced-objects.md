@@ -68,26 +68,27 @@ btn.addEventListener("click", function () {
 2. Далее вам нужно вывести на страницу с помощью функции addToList все если obj.prototype существует
 
 function enumerationPrototype(obj) {
+  listAdd(obj);
+
   while (obj.prototype !== undefined) {
-    addToList(obj);
     obj = Object.getPrototypeOf(obj);
+    listAdd(obj);
   }
 }
 
 3. И в самой функции добавления списка вы используете свойство obj.prototype.constructor.name
 
-function addToList(obj) {
-  propertyName = obj.prototype.constructor.name;
+function listAdd(obj) {
+  propertyName = obj.prototype?.constructor?.name || 'Без названия';
   let $li = document.createElement('li');
   $li.innerHTML = propertyName;
-  document.body.appendChild($li);
+  list.appendChild($li);
   let $_ol = document.createElement('ol');
-
   for (let property in obj) {
     let $_li = document.createElement('li');
     $_li.innerHTML = property + " " + typeof property;
     $_ol.appendChild($_li);
-    document.body.appendChild($_ol);
+    list.appendChild($_ol);
   }
 }
 
@@ -142,14 +143,16 @@ button.addEventListener('click', (e) => {
 })
 
 function enumerationPrototype(obj) {
+  listAdd(obj);
+
   while (obj.prototype !== undefined) {
-    listAdd(obj);
     obj = Object.getPrototypeOf(obj);
+    listAdd(obj);
   }
 }
 
 function listAdd(obj) {
-  propertyName = obj.prototype.constructor.name;
+  propertyName = obj.prototype?.constructor?.name || 'Без названия';
   let $li = document.createElement('li');
   $li.innerHTML = propertyName;
   list.appendChild($li);
