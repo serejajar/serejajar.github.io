@@ -28,3 +28,17 @@ https://t.me/c/1791694905/33/486
 beforeSession: () => {
   dns.setDefaultResultOrder('ipv4first');
 },
+
+# Как использовать ENTER, CTRL, BACKSPACE
+Вам нужно импортировать его из selenium-webdriver, вот так
+
+const { Key } = require("selenium-webdriver");
+
+describe("Test", async function () {
+  it("Show Keys", async function () {
+    console.log('KEY', Key);
+  });
+});
+Если запустите этот пример, то в терминале увидите все доступные свойства-кнопки:
+
+https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/

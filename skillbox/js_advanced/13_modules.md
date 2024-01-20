@@ -65,3 +65,110 @@ btnChangeStorage.addEventListener('click', () => {
     }
     container.innerHTML = " "
 })
+
+# как вызывать функции разных модулей при переключении
+В дополнение к моему примеру кода из предыдущего комментария вы можете добавить все функции модуля работы с выбранным хранилищем для дел в саму функцию createTodoApp, например для :
+
+createTodoApp(document.getElementById('todo-app'), {
+        title: 'Мои дела',
+        owner,
+        todoItemList,
+        onCreateFormSubmit: apiModule.createTodoItem,
+        onDoneClick: apiModule.switchTodoItemDone,
+        onDeleteClick: apiModule.deleteTodoItem,
+});
+Т.е. при клике на кнопку сработает код с if (пример кода из предыдущего комментария) и вызовется createTodoApp с функциями модуля.
+
+
+
+И в самой createTodoApp вызывать их:
+
+async function createTodoApp(container, {
+  title,
+  owner,
+  todoItemList = [],
+  onCreateFormSubmit,
+  onDoneClick,
+  onDeleteClick,
+ }) {
+
+  document.getElementById('todo-app').innerHTML = '';
+
+  const todoAppTitle = createAppTitle(title);
+  const todoItemForm = createTodoItemForm();
+  const todoList = createTodoList();
+  const handlers = { onDone: onDoneClick, onDelete: onDeleteClick }
+
+  container.append(todoAppTitle);
+  container.append(todoItemForm.form);
+  container.append(todoList);
+
+  todoItemList.forEach(todoItem => {
+    const todoItemElement = createTodoItemElement(todoItem, handlers);
+    todoList.append(todoItemElement);
+  });
+
+  todoItemForm.form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    if (!todoItemForm.input.value) {
+      return;
+    }
+
+    const todoItem = await onCreateFormSubmit({
+      owner,
+      name: todoItemForm.input.value.trim(),
+    });
+
+    const todoItemElement = createTodoItemElement(todoItem, handlers);
+    todoList.append(todoItemElement);
+    todoItemForm.button.disabled = true;
+    todoItemForm.input.value = '';
+  });
+}
+
+# Как использовать функции хранилищ, они же разные? (пример кода от Александр Митрофанов)
+Данные дела лучше хранить одинаково в обоих хранилищах. Вам нужно привести их такому виду, чтобы они использовали одни и те же аргументы. Например, для добавления дела:
+
+Модуль локального хранилища:
+
+export function addLocalItem({ owner, name, id, done }) {
+  let arr = getLocalList(owner);
+  arr = [...arr, { owner, name, id, done }];
+
+  saveLocalList(arr, owner);
+}
+
+/* вспомогательные функции */
+export function saveLocalList(arr, owner) {
+  localStorage.setItem(owner, JSON.stringify(arr));
+}
+
+export function getLocalList(owner) {
+  const localData = localStorage.getItem(owner);
+  let rawList = [];
+
+  if (localData !== null && localData !== "") {
+    rawList = JSON.parse(localData);
+  } else {
+    return [];
+  }
+
+  return rawList;
+}
+
+
+Модуль серверного хранилища:
+
+export async function addServerItem({ owner, name, id, done }) {
+  await fetch("http://localhost:3000/api/todos", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      owner,
+      name,
+      id,
+      done,
+    }),
+  });
+}
