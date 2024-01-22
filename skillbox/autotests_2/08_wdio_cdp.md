@@ -30,3 +30,7 @@ class RequestService { ... }
 module.exports = {
     RequestService: RequestService
 }
+
+# Не срабатывает команда в винде
+Нужно использовать двойные кавычки
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
