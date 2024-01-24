@@ -78,7 +78,7 @@ const notes = await query;
 
 res.json(notes);
 
-Пример собственной рализации
+Пример собственной реализации
 
 router.get("/note", async (req, res) => {
   const filter = { ...req.query, limit: 20 };

@@ -23,6 +23,13 @@ https://learn.javascript.ru/ifelse#preobrazovanie-k-logicheskomu-tipu
 if(!firstCard) {
 https://learn.javascript.ru/logical-operators#ne
 
+# Подобный код можно чуть упростить используя оператор "||"" (или) или "??" (оператор нулевого слияния)
+
+const pathname = path ? path : location.pathname;
+https://learn.javascript.ru/logical-operators#ili
+
+https://learn.javascript.ru/nullish-operators
+
 # Используете написание названий переменных с заглавной буквы
 - Вижу вы используете написание названий переменных с заглавной буквы, поэтому хочу вам порекомендовать вот эти статьи к прочтению:
 https://learn.javascript.ru/variables#variable-naming
