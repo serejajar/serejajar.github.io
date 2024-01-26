@@ -96,20 +96,59 @@ function listAdd(obj) {
   }
 }
 
-###
-Другое
+# Пример (Наталья Фокина)
+https://gitlab.skillbox.ru/natalia_fokina_1/js_advanced/-/blob/dev/17_advanced-objects/main.js
 
-1-е задание:
-- нет свойств класса
+const input = document.querySelector('.input')
+const btn = document.querySelector('.button')
+const app = document.querySelector('.app')
+
+btn.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (typeof window[input.value] === 'function') {
+    getProto(window[input.value.trim()])
+  } else {
+    input.classList.add("error");
+    output.textContent = "Ошибка: Класс не найден.";
+  }
+})
+
+function getProto(proto) {
+  input.classList.remove("error");
+  output.innerHTML = "";
+  let prototypeChain = [];
+  let proto1 = proto.prototype;
+
+  while (proto1) {
+    prototypeChain.push(proto1);
+    proto1 = Object.getPrototypeOf(proto1)
+  }
+
+  const ol = document.createElement("ol");
+  app.append(ol)
+
+  for (let i = 0; i < prototypeChain.length; i++) {
+    const item = document.createElement("li");
+    const constructorName = prototypeChain[i].constructor.name;
+    item.textContent = `${constructorName}`;
+    ol.append(item)
+    let property = Object.keys(prototypeChain[i])
+    if (property.length > 0) {
+      const nestedOl = document.createElement("ol");
+      for (const keys in property) {
+        const nestedListItem = document.createElement("li");
+        const propType = typeof Object.getOwnPropertyNames(property[keys]);
+        nestedListItem.textContent = `${property[keys]} - тип ${propType}`
+        nestedOl.appendChild(nestedListItem)
+      }
+      item.appendChild(nestedOl);
+    }
+  }
+}
 
 
+# Пример с импортом модуля
 
-2-е задание:
-- дополнительное задание
-    Будете делать дополнительное задание?
-
-
----
 const input = document.getElementById('input');
 const button = document.getElementById('button');
 let list = document.getElementById('listPrototype');
