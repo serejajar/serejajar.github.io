@@ -49,3 +49,69 @@ PS: Если у вас появятся вопросы по этому ДЗ, т�
 
 https://www.npmjs.com/package/creditcards
 https://www.npmjs.com/package/card-validator
+
+# Пример creditcard.js
+Вы можете самостоятельно сделать стилизацию и отображение ошибки, и использовать метод бибилиотеки isValid, вот пример как сделал другой студент:
+
+import { isValid, isExpirationDateValid, isSecurityCodeValid } from 'creditcard.js';
+
+function validate(input, arg) {
+    input.classList.remove('is-invalid', 'bg-success-subtle');
+    if(!arg) input.classList.add('is-invalid');
+    else input.classList.add('bg-success-subtle');
+
+    if(container.querySelectorAll('.bg-success-subtle').length === 4) btn.disabled = false;
+    else btn.disabled = true;
+  }
+
+
+  numberCard.addEventListener('blur', () => {
+    // 4417123456789113 пример валидной карты
+    validate(numberCard, isValid(numberCard.value));
+  })
+
+  validDate.addEventListener('blur', () => {
+    validate(validDate, isExpirationDateValid(validDate.value.slice(0, 2), validDate.value.slice(3)))
+  })
+
+  cvc.addEventListener('blur', () => {
+    validate(cvc, isSecurityCodeValid(numberCard.value, cvc.value));
+  })
+
+  email.addEventListener('blur', () => {
+    validate(email, isEmail(email.value));
+  })
+
+
+# А как добавить картику с redom
+Redom-у нужно как то сообщить об этой картинке. Вы можете просто импортировать, вот так:
+
+import mastercard from './assets/images/Mastercard.png';
+import visa from './assets/images/Visa.png';
+
+function createImg(path) {
+  return el('img.label-pay', {
+    src: path,
+    alt: 'pay',
+  });
+}
+
+createImg(visa);
+createImg(mastercard);
+
+
+Или добавить изображение использую css :
+
+function updateCardLogo(cardNumber) {
+  const firstDigit = cardNumber.charAt(0);
+
+  if (firstDigit === '4') {
+    cardLogo.style.backgroundImage = 'url(https://www.visa.com.au/dam/VCOM/regional/ve/romania/blogs/hero-image/visa-logo-800x450.jpg)';
+  } else if (firstDigit === '5') {
+    cardLogo.style.backgroundImage = 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9IGs6UWaPVLOGVpziu1Exz1ekDKRzLEdf0rxwLzly&s)';
+  } else if (['2', '5'].includes(firstDigit)) {
+    cardLogo.style.backgroundImage = 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwAK6EZn2VfAmHpA2_oXAZ7bowiiLcZlR4CcUq9YcA&s)';
+  } else {
+    cardLogo.style.backgroundImage = 'none';
+  }
+}

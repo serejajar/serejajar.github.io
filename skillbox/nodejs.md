@@ -48,8 +48,10 @@ res.sendStatus(500); // equivalent to res.status(500).send('Internal Server Erro
 
 # cannot use import outside a module
 Чтобы исправить эту ошибку вы можете использовать require() как в видеоуроках или добавить следующую строку в package.json
-
 "type": "module",
+
+И тогда  нужно будет использовать вот такую запись
+import chai from 'chai'
 
 # почему в Node.js используется импорт/экспорт CommonJS (require), а не ES6 (import)?
 Так сложилось исторически, но require уже уходит в прошлое. Чтобы использовать модули в nodejs вам нужно добавить следующую строку в package.json
