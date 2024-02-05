@@ -46,6 +46,24 @@ let area = width * height;
 console.log(area);
 
 # вторая задача
+let a = 13.890123;
+let b = 2.891564;
+let n = 3;
 
+let fractionalA = Math.floor(a % 1 * Math.pow(10, n));
+let fractionalB = Math.floor(b % 1 * Math.pow(10, n));
+
+console.log(fractionalA);
+console.log(fractionalB);
+
+Тут происходит следующее:
+
+1. Берется остаток деления на 1, т.е. все что после точки.
+
+a % 1 // 0.890123
+2. Полученный остаток умножается на 10 возведенное в степень n
+
+Math.pow(10, n) // 0.890123 * 1000 = 890.123
+3. Math.floor округляет число и получается 890
 
 # третья задача

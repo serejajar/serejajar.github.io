@@ -108,5 +108,14 @@ try {
     throw e;
 }
 
-###
-Прочее
+# а как сделать getAvatarUrl?
+Тут все гораздо проще, вам нужно просто перехватить ошибку и в этом случае вернуть путь к картинке по умолчанию:
+
+export async function getAvatarUrl(userId) {
+  try {
+    const image = await fetchAvatarImage(userId);
+    return image.url;
+  } catch (error) {
+    return '/images/default.jpg';
+  }
+}
