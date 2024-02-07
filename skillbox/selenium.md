@@ -42,3 +42,6 @@ describe("Test", async function () {
 Если запустите этот пример, то в терминале увидите все доступные свойства-кнопки:
 
 https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/
+
+# elementLocated или elementIsVisible
+Тут есть тонкая грань между тем что он добавился в разметку (elementLocated) и отобразился (elementIsVisible). Т.е. элемент добавился в разметку, но еще не успел отрендериться, а тест уже пытается к нему обратиться, например кликнуть.
