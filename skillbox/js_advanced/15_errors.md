@@ -1,6 +1,17 @@
 Все выглядит отлично! Вы детально проработали все ошибки за что вам большой плюс. Я принимаю ДЗ так как все условия выполнены.
 
 Что можно исправить:
+- В getMarketingPrice лучше использовать try/catch, так вы обойдете ошибку если в переменной product будет невалидный json:
+
+export function getMarketingPrice(product) {
+  try {
+    const productObject = JSON.parse(product);
+    return productObject.prices.marketingPrice;
+  } catch (e) {
+    return null;
+  }
+}
+
 - В fetchAvatarImage не нужно было менять код. Эта функция должна вернуть ошибку. Вам для этой задачи нужно правильно обработать ее с помощью try/catch в getAvatarUrl.
 
 - ?status=200?json_invalid
@@ -138,14 +149,38 @@ try {
     throw e;
 }
 
-# а как сделать getAvatarUrl?
-Тут все гораздо проще, вам нужно просто перехватить ошибку и в этом случае вернуть путь к картинке по умолчанию:
+# а как сделать 1 задание
+export function calculateDiscount(price, percent) {
 
+  if (typeof price !== 'number' || typeof percent !== 'number') {
+    throw new TypeError('Ошибка в типе данных(Входные данные должны быть числовыми)');
+  }
+  return (price / 100) * percent;
+}
+
+export function getMarketingPrice(product) {
+  try {
+    const productObject = JSON.parse(product);
+
+    return productObject.prices.marketingPrice;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Функция имитирует неудачный запрос за картинкой
+async function fetchAvatarImage(userId) {
+  return {
+    url: '/images/default.jpg'
+  };
+}
+
+Тут все гораздо проще, вам нужно просто перехватить ошибку и в этом случае вернуть путь к картинке по умолчанию:
 export async function getAvatarUrl(userId) {
   try {
     const image = await fetchAvatarImage(userId);
     return image.url;
   } catch (error) {
-    return '/images/default.jpg';
+    return '/images/default.jpg'
   }
 }
