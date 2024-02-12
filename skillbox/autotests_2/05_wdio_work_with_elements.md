@@ -17,3 +17,16 @@ await new Promise((r) => setTimeout(r, 5000))
 await browser.keys("ArrowDown");
 await browser.keys("ArrowDown");
 await browser.keys("Enter");
+
+# используют browser.executeAsync
+Вам нужно использовать browser.execute вместо browser.executeAsync. Последний ожидает вызов коллбека done.
+https://webdriver.io/docs/api/browser/executeAsync/
+
+
+# в каком уроке рассказывается про нажатие клавиш на клавиатуре?
+В видео "5.3 Ввод символов в элемент", примерный тайминг 3:25. Спикер выполняет следующий код:
+
+browser.keys("sparrow")
+
+Так же вот ссылка на документацию:
+https://webdriver.io/docs/api/browser/keys/
