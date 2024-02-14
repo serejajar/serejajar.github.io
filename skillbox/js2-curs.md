@@ -257,3 +257,18 @@ export async function renderMap(mapData) {
     },
   ],
 },
+
+# Как использовать вебсокеты
+Тут проще чем кажется   . Вот пример как использовать вебсокеты:
+
+const socket = new WebSocket("ws://localhost:3000/currency-feed");
+
+socket.onmessage = function (event) {
+  const msg = JSON.parse(event.data);
+  if (msg.type === 'EXCHANGE_RATE_CHANGE') {
+    /* добавить на страницу данные */
+  }
+};
+Будет полезно:
+
+https://learn.javascript.ru/websocket
