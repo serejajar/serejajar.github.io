@@ -19,3 +19,10 @@ https://stackoverflow.com/questions/38664229/disable-babel-strict-mode-from-webp
 },
 
 # не уверен что получилось минифицировать SVG файлы
+
+
+# и еще..в dist появляется файл main.9dfc93c4691fda152e84.js.LICENSE.txt, что с ним делать?
+
+Это LICENSE из библиотеки creditcard.js. Можете попробовать решение отсюда:
+
+https://stackoverflow.com/questions/64818489/webpack-omit-creation-of-license-txt-files
