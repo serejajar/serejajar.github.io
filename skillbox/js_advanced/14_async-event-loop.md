@@ -36,3 +36,39 @@ https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams
 window.addEventListener('popstate', () => {
     // вызывать функцию, которая отобразит данные на странице
 });
+
+# и как работает loadResource
+
+Эта функция запрашивает скрипт js, данные и файлы стилей, для того чтобы отобразить их. Это базовая реализация SPA (Одностраничное приложение).
+
+loadResource загружает и обрабатывает файл в зависимости от расширения (js/css). Например, для css он вставит тег <link> и добавит в href этого тега ссылку к файлу.
+
+function loadResource(src) {
+    if (typeof src !== 'string') {
+        return;
+    }
+
+    // js
+    if(src.endsWith('.js')) {
+        return import(src);
+    }
+
+    // css
+    if(src.endsWith('.css')) {
+        if(!cssPromises[src]) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = src;
+
+            cssPromises[src] = new Promise(resolve => {
+                link.addEventListener('load', () => resolve());
+                document.head.append(link);
+            });
+        }
+
+        return cssPromises[src];
+    }
+
+    // data
+    return fetch(src).then(res => res.json());
+}

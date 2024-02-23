@@ -6,23 +6,37 @@ const fs = require("fs");
 let jsonReport = {}
 
 module.exports = {
-    afterTest: function (test, context, {error, result, duration, passed, retries}) {
-        let testObj = {
-            [test.parent]: {
-                [test.title]: {}
-            }
-        }
+  afterTest: function (test, context, { error, result, duration, passed, retries }) {
+      let content = {}
 
-        testObj[test.parent][test.title].duration = duration
-        testObj[test.parent][test.title].status = passed ? 'passed' : 'failed'
-        jsonReport = {...testObj}
+      const jsonFilePath = `./04_wdio_advanced_configuration/reports.json`;
+
+      try {
+        content = JSON.parse(fs.readFileSync(jsonFilePath, 'utf8'));
+      } catch (e) {
+        console.log('Error: File does not exiest');
+      }
+
+      const testObj = {
+          [test.parent]: {
+              ...(content[test.parent] || {}),
+              [test.title]: {
+                duration,
+                status: passed ? 'passed' : 'failed'
+              }
+          }
+      }
+
+      const jsonReport = {
+        ...content,
+        ...testObj
+      }
+
+      fs.writeFileSync(jsonFilePath, JSON.stringify(jsonReport, null, 2));
 
 
-    },
-    after: function (result, capabilities, specs) {
-        console.log(JSON.stringify(jsonReport))
-
-    }
+      browser.closeWindow();
+  },
 }
 
 И в конфигурационном файле wdio.conf.js вызвать этот хук
