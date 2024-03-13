@@ -139,7 +139,7 @@ addForm.addEventListener('submit', function(event){
 Подробнее о форме и об этом поведении:
 https://learn.javascript.ru/forms-submit
 
-# Как вывксти курс
+# Как вывести курс
 Т.е. текущий год - год начала обучения = год курса, например:
 
 2023 - 2022 = (1-й курс)
