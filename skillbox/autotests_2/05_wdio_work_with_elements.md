@@ -4,6 +4,31 @@ const startDateCalendar = await $('td=24')
 
 https://webdriver.io/docs/selectors
 
+# invalid session id
+Разделите тесты по файлам. Вот так:
+
+Т.е. у вас будет несколько файлов тестов:
+
+describe('Calendar', () => {
+  it('Scenario 1', async () => {
+    await browser.url('https://react-dates.github.io/react-dates/iframe.html?id=drp-input-props--reopens-daypicker-on-clear-dates')
+
+     ...
+  });
+});
+
+
+describe('Calendar', () => {
+  it('Scenario 2', async () => {
+    await browser.url('https://react-dates.github.io/react-dates/iframe.html?id=drp-input-props--reopens-daypicker-on-clear-dates')
+    ...
+  });
+});
+
+В этом случае сессии автоматически перезагрузится и не будет этой ошибке.
+
+Если хотите оставить один файл теста, то в каждом it не нужно использовать browser.url случае если вы работате с одной страницей
+
 
 # данные в календаре вводятся, но не те, которые планировала.
 browser.keys выполняет действия сразу, те. ваш код равнозначен если одновременно нажать кнопки 'ArrowDown', 'ArrowRight', 'Enter', также не заьывайте про время которое нужно чтобы элемент поменялся. Вот так сработает.

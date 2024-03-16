@@ -71,23 +71,25 @@ container.append(parsedArray);
 
 
 # Как это выглядит в "живую"
-В index.html мы получаем список дел из локального хранилища и передаем его в функцию createTodoApp.
+создать две функции которые получают и устанавливают данные списка дел6
 
-<script>
-  const todos = /* тут получаем список дел из локального хранилища */
+function saveToLocalStorage(listName, arr) {
+    localStorage.setItem(listName, JSON.stringify(arr));
+}
 
-  document.addEventListener('DOMContentLoaded', function(){
-      createTodoApp(document.getElementById('todo-app'),'Мои дела', todos);
-  });
-</script>
+function getFromLocalStorage(listName) {
+    return JSON.parse(localStorage.getItem(listName)) || [];
+}
 
 
-В todo-app.js, в функции createTodoApp мы отображаем список дел:
+В todo-app.js, в функции createTodoApp мы отображаем список дел. Тут вам нужно получить todoArray из локального хранилища  с помощью getFromLocalStorage
 
-function createTodoApp(container, title = 'Список дел', todoArray = []) {
+function createTodoApp(container, title = 'Список дел', key) {
     let todoAppTitle = createAppTitle(title);
     let todoItemForm = createTodoItemForm();
     let todoList = createTodoList();
+
+    const todoArray = getFromLocalStorage(key)
 
     for (var i = 0; i < todoArray.length; i++) {
       const todoItem = createTodoItem(todoArray[i].name)
@@ -97,6 +99,20 @@ function createTodoApp(container, title = 'Список дел', todoArray = [])
 ...
 
 С помощью это кода при первом открывании страницы сразу будут добавлены дела.
+
+Те же функции можно использовать и при изменении дела, например удаление:
+
+deleteButton.addEventListener('click', function () {
+  if (confirm('Вы уверены?')) {
+    item.remove();
+  }
+  for (let i = 0; i < todoTasks.length; i++) {
+    if (todoTasks[i].id == todo.id) {
+      todoTasks.splice(i, 1);
+    }
+  }
+  saveToLocalStorage(userName, todoTasks);
+});
 
 #  Как добавить новое дело
 Добавляя новое дело вам нужно сделать следующее:
