@@ -157,6 +157,7 @@ describe('Игра в карточки', () => {
       }
     });
   });
+  /* неправильный тест */
   it('Закрытие непарных карточек', () => {
     cy.get('.card').then((cards) => {
       const firstElement = cards[0].textContent;
@@ -174,5 +175,76 @@ describe('Игра в карточки', () => {
         } else cy.reload();
       }
     });
+  });
+});
+
+# Пример 2
+
+describe('Тесты на игру в пары', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:8080/');
+    cy.get('.btn-primary').click();
+  });
+
+  it('Тест на количество карточек', () => {
+    cy.get('.game-container .card').should('have.length', 16);
+    cy.get('.game-container .card').each((item) => {
+      cy.wrap(item).should('contain.text', '?');
+    });
+  });
+
+  it('Тест открытия карточки', () => {
+    cy.get('.game-container .card')
+      .first()
+      .click()
+      .should('not.contain.text', '?');
+  });
+
+  it('Тест открытия пары', () => {
+    cy.get('.game-container .card')
+      .first()
+      .then((firstEl) => {
+        cy.get('.game-container .card').each((item) => {
+          if (firstEl[0] != item[0]) {
+            firstEl.click();
+            item.click();
+
+            // проходим пока не найдем пару
+            if (firstEl.text() == item.text()) {
+              return false;
+            }
+          }
+        });
+
+        // когда нашли пару, то у карточки не должно быть закрытого состояния и должен быть класс указывающий, что нашли пару
+        cy.wrap(firstEl).should('not.contain.text', '?');
+        cy.wrap(firstEl).should('have.class', 'border-success');
+      });
+  });
+
+  it('Тест открытия 3 непарной карточки', () => {
+    cy.get('.game-container .card')
+      .first()
+      .then((firstEl) => {
+        for (let i = 0; i < 8; i++) {
+          const nextEl = firstEl.parent().next().children().first();
+
+          firstEl.click();
+          nextEl.click();
+
+          // останавливаемся если открыли 2 непарные карточки. Иначе повторяем
+          if (firstEl.text() == nextEl.text()) {
+            firstEl = firstEl.parent().next().next().children().first();
+          } else {
+            break;
+          }
+        }
+
+        // кликаем на 3-ю карточку
+        firstEl.parent().next().next().children().first().click();
+
+        cy.wrap(firstEl).should('contain.text', '?');
+        cy.wrap(firstEl).should('not.have.class', 'border-success');
+      });
   });
 });
