@@ -153,6 +153,10 @@ export function saveLocalList(arr, owner) {
 }
 
 export function getLocalList(owner) {
+  return JSON.parse(localStorage.getItem(owner) || '[]')
+}
+
+<!-- export function getLocalList(owner) {
   const localData = localStorage.getItem(owner);
   let rawList = [];
 
@@ -163,7 +167,7 @@ export function getLocalList(owner) {
   }
 
   return rawList;
-}
+} -->
 
 
 Модуль серверного хранилища:
