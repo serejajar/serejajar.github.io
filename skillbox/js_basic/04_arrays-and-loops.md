@@ -63,14 +63,20 @@ function randomArray(count, n, m) {
   console.log(arr);
 }
 
-# 2-я задача (перевернутая строка)
-function reverseString(str) {
-  let arrayStr = str.split('');
+# 2-я задача
+function randomI(arr) {
+  let arr = [1,2,3,4,5,6,7]
+  let j
+  let temp
 
-  arrayStr.reverse();
+  for(i = 0; i < arr.length; i++) {
+      temp = arr[i];
+      j = Math.floor(Math.random() * 7)
+      arr[i] = arr[j];
+      arr[j] = temp;
+  }
 
-  let str2 = arrayStr.join('');
-  console.log(str2);
+  console.log(arr)
 }
 
 # 3-я задача (танк)
