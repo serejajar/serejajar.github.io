@@ -69,6 +69,18 @@ https://ru.hexlet.io/blog/posts/gid-po-nest-js
 
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
+#  Как сделать хеш пароля
+Тут вам нужно использовать crypto, как в видео у спикера. Вот пример функции для создания хеша пароля:
+
+import crypto from 'crypto';
+
+const hashPass = (password) => {
+  const hash = crypto.createHash('sha256');
+
+  hash.update(password);
+  return hash.digest('hex');
+};
+
 
 ----
 Здесь нужно реализовать функции для обработки запросов со стороны клиента.
