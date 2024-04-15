@@ -117,3 +117,87 @@ function startGame() {
     card.addEventListener("click", game);
   }
 }
+
+# пример кода 2:
+// Этап 1. Создайте функцию, генерирующую массив парных чисел. Пример массива, который должна возвратить функция: [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8].count - количество пар.
+const game = document.getElementById('game');
+
+let numbersArray = [];
+let firstCard = null;
+let secondCard = null;
+
+function createNumbersArray(count) {
+   for (let i = 1; i <= countCards; i++) {
+    numbersArray.push(i, i);
+   }
+}
+
+// Этап 2. Создайте функцию перемешивания массива.Функция принимает в аргументе исходный массив и возвращает перемешанный массив. arr - массив чисел
+
+function shuffle(arr) {
+    // Тасовка массива при помощи алгоритма Фишера - Йетса
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+// Этап 3. Используйте две созданные функции для создания массива перемешанными номерами. На основе этого массива вы можете создать DOM-элементы карточек. У каждой карточки будет свой номер из массива произвольных чисел. Вы также можете создать для этого специальную функцию. count - количество пар.
+
+function startGame(count) {
+
+    let firstCard = null;
+    let secondCard = null;
+
+    createNumbersArray(numbersArray, 4);
+    shuffle(numbersArray);
+
+    for (let numberCard of numbersArray) {
+        let card = document.createElement("div");
+        card.textContent = numberCard;
+        card.classList.add("card");
+        game.append(card);
+
+        card.onclick = () => {
+            if (card.classList.contains('open') || card.classList.contains('success')) {
+                return;
+            }
+
+            if (firstCard !== null && secondCard !== null) {
+                firstCard.classList.remove('open');
+                secondCard.classList.remove('open');
+                firstCard = null;
+                secondCard = null;
+            }
+
+            card.classList.add('open');
+
+            if (firstCard === null) {
+                firstCard = card;
+            } else {
+                secondCard = card;
+            }
+
+            if (firstCard !== null && secondCard !== null) {
+                let firstCardNum = firstCard.textContent;
+                let secondCardNum = secondCard.textContent;
+
+                if (firstCardNum === secondCardNum) {
+                    firstCard.classList.add('success');
+                    secondCard.classList.add('success');
+                }
+            }
+
+            if (numbersArray.length === document.querySelectorAll('.success').length) {
+                setTimeout(function () {
+                  game.innerHTML = ""
+                  alert('Победа!')
+                }, 400)
+            }
+        }
+    }
+}
+
+let countCards = Number(prompt('Введите количество пар карточек', 4));
+startGame(game, numbersArray);
