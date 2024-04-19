@@ -36,5 +36,3 @@ function filter(arr, option, value) {
     return obj[option] == value;
   });
 }
-
-export default filter;

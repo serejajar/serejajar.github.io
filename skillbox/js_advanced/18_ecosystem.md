@@ -48,37 +48,77 @@ PS: Если у вас появятся вопросы по этому ДЗ, т�
 https://www.npmjs.com/package/creditcards
 https://www.npmjs.com/package/card-validator
 
+
+
 # Пример creditcard.js
 Вы можете самостоятельно сделать стилизацию и отображение ошибки, и использовать метод бибилиотеки isValid, вот пример как сделал другой студент:
 
 import { isValid, isExpirationDateValid, isSecurityCodeValid } from 'creditcard.js';
 
 function validate(input, arg) {
-    input.classList.remove('is-invalid', 'bg-success-subtle');
-    if(!arg) input.classList.add('is-invalid');
-    else input.classList.add('bg-success-subtle');
+  input.classList.remove('is-invalid', 'bg-success-subtle');
+  if(!arg) input.classList.add('is-invalid');
+  else input.classList.add('bg-success-subtle');
 
-    if(container.querySelectorAll('.bg-success-subtle').length === 4) btn.disabled = false;
-    else btn.disabled = true;
-  }
+  if(container.querySelectorAll('.bg-success-subtle').length === 4) btn.disabled = false;
+  else btn.disabled = true;
+}
 
 
-  numberCard.addEventListener('blur', () => {
-    // 4417123456789113 пример валидной карты
-    validate(numberCard, isValid(numberCard.value));
-  })
+numberCard.addEventListener('blur', () => {
+  // 4417123456789113 пример валидной карты
+  validate(numberCard, isValid(numberCard.value));
+})
 
-  validDate.addEventListener('blur', () => {
-    validate(validDate, isExpirationDateValid(validDate.value.slice(0, 2), validDate.value.slice(3)))
-  })
+validDate.addEventListener('blur', () => {
+  validate(validDate, isExpirationDateValid(validDate.value.slice(0, 2), validDate.value.slice(3)))
+})
 
-  cvc.addEventListener('blur', () => {
-    validate(cvc, isSecurityCodeValid(numberCard.value, cvc.value));
-  })
+cvc.addEventListener('blur', () => {
+  validate(cvc, isSecurityCodeValid(numberCard.value, cvc.value));
+})
 
-  email.addEventListener('blur', () => {
-    validate(email, isEmail(email.value));
-  })
+email.addEventListener('blur', () => {
+  validate(email, isEmail(email.value));
+})
+
+
+# Пример creditcard.js 2 и кастомный
+Для валидации карт вы можете использовать creditcard.js
+
+https://www.npmjs.com/package/creditcard.js
+
+Там все просто, есть методы библиотеки которые возвращают булинь:
+
+import { isValid, isExpirationDateValid, isSecurityCodeValid, getCreditCardNameByNumber } from 'creditcard.js';
+
+const changeBorderInput = (valid, input) => {
+    if (valid) {
+        codeCard = input.value
+        input.classList.remove('is-invalid');
+        input.classList.add('is-valid');
+    }
+    else {
+        input.classList.remove('is-valid');
+        input.classList.add('is-invalid');
+    }
+}
+
+input.addEventListener('blur', () => {
+  changeBorderInput(isSecurityCodeValid(codeCard, input.value), input)
+})
+Тут используется доп. функция которая стилизует в зависимости от того какое значение isSecurityCodeValid вернет.
+
+Или написать функцию проверки самостоятельно.
+
+// Событие потери фокуса при вводе номера карты
+cardNumberInput.addEventListener('blur', function () {
+    // Удаляем все символы, кроме цифр
+    const cardNumber = cardNumberInput.value.replace(/\D/g, '');
+    // Разделяем номер карты пробелами по 4 цифры
+    const formattedCardNumber = cardNumberInput.value.replace(/(\d{4})/g, '$1 ').trim();
+    cardNumberInput.value = formattedCardNumber;
+});
 
 
 # А как добавить картику с redom
