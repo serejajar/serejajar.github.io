@@ -66,7 +66,6 @@ let counter = 0;
 async function getData() {
   const response = getData()
 
-
   if (response.status === 404) {
     throw new Error ('Список товаров пуст')
   }
