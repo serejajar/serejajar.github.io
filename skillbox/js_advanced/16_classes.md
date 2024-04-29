@@ -10,3 +10,39 @@
 https://learn.javascript.ru/classes
 
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать чате в следующем модуле.
+
+
+# не понимаю как передать в параметр экземпляр, если сама функция и есть параметр этого экземпляра.
+В качестве аргумента самой функции flip. Вот пример создания карты c помощью класса AmazingCard:
+
+for (const cardNumber of countArray) {
+    cardArray.push(new AmazingCard(container, cardNumber, flip));
+}
+Тут 3-м аргументом передается функция flip, которая через super далее передается в класс Card (аргумент action). Далее по клику она вызывается с аргументом this что и соответствует экземпляру класса:
+
+class AmazingCard extends Card {
+   constructor(container, number, action) {
+        /* остальной код */
+        super(container, url, number, action);
+    }
+}
+
+class Card {
+    constructor(container, url, number, action) {
+        /* остальной код */
+        this.card.addEventListener('click', () => {
+            if (this.open == false && this.success == false) {
+                this.open = true
+                action(this)
+            }
+        })
+        container.append(this.card)
+    }
+}
+
+
+Т.е. функция flip вызывается с аргументом в котором находится сам класс:
+
+function flip(card) {
+  /*  логика сравнения карт */   
+}

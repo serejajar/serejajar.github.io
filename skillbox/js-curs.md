@@ -212,7 +212,7 @@ function renderClient(client) {
 
 1) Клик по "добавить контакт" должен добавить li с селектом и полем ввода
 
-2) Сбор данных и отправка на бэк.
+2) Сбор данных и отправка на сервер.
 
 Вот так примерно выглядит получение всех данных контактов
 
@@ -253,15 +253,10 @@ $addClientAddContactBtn.addEventListener('click', () => {
 
   $changeClientAddContactBtnCont.prepend($addContactInpGrp);
   $addClientAddContactBtnCont.prepend($addContactInpGrp);
-  $addContactInpGrp.append($addSelect);
-  $addContactInpGrp.append($addContactInp);
-  $addContactInpGrp.append($addSelectCloseBtnMod);
+  $addContactInpGrp.append($addSelect, $addContactInp, $addSelectCloseBtnMod);
   $addSelectCloseBtnMod.append($addSelectCloseBtn);
-  $addSelect.append($addOptionTel);
-  $addSelect.append($addOptionAdTel);
-  $addSelect.append($addOptionMail);
-  $addSelect.append($addOptionVk);
-  $addSelect.append($addOptionFb);
+  $addSelect.append($addOptionTel, $addOptionAdTel, $addOptionMail, $addOptionVk, $addOptionFb);
+
 
   $addSelectCloseBtn.addEventListener('click', () => {
     $addContactInpGrp.remove();
