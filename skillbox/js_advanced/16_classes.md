@@ -46,3 +46,24 @@ class Card {
 function flip(card) {
   /*  логика сравнения карт */   
 }
+
+# пример flip
+function flip(card) {
+    if (first != null && second != null && first.number != second.number) {
+        first.open = false;
+        second.open = false;
+        first = null;
+        second = null;
+    }
+    if (first == null) {
+        first = card;
+    } else {
+        second = card;
+        if (first.number == second.number) {
+            first.success = true;
+            second.success = true;
+            first = null;
+            second = null;
+        }
+    }
+}
