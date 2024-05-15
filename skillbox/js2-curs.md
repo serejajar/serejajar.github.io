@@ -111,20 +111,7 @@ export function getLastMonthTransactions(data, month) {
 
   const { account, transactions, balance } = data;
 
-  const months = [
-    'янв',
-    'фев',
-    'мар',
-    'апр',
-    'май',
-    'июн',
-    'июл',
-    'авг',
-    'сен',
-    'окт',
-    'нояб',
-    'дек',
-  ];
+  const months = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'нояб', 'дек' ];
 
   const agoDate = new Date();
   const transactionsMap = [];

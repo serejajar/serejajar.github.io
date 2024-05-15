@@ -4,7 +4,7 @@
 Что можно исправить:
 - 4-я задача. concat не нужно использовать в цикле он работает с переданными ему массивами. Подробнее:
 https://learn.javascript.ru/array-methods#concat
-- - 4-я задача. Тут вам нужно сделать проще и просто добавить все элементы из массива arr2 в arr1:
+- 4-я задача. Тут вам нужно сделать проще и просто добавить все элементы из массива arr2 в arr1:
 
 let arr1 = [2, 2, 17, 21, 45, 12, 54, 31, 53];
 let arr2 = [12, 44, 23, 5];
@@ -23,7 +23,6 @@ let arr1 = [2, 2, 17, 21, 45, 12, 54, 31, 53];
 let arr2 = [12, 44, 23, 5];
 let arrSum = [...arr1, ...arr2];
 
-console.log(arrSum);
 https://learn.javascript.ru/destructuring-assignment#ostatochnye-parametry
 
 
