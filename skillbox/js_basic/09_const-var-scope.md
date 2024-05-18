@@ -201,3 +201,48 @@ function startGame(count) {
 
 let countCards = Number(prompt('Введите количество пар карточек', 4));
 startGame(game, numbersArray);
+
+# пример 3
+function transform(card) {
+  if (firstCard !== null && secondCard !== null) {
+    if (firstCard.number != secondCard.number) {
+      firstCard.open = false;
+      secondCard.open = false;
+      firstCard = null;
+      secondCard = null;
+    }
+  }
+
+  if (firstCard == null) {
+    firstCard = card;
+  } else {
+    if (secondCard == null) {
+      secondCard = card;
+    }
+  }
+
+  if (firstCard !== null && secondCard !== null) {
+    if (firstCard.number == secondCard.number) {
+      firstCard.success = true;
+      secondCard.success = true;
+      firstCard = null;
+      secondCard = null;
+    }
+  }
+
+  setTimeout(() => {
+    if (
+      document.querySelectorAll(".card.success").length ==
+      cardsNumberArray.length
+    ) {
+      alert("Игра завершена")
+      container.innerHTML = "";
+      cardsNumberArray = [];
+      cardsArray = [];
+      firstCard = null;
+      secondCard = null;
+
+      createNumbersArray(container, countCards);
+    }
+  }, 100)
+}
