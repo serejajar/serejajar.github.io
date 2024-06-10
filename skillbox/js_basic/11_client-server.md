@@ -58,3 +58,12 @@ let studentObj = {
 };
 
 let serverDataObj =   await serverAddStudent(studentObj)
+
+# Не срабатывает метод класса
+Этот метод есть в классе Student, вот он:
+
+А не срабатывает он так как вы работаете с объектами полученными с сервера, который и не знает про ваш класс и его метод. Чтобы метод convertBirthDayString был доступен вам нужно на основе полученных данных с сервера создать объекты с помощью вашего класса:
+
+for (const student of studentsListCopy) {
+    $studentsList.append(newStudentTR(new Student( /* все аргументы нужные для создания класса */)));
+}
