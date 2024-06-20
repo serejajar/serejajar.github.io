@@ -96,6 +96,35 @@ it('Проверка нахождение не пары', () => {
         });
     })
 
+# пример теста jest с ДОМ элементами https://gitlab.skillbox.ru/vladimir_romanov/js_advanced/-/blob/home/20_testing/card/jest.config.js
+const { inputNumberCard, cvcCard, form } = createFormPay();
+
+describe('Форма', () => {
+  const formElem = form.elements;
+  const arr = [];
+
+  for (const item of formElem) {
+    if (
+      (item.tagName.toLocaleLowerCase() === 'input' &&
+        item.placeholder === '0000 0000 0000 0000') ||
+      item.placeholder === 'CVV/CVC' ||
+      item.placeholder === 'Your email' ||
+      item.placeholder === 'MM/YY'
+    ) {
+      arr.push(item);
+    }
+  }
+
+  test('Возвращает дом элемент', () => {
+    expect(form).toBeInstanceOf(HTMLFormElement);
+  });
+
+  test('Возвращает четыре поля для ввода', () => {
+    expect(arr.length).toBe(4);
+  });
+});
+
+
 # есть ли пример теста.
 Вот пример теста. Это не совсем полноценный пример, но в целом подход думаю вам будет понятен.
 
