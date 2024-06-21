@@ -16,7 +16,26 @@ function getUserByCredentials(db, username, password) {
 
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
+#  как реализовать передачу сессии
+Насколько я вижу вы не реализовали проверку сессии, т.е. вы не проверяете что пользователь авторизован. Что тут вам нужно сделать:
 
+1. Получить sessionId из файла, который вы создаете в команде login:
+
+const sessionFileName = path.join(
+  process.cwd(),
+  "sessions",
+  `${os.type().match(/windows/i) ? "_" : "."}sb-timers-session`
+);
+2.  Отправить его в запросе. Тут я покажу вариант передачи сессии в headers в fetch, но вариант передачи сессии в виде параметра в url тоже возможен.
+
+const response = await fetch(`${SERVER_API}/logout`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'sessionid': sessionId,
+      }
+});
+Далее вам нужно уже сравнить сессии с тем что у вас хранится в БД и вернуть данные счетчиков.
 
 
 # Как использовать хидеры

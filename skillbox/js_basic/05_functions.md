@@ -7,7 +7,7 @@
 - Хочу вам порекомендовать статью про функции, где более подробно рассказывается про них. В конце статьи так же есть задачи для тренировки:
 https://learn.javascript.ru/function-basics
 - Рекомендую изучить метод filter, с помощью которого можно сделать 2-ю задачу без использования цикла
-function filter(address1, address2) {
+function filter(whiteList, blackList) {
     return whiteList.filter((email) => blackList.includes(email));
 }
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
