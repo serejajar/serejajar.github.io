@@ -19,31 +19,6 @@ https://learn.javascript.ru/promise-basics
 container.innerHTML = `<h1 class="test">${name}</h1`;
 Такая запись может значительно сократить код исключив из него создание элемента и добавление аттрибутов и классов.
 
-- Еще один прием это весь повторяющийся код перенести в функции. Например, код обработчиков события:
-
-$sortAgeBtn.addEventListener('click', handler)
-$sortFIOBtn.addEventListener('click', handler)
-
-function handler(e) {
-   /* тут получить аттрибут от элемента значение которого будет 'fio', 'age' и др. */
-  const sortColumnFlag = e.target.getAttribute('data-prop')
-}
-
-Почитать про объект события e вы можете в этой статье:
-https://learn.javascript.ru/introduction-browser-events#obekt-sobytiya
-
-Про свойство e.target которое содержит ссылку на сам элемент:
-https://developer.mozilla.org/ru/docs/Web/API/Event/target
-
-Получение аттрибутов элемента описано здесь:
-https://learn.javascript.ru/dom-attributes-and-properties
-
-
-- Хочу посоветовать вам поизучать регулярные выражения. Они довольно сложные для новичка, но их использование поможет существенно упростить поиск символов в строке и избежать вот такого перечисления символов:
-
- const simbol = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '<', '>', '/', '?', '\'', '|', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}']
-https://learn.javascript.ru/regular-expressions
-
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
 ###

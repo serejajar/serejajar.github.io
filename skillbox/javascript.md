@@ -117,6 +117,26 @@ https://learn.javascript.ru/styles-and-classes#classname-i-classlist
 # Используют неверный формат для создания дат Date('08.03.1997')
 Потому что Date не всегда понимает что за формат значения вы ей передаете. Тут по умолчанию используется американский формат "месяц.день.год" и Date выдаст невалидную дату так как нет 15 месяца.  Используйте формат "год-месяц-день" который Date корректно понимает.
 
+
+# Еще один прием это весь повторяющийся код перенести в функции. Например, код обработчиков события:
+
+$sortAgeBtn.addEventListener('click', handler)
+$sortFIOBtn.addEventListener('click', handler)
+
+function handler(e) {
+   /* тут получить аттрибут от элемента значение которого будет 'fio', 'age' и др. */
+  const sortColumnFlag = e.target.getAttribute('data-prop')
+}
+
+Почитать про объект события e вы можете в этой статье:
+https://learn.javascript.ru/introduction-browser-events#obekt-sobytiya
+
+Про свойство e.target которое содержит ссылку на сам элемент:
+https://developer.mozilla.org/ru/docs/Web/API/Event/target
+
+Получение аттрибутов элемента описано здесь:
+https://learn.javascript.ru/dom-attributes-and-properties
+
 # я не понимаю что такое промис
 Чтобы вам было проще понять что такое промис, представьте себе эту логику в быту. Т.е. вы попросили своего друга чтобы он дал вам интересную книгу:
 1) Он обещает вам принести его на днях
