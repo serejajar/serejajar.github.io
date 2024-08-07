@@ -4,7 +4,7 @@ if (Object.done == true) item.classList.add('list-group-item-success');
 
 Будьте особенно внимательны если используете if без фигурных скобок, так как частая ошибка студентов это перенос кода на следующую строку:
 if (false)
-  console.log('этот код сработает')
+  console.log('этот код не сработает')
   console.log('а этот код сработает даже если условие будет false')
 https://learn.javascript.ru/coding-style#figurnye-skobki
 
