@@ -37,6 +37,51 @@ PS: Если у вас появятся вопросы по этому ДЗ, т�
 
 На всех этапах вам нужно будет обновлять таблицу.
 
+Как это выглядит в коде:
+
+1. Вам нужно навесить функцию обработчик на поля ввода, например обработчик события кнопки "Поиск",  но вы можете использовать и события печати на поля ввода (input) для каждого поля. Тут самое главное вызвать render() с отфильтрованным массивом.
+
+formFilter.addEventListener('submit', function (e) {
+    e.preventDefault();
+    let studentsCopy = [...students];
+
+    const $fullNameValue = document.getElementById('filter-fullName').value,
+        $facultyValue = document.getElementById('filter-faculty').value,
+        $yearOfAdmissionValue = document.getElementById('filter-yearOfAdmission').value,
+        $yearOfGraduationValue = document.getElementById('filter-yearOfGraduation').value;
+
+
+    if ($fullNameValue !== '')
+        studentsCopy = filterStudents(studentsCopy, 'fullName', $fullNameValue);
+    if ($facultyValue !== '')
+        studentsCopy = filterStudents(studentsCopy, 'faculty', $facultyValue);
+    if ($yearOfAdmissionValue !== '')
+        studentsCopy = filterStudents(studentsCopy, 'studyStart', $yearOfAdmissionValue);
+
+    render(studentsCopy);
+});
+ 2. В самой функции render вы отрисовываете студентов:
+
+const render = () => {
+    for (const student of studentsCopy) {
+        $studentsList.append(createStudentsTable(student));
+    }
+};
+
+
+
+3. И сама функция фильтрации выглядит так
+
+const filterStudents = (arr, prop, value) => {
+    const sortedArr = [];
+    const copyArr = [...arr];
+
+    for (const item of copyArr) {
+        if (String(item[prop]).match(new RegExp(value, 'i'))) sortedArr.push(item);
+    }
+    return sortedArr;
+};
+
 # как вывести саму дату и возраст
 У вас есть свойство в массиве содержащее дату т.е. вам нужно преобразовать объект даты строку. Подробнее о нем в этой статье:
 
