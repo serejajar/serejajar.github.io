@@ -1,15 +1,15 @@
 
 const data = {
   token,
-  origin: 'MOW',
-  destination: 'RMO',
+  origin: 'IAS',
+  destination: 'BCN',
   departure_at: '2024-11',
   // return_at: '2024-09',
   sorting: 'price',
   currency: 'EUR',
   limit: 1000,
   // page: '1',
-  one_way: true
+  one_way: false
 }
 
 const params = new URLSearchParams(data).toString();
