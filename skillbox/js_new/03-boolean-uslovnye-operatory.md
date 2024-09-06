@@ -10,5 +10,13 @@
 https://learn.javascript.ru/operators
 https://learn.javascript.ru/ifelse
 
-
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
+
+# А зачем praseInt
+Вызов prompt возвращает текст, указанный в поле для ввода, или null, если ввод отменён пользователем. А parseInt преобразует строку в число.
+
+Рекомендую изучить эти статьи:
+
+https://learn.javascript.ru/number#parseint-i-parsefloat
+
+https://learn.javascript.ru/alert-prompt-confirm

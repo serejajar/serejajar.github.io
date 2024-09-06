@@ -91,6 +91,15 @@ element.classList.toggle("mystyle");
 
 https://learn.javascript.ru/default-browser-action
 
+# else if 
+else if не нужно использовать, если основное условие в if является противоположностью условию в else if:
+
+if (form.inputName.value.trim() === "") {
+      labelInName.classList.remove("none");
+} else {
+      labelInName.classList.add("none");
+}
+
 # serve выдает ошибку связанную с безопасностью PSSecurityException
 Теперь ваша оболочка PowerShell не позволяет вам выполнять «возможно» вредоносные сценарии, поэтому вам необходимо изменить политику выполнения, просто введите следующее:
 Set-ExecutionPolicy Unrestricted
