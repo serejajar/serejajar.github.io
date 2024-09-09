@@ -9,4 +9,4 @@
   document.querySelector(selector)?.remove()
 })
 
-document.querySelector('.article-formatted-body').style.fontSize = '12px'
+document.querySelectorAll('.article-formatted-body p').forEach((p) => p.style.fontSize = '12px');
