@@ -91,7 +91,7 @@ element.classList.toggle("mystyle");
 
 https://learn.javascript.ru/default-browser-action
 
-# else if 
+# else if
 else if не нужно использовать, если основное условие в if является противоположностью условию в else if:
 
 if (form.inputName.value.trim() === "") {
@@ -125,6 +125,19 @@ https://learn.javascript.ru/styles-and-classes#classname-i-classlist
 
 # Используют неверный формат для создания дат Date('08.03.1997')
 Потому что Date не всегда понимает что за формат значения вы ей передаете. Тут по умолчанию используется американский формат "месяц.день.год" и Date выдаст невалидную дату так как нет 15 месяца.  Используйте формат "год-месяц-день" который Date корректно понимает.
+
+# FormData
+Вы также может использовать FormData, часто это облегчает сбор данных из формы:
+https://learn.javascript.ru/formdata
+
+btnSaveClient.addEventListener('click', () => {
+    const form = document.querySelector('.form');
+    const formData = new FormData(form);
+
+    const surname = formData.get('surname');
+
+    console.log('surname', surname);
+  });
 
 
 # Еще один прием это весь повторяющийся код перенести в функции. Например, код обработчиков события:
