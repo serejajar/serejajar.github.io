@@ -30,3 +30,12 @@ function countPlusOne() {
 
 countPlusOne();
 countPlusOne();
+
+
+# 5-я задача
+Для этой задачи вам нужно вычислить процент (т.е. поделить на 100)  и далее умножить его на разницу процентов (100 - discountItem). Тут более корректная вот такая запись:
+
+function totalSum(priceItem, amountItem, discountItem) {
+    return priceItem * amountItem / 100 * (100 - discountItem)
+}
+console.log (totalSum(25000, 3, 20))
