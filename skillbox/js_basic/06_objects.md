@@ -36,3 +36,25 @@ function filter(arr, option, value) {
     return obj[option] == value;
   });
 }
+
+# 3-я задача
+let objects = [
+  { name: 'Василий', surname: 'Васильев' },
+  { name: 'Иван', surname: 'Иванов' },
+  { name: 'Пётр', surname: 'Петров' }
+]
+
+
+function filter(arr, prop, value) {
+  filterOfObject = []
+
+  for (let i = 0; i < arr.length; i++) {
+    if (value === arr[i][prop]) {
+      filterOfObject.push(arr[i])
+    }
+  }
+  return filterOfObject
+}
+
+let result = filter(objects, 'name', 'Иван');
+console.log(result);
