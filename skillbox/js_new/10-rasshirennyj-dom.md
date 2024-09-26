@@ -34,3 +34,48 @@ imagesList.forEach(image => {
   </div>
   <img class="image-big hidden" src="" width="1488" height="1000">
 </body>
+
+# 2я задача
+const listEl = document.querySelector('.list');
+const addEl = document.querySelector('.btn-add');
+const deleteEl = document.querySelector('.btn-delete');
+
+addEl.addEventListener('click', function (e) {
+    const itemEl = document.createElement('li')
+    itemEl.textContent = "Новый элемент списка";
+    listEl.appendChild(itemEl);
+});
+
+deleteEl.addEventListener('click', function (e) {
+    listEl.lastElementChild.remove();
+});
+
+# 3-я задача
+
+const prices = [100, 500, 250, 750, 300];
+
+function displayPrices() {
+  let ul = document.getElementById('prices');
+  ul.innerHTML = ''
+
+  prices.forEach(price => {
+    let li = document.createElement('li');
+    li.textContent = price;
+    ul.appendChild(li);
+  });
+}
+
+function sortAscending() {
+  prices.sort((a, b) => a - b)
+  displayPrices()
+}
+
+function sortDescending() {
+  prices.sort((a, b) => b - a)
+  displayPrices()
+}
+
+displayPrices(prices)
+
+document.getElementById('sortAscending').addEventListener('click', sortAscending);
+document.getElementById('sortDescending').addEventListener('click', sortDescending);
