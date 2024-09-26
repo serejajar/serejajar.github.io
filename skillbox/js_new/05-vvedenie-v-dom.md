@@ -21,28 +21,35 @@ function activateMenuItem(newActiveItem) {
     newActiveItem.classList.add('active')
 }
 
-
 # пример
-<ul id="product-list">
-  <li>
-    <span>Товар 1</span>
-    <button onclick="addToCart('Товар 1')">Добавить в корзину</button>
-  </li>
-  <li>
-    <span>Товар 2</span>
-    <button onclick="addToCart('Товар 2')">Добавить в корзину</button>
-  </li>
-  <li>
-    <span>Товар 3</span>
-    <button onclick="addToCart('Товар 3')">Добавить в корзину</button>
-  </li>
-</ul>
+<body>
+    <h1>Каталог товаров</h1>
+    <ul id="product-list">
+        <li>
+            <span>Товар 1</span>
+            <button onclick="addToCart('Товар 1')">Добавить в корзину</button>
+        </li>
+        <li>
+            <span>Товар 2</span>
+            <button onclick="addToCart('Товар 2')">Добавить в корзину</button>
+        </li>
+        <li>
+            <span>Товар 3</span>
+            <button onclick="addToCart('Товар 3')">Добавить в корзину</button>
+        </li>
+    </ul>
+    <h1>Корзина</h1>
+    <ul id="cart">
+    </ul>
 
-const cartEl = document.querySelector('#cart');
+    <script>
+        const ulElement = document.querySelector('#cart');
 
-function addToCart(itemName) {
-  const liEl = document.createElement('li');
 
-  liEl.textContent = itemName;
-  cartEl.append(liEl);
-}
+        function addToCart(product) {   
+            const list = document.createElement('li');                      
+            ulElement.append(list);
+            list.textContent = (product);  
+        }       
+    </script>
+</body>
