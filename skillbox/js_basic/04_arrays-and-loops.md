@@ -56,10 +56,10 @@ for (i = 1; i < quantity + 1; ++i) {
 console.log('Исходный массив', numbers);
 
 
-for(i = 0; i < numbers.length; ++i) {
+for (i = 0; i < numbers.length; ++i) {
   j = Math.round(Math.random() * Math.abs(numbers.length - 1));
 
-  temp = numbers[i];
+  const temp = numbers[i];
   numbers[i] = numbers[j];
   numbers[j] = temp;
 
