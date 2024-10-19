@@ -21,6 +21,24 @@ https://learn.javascript.ru/regular-expressions
 
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать чате в следующем модуле.
 
+# 2-я задача, как остановить печать для символов кроме кириллицы
+Вы можете воспользоваться вот этим решением чтобы остановить печать для символов кроме кириллицы:
+
+// Получаем все инпуты и вешаем на них обработчики
+document.querySelectorAll('input').forEach(input => {
+input.addEventListener('keypress', validateInput);
+});
+
+function validateInput(event) {
+const allowedPattern = /^[а-яА-ЯёЁ \-]*$/;
+const key = event.key;
+
+// Если нажатая клавиша не соответствует допустимым символам
+if (!allowedPattern.test(key) && key !== "Backspace" && key !== "Enter" && key !== "ArrowLeft" && key !== "ArrowRight" && key !== "Delete") {
+event.preventDefault();
+}
+}
+
 
 # 1-я задача (выпадающий список) Не знают как закрыть выпадающее меню
 Тут вам так же нужно добавить window.onclick чтобы при клике вне блока вы могли закрыть выпадающий список. Вот пример этого кода:

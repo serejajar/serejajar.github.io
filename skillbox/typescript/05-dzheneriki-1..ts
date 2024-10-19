@@ -45,3 +45,19 @@ hanoiNumber.solve();
 const hanoiString = new HanoiTower<string>('A', 'C', 'B');
 hanoiString.addDisks(["C", "B", "A"]);
 hanoiString.solve();
+
+// Generic Interface (2-я задача)
+interface Container<T> {
+    value: T;
+}
+
+function getValue<T>(container: Container<T>): T {
+    return container.value;
+}
+
+// Примеры использования
+let numberContainer: Container<number> = { value: 123 };
+let stringContainer: Container<string> = { value: "Hello, world" };
+
+let numberValue = getValue(numberContainer);
+let stringValue = getValue(stringContainer);
