@@ -40,6 +40,41 @@ const userName = 'ДмИтРиЙ';
 const userSurname = 'иВаНов'
 Далее вам нужно преобразовать их в читаемое "Дмитрий" и "Иванов" и сравнить с оригинальными значениями и вывести сообщение "Имя осталось без изменений"/"Имя было преобразовано"  с помощью console.log.  
 
+# 2-я задача, пример
+let userName = `тЕст`;
+let userSurname = `ТеСТ`;
+
+let a = userName.substring(1, 0);
+let b = userName.substring (1);
+
+let firstletter = a.toUpperCase (1, 0);
+let anotherletters = b.toLowerCase (1);
+
+let name = firstletter + anotherletters;
+
+let a1 = userSurname.substring(1, 0);
+let b1 = userSurname.substring (1);
+
+let firstletter1 = a1.toUpperCase (1, 0);
+let anotherletters1 = b1.toLowerCase (1);
+
+let surname = firstletter1 + anotherletters1;
+
+let resultName1 = 'Имя было преобразовано'
+let resultName2 = 'Имя осталось без изменений'
+
+let resultSurname1 = 'Фамилия была преобразована'
+let resultSurname2 = 'Фамилия осталась без изменений'
+
+let resultName = (userName !== name) ? resultName1 : resultName2;
+let resultSurname = (userSurname !== surname) ? resultSurname1 : resultSurname2;
+
+console.log(name);
+console.log(surname);
+console.log(resultName);
+console.log(resultSurname);
+
+
 # 3-я задача, пример
 let number = '9'
 
