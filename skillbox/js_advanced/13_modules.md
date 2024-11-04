@@ -23,6 +23,11 @@ deleteButton.addEventListener("click", function () {
 - Тот же функционал должен быть и на страницах /dad-todos и /mom-todos.
 
 
+Рекомендации к следующему ДЗ
+Чуть поменялась структура ответа API и теперь вместо name свойство title, а image стало массивом images и там теперь хранится json. Вот так вы сможете получить изображение.
+
+image.src = JSON.parse(product.images[0])[0];
+
 Рекомендации:
 Хочу вам порекомендовать к прочтению статью про localStorage и sessionStorage. Понимание этой информации поможет вам в дальнейшей работе.
 https://learn.javascript.ru/localstorage

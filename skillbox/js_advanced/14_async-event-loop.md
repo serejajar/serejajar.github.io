@@ -72,3 +72,9 @@ function loadResource(src) {
     // data
     return fetch(src).then(res => res.json());
 }
+
+# не прогружаеться картинка
+
+Чуть поменялась структура ответа API и теперь вместо name свойство title, а image стало массивом images и там теперь хранится json. Вот так вы сможете получить изображение.
+
+image.src = JSON.parse(product.images[0])[0];
