@@ -88,7 +88,6 @@ element.classList.toggle("mystyle");
 Тут вам нужно использовать event.preventDefault() которое отменяет стандартное действие формы т.е. чтобы страница не перезагружалась после того как нажали кнопку submit.
 
 Рекомендую изучить эту статью:
-
 https://learn.javascript.ru/default-browser-action
 
 # else if
