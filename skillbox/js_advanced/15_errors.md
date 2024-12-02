@@ -42,6 +42,20 @@ window.addEventListener('offline', (event) => {
     showAlert("The network connection has been lost.");
 });
 
+# Как реализовать отображаение информационного блока в правом нижнем углу браузера.
+Вот пример создания такого сообщения:
+
+function addMessage(mesTitle, mesText) {
+        const divMes = document.createElement("div");
+
+        /* тут создание элемента divMes и добавление к нему текста из mesTitle и mesText */
+
+        document.getElementById("divMessages").appendChild(divMes);
+        setTimeout(() => {
+            divMes.remove();
+        }, 3000);
+ }
+
 # CORS
 Вы открываете сам файл, а нужно ссылку, полученную после запуска сервера.
 
