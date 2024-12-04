@@ -32,6 +32,9 @@ https://mochajs.org/
 
 PS: Также будем рады вашему отзыву о работе куратора и о содержании курса на hello@skillbox.ru или в бот обратной связи.
 
+# Тесты не проходили даже если полностью убрать изображения. Тест в ошибку выпадал.
+Функционал с созданием элементов DOM не нужно покрывать тестами, так как это обязанность уже разработчиков redom. Вам нужно взять несколько своих функций и работать с ними.  Вам плюсик что разобрались самостоятельно с этим нюансом!
+
 # ошибка с redom так как элемент равно undefined
 Это происходит из-за того что вы в тесте используете только саму функцию createFormPay, а не весь код, поэтому переменная app объявленная вне createFormPay равна undefined и вы видите ошибку из redom.  Эту ошибку можно исправить вот так:
 
@@ -70,8 +73,42 @@ https://jestjs.io/docs/next/code-transformation#transforming-images-to-their-pat
     После это проверьте работу тестов.
 ---
 # как выходить из цикла после первой удачной проверки
-Можете использовать метод cypress each с if/else внутри функции обработчика, но ничего страшного, для этого задания это не критично.
+Вы можете остановить цикл с помощью break:
+https://learn.javascript.ru/while-for#preryvanie-tsikla-break
+
+Вот пример использования break в тесте:
+
+it('Поиск пары', () => {
+  cy.get('.card').then((cards) => {
+    const firstElement = cards[0].textContent;
+    for (let i = 1; i < 16; i++) {
+      cy.wait(20);
+      cy.get('.card').eq(i).click();
+      cy.wait(20);
+      cy.get('.card').eq(0).click();
+      if (firstElement === cards[i].textContent) {
+        cy.get('.card').eq(0).should('have.class', 'success');
+        break;
+      }
+    }
+  });
+});
+
+Или вы можете использовать метод cypress each с return если условие if сработало
 https://docs.cypress.io/api/commands/each
+
+Например:
+cy.get('.game-container .card').each((item) => {
+  if (firstEl[0] != item[0]) {
+    firstEl.click();
+    item.click();
+
+    // проходим пока не найдем пару
+    if (firstEl.text() == item.text()) {
+      return false;
+    }
+  }
+})
 
 # нет npm test для 2-го ДЗ
 Подготовьте, пожалуйста, package.json чтобы можно было запустить тесты во втором задании с помощью команды:

@@ -18,7 +18,7 @@ PS: Если у вас появятся вопросы по этому ДЗ, т�
 
 function removeFilmOfLocalStorage(film) {
     let films = JSON.parse(localStorage.getItem('films')) || []
-    films = films.filter(i => i.title !== film.title)
+    films = films.filter(_film => _film.title !== film.title)
     localStorage.setItem('films', JSON.stringify(films))
 
     renderTable()
