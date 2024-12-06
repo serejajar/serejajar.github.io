@@ -39,6 +39,25 @@ inputCardNumber.getAttribute('correct')
 - Как перезаписывать html чтобы не добавлялся элемент повтрно (js 7 модуль)
 - JS3 Модуль 14: как по клику найти
 
+- использовать индекс
+Нет, так как это индекс элемента массива. Вот сама переменная в виде аргумента метода forEach:
+
+films.forEach((film, index) => {
+И вам не нужно его создавать с createIndex. или другим методом, так как он есть у каждого массива, например:
+
+["А", "Б", "В"].forEach((item, index, array) => {
+  alert(`У ${item} индекс ${index} в ${array}`);
+});
+Подробнее про метод массива forEach:
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+
+https://learn.javascript.ru/array-methods#perebor-foreach
+
+- querySelectorAll получает элементы со страницы, а эти элементы могут быть созданы как через JS так и в HTML 
+
+
+
 # Общее
 - проверить приведение к логическому типу с помощью поиска ==
 - проверить использование классов и похвалить за использование
