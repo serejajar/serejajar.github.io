@@ -32,3 +32,16 @@ function removeFilmOfLocalStorage(film) {
 2) Установить эти данные для полей ввода формы.
 
 3) Заменить кнопку (полностью или частично) чтобы при сохранении сохранялись изменения редактируемого фильма, а не создавался новый.
+
+# как сортировать
+function sortFilm(prop) {
+	const films = JSON.parse(localStorage.getItem('films'));
+
+	console.log('prop', prop);
+	console.log('до', films);
+
+	films.sort((a, b) => a[prop] > b[prop] ? 1 : -1)
+
+	console.log('после', films);
+
+}

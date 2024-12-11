@@ -11,6 +11,42 @@ https://learn.javascript.ru/promise-api
 
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать чате в следующем модуле.
 
+# не могу понять где мне еще функцию renderPage вызвать для планет и фильмов
+При переходе на страницу с фильмом, вам нужно сделать запрос за данными фильма и только после получения данных делать запросы за планетами. Вот пример кода:
+
+export async function renderFilm(episodeId, renderHomePage) {
+    const response = await fetch(`https://swapi.dev/api/films/${episodeId}`);
+    const film = await response.json();
+
+    /* остальной ваш код по получению данных для фильма */    
+
+    await renderPlanets(film.planets);
+    await renderSpecies(film.species);
+}
+
+
+Вот как вылядит пример запроса за планетами
+
+async function renderPlanets(planets) {
+    const h2 = document.createElement('h2');
+    h2.textContent = 'Planets';
+
+    app.appendChild(h2);
+
+    const planetPromises = planets.map(url => fetch(url).then(res => res.json()));
+    const planetData = await Promise.all(planetPromises);
+
+    const planetList = document.createElement('ul');
+
+    planetData.forEach(planet => {
+        const listItem = document.createElement('li');
+        listItem.textContent = planet.name;
+        planetList.appendChild(listItem);
+    });
+    app.appendChild(planetList);
+}
+
+
 
 # но данные у 1 и 2 эпизода отображаются не правильно. Не могу понять почему
 В условии есть информация про это:

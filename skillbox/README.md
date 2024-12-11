@@ -54,9 +54,21 @@ https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Ar
 
 https://learn.javascript.ru/array-methods#perebor-foreach
 
-- querySelectorAll получает элементы со страницы, а эти элементы могут быть созданы как через JS так и в HTML 
+- querySelectorAll получает элементы со страницы, а эти элементы могут быть созданы как через JS так и в HTML
 
+# Иногда студенты не понимают когда методы применяются к самому массиву, а когда возвращают новый массив. 
+Вы все правильно делаете, кроме одного нюанса. Метод sort() сортирует элементы массива и возвращает отсортированный массив. Т.е. вам нужно создать еще одну переменную где будет храниться отсортированный массив:
 
+function sortFilm(prop) {
+    const films = JSON.parse(localStorage.getItem('films'));
+
+    console.log('prop', prop);
+    console.log('до', films);
+
+    const sortedFilms = films.sort((a, b) => a[prop] - b[prop])
+
+    console.log('после', sortedFilms);
+}
 
 # Общее
 - проверить приведение к логическому типу с помощью поиска ==
