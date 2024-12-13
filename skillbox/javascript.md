@@ -139,6 +139,14 @@ btnSaveClient.addEventListener('click', () => {
   });
 
 
+# как будто я нажимаю кнопку несколько раз
+Это происходит из-за того что при вызове addEventListener не перезаписывается функция-обработчик клика, а добавляется новый. Т.е. каждый раз кода вы вызываете createModalForm (т.е. кликнули по кнопке "добавить клиента") у вас происходит добавление еще одной функции-обработчика к этой кнопке.
+
+https://learn.javascript.ru/introduction-browser-events#addeventlistener
+
+Решается это использованием onclick:
+
+$modalAddContactBtn.onclick = () => { /* */}
 # Еще один прием это весь повторяющийся код перенести в функции. Например, код обработчиков события:
 
 $sortAgeBtn.addEventListener('click', handler)
