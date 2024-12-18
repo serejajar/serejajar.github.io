@@ -7,3 +7,8 @@
 https://learn.javascript.ru/modules
 
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
+
+# как подключить JustValidate
+Добавьте вот этот скрипт в index.html:
+
+<script defer src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
