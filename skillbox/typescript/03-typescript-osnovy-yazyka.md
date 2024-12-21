@@ -8,7 +8,10 @@ https://habr.com/ru/articles/663964/
 https://typescript-exercises.github.io/
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
-# Эталонное решение 
+
+
+
+# Эталонное решение
 enum Priority {
   LOW = 'low',
   MEDIUM = 'medium',
