@@ -62,3 +62,8 @@ const time = setInterval(() => {
             clearInterval(time);
         }
 }, 1000)
+
+# 3-я задача. Запускается 2 прогрсбара сразу
+Не забывайте что loadImages(dogsImgArr) это вызов функции, т.е. когда скприт дойдет до строчки кода с вызовом первого loadImages(catsImgArr), код также и запустит loadImages(dogsImgArr) и соответсвенно добавится 2я линия прогресса. Вот так вы это можете исправить, чтобы все работало:
+
+loadImages(catsImgArr).finally(() => loadImages(dogsImgArr))
