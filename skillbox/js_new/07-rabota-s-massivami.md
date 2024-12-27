@@ -16,39 +16,39 @@ PS: Если у вас появятся вопросы по этому ДЗ, т�
 # 2-я задача
 const heights = ['164', '157', '160', '143', '170'];
 
-  const addEl = document.querySelector('.add');
-  const filterEl = document.querySelector('.filter');
+const addEl = document.querySelector('.add');
+const filterEl = document.querySelector('.filter');
 
-  const heightsUl = document.createElement("ul");
-  heightsUl.classList.add('height-list');
+const heightsUl = document.createElement("ul");
+heightsUl.classList.add('height-list');
 
+heights.forEach((height, index) => {
+  const heightsLi = document.createElement("li");
+  heightsLi.textContent = `${index + 1}. ${height}`;
+  heightsUl.append(heightsLi);
+});
+
+addEl.addEventListener('click', function() {
+  let newHeight = prompt('Введите новый рост');
+  if (newHeight.trim() === "") {
+    alert('Вы ничего не ввели');
+  } else {
+    heights.push(newHeight);
+    const heightsLi = document.createElement("li");
+    heightsLi.textContent = `${heights.length}. ${newHeight}`;
+    heightsUl.append(heightsLi);
+  }
+});
+
+filterEl.addEventListener('click', function() {
+  heights.sort((a, b) => a - b);
+  heightsUl.innerHTML = '';
   heights.forEach((height, index) => {
     const heightsLi = document.createElement("li");
     heightsLi.textContent = `${index + 1}. ${height}`;
     heightsUl.append(heightsLi);
   });
-
-  addEl.addEventListener('click', function() {
-    let newHeight = prompt('Введите новый рост');
-    if (newHeight.trim() === "") {
-      alert('Вы ничего не ввели');
-    } else {
-      heights.push(newHeight);
-      const heightsLi = document.createElement("li");
-      heightsLi.textContent = `${heights.length}. ${newHeight}`;
-      heightsUl.append(heightsLi);
-    }
-  });
-
-  filterEl.addEventListener('click', function() {
-    heights.sort((a, b) => a - b);
-    heightsUl.innerHTML = '';
-    heights.forEach((height, index) => {
-      const heightsLi = document.createElement("li");
-      heightsLi.textContent = `${index + 1}. ${height}`;
-      heightsUl.append(heightsLi);
-    });
-  });
+});
 
 
-  document.body.append(heightsUl);
+document.body.append(heightsUl);

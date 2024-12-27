@@ -10,7 +10,7 @@ https://learn.javascript.ru/while-for
 - Так же можете изучить Math.max() и Math.min().
 https://learn.javascript.ru/number#drugie-matematicheskie-funktsii
 
-Эти методы совокупности с деструтуризацией поможет выполнить 2-ю задачу проще:
+Эти методы совокупности с деструктуризацией поможет выполнить 2-ю задачу проще:
 buttonMin.addEventListener('click', () => {
   minNumber.textContent = Math.min(...arrEl);
 })
