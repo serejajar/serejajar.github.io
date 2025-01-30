@@ -166,6 +166,36 @@ https://developer.mozilla.org/ru/docs/Web/API/Event/target
 Получение аттрибутов элемента описано здесь:
 https://learn.javascript.ru/dom-attributes-and-properties
 
+# Переопределил геттер/ сеттер - нужно переопределить сеттер/ геттер?
+Да, это особенность ООП в JavaScript. Тут код скажет лучше:
+class Parent {
+  _value = 0;
+
+  get value() {
+    return this._value;
+  }
+
+  set value(val) {
+    this._value = val;
+  }
+}
+
+class Child extends Parent {
+  set value(val) {
+    this._value = val * 2;  // например, модифицируем поведение сеттера
+  }
+}
+
+
+const parend = new Parent();
+parend.value = 5;
+console.log('Значение:', parend.value);  // 5
+
+const child = new Child();
+child.value = 5;
+console.log('Значение:', child.value);  // undefined
+
+
 # я не понимаю что такое промис
 Чтобы вам было проще понять что такое промис, представьте себе эту логику в быту. Т.е. вы попросили своего друга чтобы он дал вам интересную книгу:
 1) Он обещает вам принести его на днях
