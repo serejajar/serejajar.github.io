@@ -99,7 +99,7 @@ function sortFilm(prop) {
 - Промисы, студенты часто запускают их сразу. См. JS3, 18 модуль, 3-я задача
 loadImages(catsImgArr).finally(loadImages(dogsImgArr))
 - как работать с select (JS3 - 19 классы)
-
+- как убрать последнюю запятую в списке интересов (Интересы пользователя: Cпорт, Музыка, Путешествия,)?
 # TS
 Где в коде можно использовать enum.. не совсем понимаю куда его можно применить?
 
@@ -130,6 +130,19 @@ console.log(move);
 # JS классы
 - Как использовать super. Нужно ли все аргументы передавать в super
 - Можно ли статик поменять
+
+# Замыкание
+let product = []
+
+getListFilter(product)
+
+product = 5555 /* просто тестовое значение */
+
+function getListFilter(product) {
+  setTimeout(() => {
+    console.log('product', product) // выведет []
+  }, 5000)
+}
 
 # TS 2-й урок, объяснить как работает типизация на примерах
 todos: Todos[] = []
