@@ -62,6 +62,11 @@ https://learn.javascript.ru/strict-mode
 
 https://learn.javascript.ru/function-basics
 
+# var вместо const/let
+Переменную лучше объявлять с помощью const/let, так как var устарел.
+
+Подробнее о var вы можете прочитать в статье:
+https://learn.javascript.ru/var
 #
 - Само условие уже возвращает true или false, поэтому в примере ниже условный оператор не нужен
 

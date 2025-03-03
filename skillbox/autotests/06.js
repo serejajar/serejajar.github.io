@@ -13,7 +13,7 @@ describe("Testing notes page", async function(){
 
     const deleteButton = By.css("div.pageArticle__buttons > *:last-child");
     const allNotesLink = By.css("a.theLayout__menuItem:first-child");
-    
+
     // const secondNote = By.css("div.pageCreate__articlePreview > button");
     // const deleteButtonSecond = By.css("div.pageArticle__buttons > button:nth-of-type(2)");
     // const notesWrapper = By.className("vb-content");
@@ -40,7 +40,7 @@ describe("Testing notes page", async function(){
         expect(mainNoteText).to.be.equal(firstNoteText, "Wrong text");
 
         // Кликните по кнопке с иконкой корзины, расположенной в центральной белой части страницы.
-        await driver.findElement(deleteButton).click();
+        await driver.findElement(By.css("div.pageArticle__buttons > *:last-child")).click();
 
         // В разделе «Все записи» выберите самую верхнюю запись (первую).
 
