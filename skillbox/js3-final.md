@@ -51,7 +51,7 @@ categoryCheckboxes.forEach(checkbox => {
   checkbox.addEventListener('change', () => { /* ваш код тут */});
 });
 
-#
+# как отфилтровать товары
 Вам нужно получить все товары и затем отфильтровать массив с товарами, т.е. вам нужно написать функцию которая будет фильтровать товары в зависимости от выбранных чекбоксов. Вот пример как можно выполнить фильтрацию продуктов:
 
 export function filterProducts(products) {
@@ -69,4 +69,75 @@ export function filterProducts(products) {
       product.availability && Object.values(product.availability).some(count => count > 0));
   }
   return filteredProducts;
+
+
+# Как отобразить количества товаров в соответствующей категории рядом с каждым фильтром (чекбоксом) в форме.
+
+Тут вам нужно их вычесть из тех данных товаров которые вы получаете, т.е.:
+
+1) Вам нужно получить данные товаров из ./data/data.json (это у вас готово)
+
+2) Вам нужно посчитать сколько товаров имеет тип соответвующий чекбоксу
+фильтрации. Также учитывайте то что у товара может быть несколько типов:
+"type": ["pendant", "nightlights"],
+https://gitlab.skillbox.ru/aleksandra_rogalskaia/javaScript-new/-/blob/dev/data/data.json#L16
+3) После этого отобразить чекбокс и количество товаров
+
+В это случае вы можете пройтись циклом по значениям в types в случае если оно есть то обновить счетчик для каждого фильтра. Тут в этой логике довольно трудно разобраться, поэтому в качестве исключения я пришлю пример кода функции подсчета количества товаров по категориям:
+
+//функция подсчета количества товаров по категориям
+export function getCountProductsToCategories() {
+  const products = getProducts();
+
+  products.then((result) => {
+    const pendant = document.querySelector('.custom-checkbox--pendant');
+    const countPendant = pendant.querySelector('.custom-checkbox__count');
+    const ceiling = document.querySelector('.custom-checkbox--ceiling');
+    const countCelling = ceiling.querySelector('.custom-checkbox__count');
+    const overhead = document.querySelector('.custom-checkbox--overhead')
+    const countOverhead = overhead.querySelector('.custom-checkbox__count');
+    const point = document.querySelector('.custom-checkbox--point')
+    const countPoint = point.querySelector('.custom-checkbox__count');
+    const nightlights = document.querySelector('.custom-checkbox--nightlights');
+    const countNightlights = nightlights.querySelector('.custom-checkbox__count');
+
+    let pendantCount = 0;
+    let ceilingCount = 0;
+    let overheadCount = 0;
+    let pointCount = 0;
+    let nightlightsCount = 0;
+
+
+    result.forEach(element => {
+      const type = element.type;
+
+      for (let i = 0; i < type.length; i++) {
+        switch (type[i]) {
+          case 'pendant':
+            pendantCount++;
+            break;
+          case 'ceiling':
+            ceilingCount++;
+            break;
+          case 'overhead':
+            overheadCount++;
+            break;
+          case 'point':
+            pointCount++;
+            break;
+          case 'nightlights':
+            nightlightsCount++;
+            break;
+          default:
+            break;
+        }
+      }
+    });   
+
+    countPendant.textContent = pendantCount;
+    countCelling.textContent = ceilingCount;
+    countOverhead.textContent = overheadCount;
+    countPoint.textContent = pointCount;
+    countNightlights.textContent = nightlightsCount;
+  })
 }
