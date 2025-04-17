@@ -50,3 +50,23 @@ const categoryCheckboxes = document.querySelectorAll('.custom-checkbox__field:no
 categoryCheckboxes.forEach(checkbox => {
   checkbox.addEventListener('change', () => { /* ваш код тут */});
 });
+
+#
+Вам нужно получить все товары и затем отфильтровать массив с товарами, т.е. вам нужно написать функцию которая будет фильтровать товары в зависимости от выбранных чекбоксов. Вот пример как можно выполнить фильтрацию продуктов:
+
+export function filterProducts(products) {
+  let filteredProducts = [...products];
+
+  const checkedTypes = [...document.querySelectorAll(".custom-checkbox__field:checked")].map(input => input.value);
+  if (checkedTypes.length > 0) {
+    filteredProducts = filteredProducts.filter(product => product.type.some(type => checkedTypes.includes(type)));
+  }
+
+  const status = document.querySelector("input[name='status']:checked")?.value;
+
+  if (status === "instock") {
+    filteredProducts = filteredProducts.filter(product =>
+      product.availability && Object.values(product.availability).some(count => count > 0));
+  }
+  return filteredProducts;
+}
