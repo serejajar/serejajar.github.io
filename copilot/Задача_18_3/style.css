@@ -1,0 +1,47 @@
+ /* Cтили прогресс-бара */
+ .progress-container {
+     margin: 20px 0;
+     width: 500px;
+ }
+
+ .progress-bar {
+     height: 20px;
+     width: 100%;
+     background-color: #f0f0f0;
+     border-radius: 10px;
+     overflow: hidden;
+     margin-bottom: 5px;
+ }
+
+ .progress-fill {
+     height: 100%;
+     width: 0%;
+     background-color: #4CAF50;
+     transition: width 0.1s linear;
+ }
+
+ .timer {
+     font-family: Arial, sans-serif;
+     font-size: 14px;
+     color: #666;
+ }
+
+ /* Стили для изображений */
+ .image-row {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 10px;
+     margin: 20px 0;
+ }
+
+ img {
+     height: 150px;
+     width: auto;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+ }
+
+ .loading-message {
+     font-style: italic;
+     color: #888;
+ }
