@@ -7,6 +7,29 @@
 https://learn.javascript.ru/async
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
+# 2-я задача. пример:
+У вас верный подход, и единственно нужно добавить сам setTimeout в функцию progress
+
+function progress(time) {
+  const bar = document.querySelector('#progress-bar');
+  const timer = document.querySelector('#progress-time');
+
+  let progressTime = 0;
+  bar.style.width = `500px`;
+  bar.style.transition = `linear ${time}s`;
+
+  const timerCounter = setInterval(() => {
+    timer.textContent = `${++progressTime} с`;
+  }, 1000);
+
+  bar.addEventListener('transitionend', () => {
+    clearInterval(timerCounter);
+  });
+}
+
+window.onload = () => {
+  progress(5);
+}
 # 2-я задача. Используют делэй и для setTimeout
 У вас верный подход, и единственно нужно изменить значение delay для setTimeout
 
