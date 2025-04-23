@@ -1,0 +1,190 @@
+:root {
+    --primary-color: #3498db;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --border-color: #e0e0e0;
+    --text-dark: #2c3e50;
+    --text-medium: #7f8c8d;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f7fa;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+h1 {
+    margin: 0;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 24px;
+}
+
+#add-delivery-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#add-delivery-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#deliveries-container {
+    display: grid;
+    gap: 25px;
+}
+
+.delivery-card {
+    border: 1px solid var(--border-color);
+    padding: 0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.delivery-card-content {
+    padding: 20px;
+}
+
+.delivery-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.delivery-card h3 {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.delivery-distance {
+    background-color: #f0f7ff;
+    color: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.delivery-address {
+    color: var(--text-medium);
+    margin: 12px 0;
+    padding: 12px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.delivery-address::before {
+    content: "📍 ";
+}
+
+.delivery-card .actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.delivery-card button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.delivery-card .complete-btn {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #dcfce7;
+}
+
+.delivery-card .complete-btn:hover {
+    background-color: #dcfce7;
+}
+
+.delivery-card .priority-btn {
+    background-color: #fff7ed;
+    color: #ea580c;
+    border: 1px solid #fed7aa;
+}
+
+.delivery-card .priority-btn:hover {
+    background-color: #ffedd5;
+}
+
+.status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.priority-badge {
+    background-color: #fff7ed;
+    color: #ea580c;
+    border: 1px solid #fed7aa;
+}
+
+.completed-badge {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #dcfce7;
+}
+
+.delivery-card.priority {
+    border-left: 4px solid #ea580c;
+}
+
+.delivery-card.completed {
+    border-left: 4px solid #16a34a;
+    background-color: #f8faf8;
+}
