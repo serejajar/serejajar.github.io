@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор стоимости доставки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }        button:hover {
+            background-color: #218838;
+        }        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Калькулятор стоимости доставки</h1>
+<form id="deliveryForm">
+    <input type="text" id="productName" placeholder="Название товара" required>
+    <input type="number" id="productWeight" placeholder="Вес товара (кг)" min="0.1" step="0.1" required>
+    <input type="number" id="deliveryDistance" placeholder="Расстояние доставки (км)" min="1" step="1" required>
+    <button type="submit">Добавить товар</button>
+</form>
+
+<table id="productList">
+    <thead>
+        <tr>
+            <th>Название товара</th>
+            <th>Вес (кг)</th>
+            <th>Расстояние (км)</th>
+            <th>Стоимость доставки (руб.)</th>
+        </tr>
+    </thead>
+    <tbody>
+</tbody>
+</table>
+
+<script>
+document.getElementById('deliveryForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const productName = document.getElementById('productName').value.trim();
+    const productWeight = parseFloat(document.getElementById('productWeight').value);
+    const deliveryDistance = parseFloat(document.getElementById('deliveryDistance').value);
+    if (!productName || productWeight <= 0 || deliveryDistance <= 0) {
+        alert("Пожалуйста, введите корректные данные.");
+        return;
+    }
+    const deliveryCost = (productWeight * deliveryDistance) / 10;
+    const tableBody = document.querySelector('#productList tbody');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+        <td>${productName}</td>
+        <td>${productWeight.toFixed(1)}</td>
+        <td>${deliveryDistance}</td>
+        <td>${deliveryCost.toFixed(2)}</td>
+    `;
+        tableBody.appendChild(newRow);
+
+    document.getElementById('deliveryForm').reset();
+});
+</script>
+</body>
+</html>
