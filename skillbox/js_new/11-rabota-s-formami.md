@@ -24,11 +24,11 @@ document.querySelector('input[name="gender"]:checked').value
 Так как выбранных чекбоксов может быть несколько, то вам нужно получить все элементы c помощью querySelectorAll. Далее вам нужно получить все значения этих чекбоксов и соедениь их в одну строку.  Вот как вы их можете получить.
 
 let interestArr = []
-interest.forEach(el => {
-        console.log(el.value);
-        if (el.checked) {
-            interestArr.push(el.value)
-        }
+
+interestElemList.forEach(el => {
+  if (el.checked) {
+    interestArr.push(el.value)
+  }
 });
 
 Далее вам нужно interestArr превратить в строку и добавить его в качестве textContent.
