@@ -31,7 +31,8 @@ btnSubmit.addEventListener('click', (e) => {
 
 
 #
-Выдает undefined так как их нет. Тут вам нужно также их установить если промокод успешно применился. Вот пример как  установить cookie:
+Выдает undefined так как их нет.
+Тут вам нужно также их установить если промокод успешно применился. Вот пример как  установить cookie:
 
 document.addEventListener('DOMContentLoaded', () => {
     const formEl = document.querySelector('.form');
