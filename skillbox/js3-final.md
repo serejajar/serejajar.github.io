@@ -141,3 +141,32 @@ export function getCountProductsToCategories() {
     countNightlights.textContent = nightlightsCount;
   })
 }
+
+# tippy
+export function productTooltip(data) {
+  const buttons = document.querySelectorAll('.tooltip__btn');
+
+  buttons.forEach((button, index) => {
+      const product = data[index];
+
+      tippy(button, {
+          content: `<div class="tooltip__content">
+      <span class="tooltip__text">Наличие товара по городам:</span>
+      <ul class="tooltip__list">
+        <li class="tooltip__item">
+          <span class="tooltip__text">Москва: <span class="tooltip__count">${product.availability.moscow}</span></span>
+        </li>
+        <li class="tooltip__item">
+          <span class="tooltip__text">Оренбург: <span class="tooltip__count">${product.availability.orenburg}</span></span>
+        </li>
+        <li class="tooltip__item">
+          <span class="tooltip__text">Санкт-Петербург: <span class="tooltip__count">${product.availability.saintPetersburg}</span></span>
+        </li>
+      </ul>
+    </div>`,
+          theme: 'light',
+          arrow: false,
+          allowHTML: true,
+      });
+  });
+}
