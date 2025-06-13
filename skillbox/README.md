@@ -56,6 +56,9 @@ https://learn.javascript.ru/array-methods#perebor-foreach
 
 - querySelectorAll получает элементы со страницы, а эти элементы могут быть созданы как через JS так и в HTML
 
+- как создавать элементы в JS (см. 05 в js_new) 
+
+
 # Не верный css класс.
 Вы ищите вот кнопки с классами элементы buttonMin/buttonMax:
 

@@ -21,6 +21,22 @@ function addToCart(product) {
     list.textContent = (product);  
 }
 
+# как создать элементы
+Самый простой способ это использовать шаблонные строки. Вот пример использования:
+
+elem.innerHTML = `<li>
+  <span>${yourVar}</span>
+</li>`;
+Также можно создавать все элементы и с помощью метода append добавлять их друг в друга ,но это немного громоздко:
+
+const li = document.createElement('li');       // Создаём <li>
+const span = document.createElement('span');   // Создаём <span>
+span.textContent = `ывыв`; // Текст внутри <span>
+
+li.append(span);     // Вставляем <span> в <li>
+ul.append(li);       // Вставляем <li> в <ul>
+
+document.body.append(ul); // Добавляем <ul> в body документа
 
 # почему у меня класс изменяется только у первого элемента, даже если я кликаю на другой элемент
 document.querySelector выбирает первый элемент, который подпадает под селектор. Т.е. в вашем коде в menuItemEl будет всегда первый элемент.

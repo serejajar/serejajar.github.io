@@ -34,3 +34,51 @@ module.exports = {
 # Не срабатывает команда в винде
 Нужно использовать двойные кавычки
 "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
+
+
+# как получать postData, headers, queryParams, body.
+Вот так:
+
+await page.on('request', (request) => {})
+
+В Puppeteer из объект request можно получить то что вам нужно:
+
+URL запроса (request.url())
+
+Метод запроса (request.method())
+
+Заголовки (request.headers())
+
+POST-данные (request.postData())
+
+Однако есть важное уточнение: request.postData() доступно только для POST-запросов. Если запрос — это GET, postData() вернёт null.
+
+# пример класса
+Вот пример подобного класса:
+
+const { $ } = require('@wdio/globals')
+const Page = require('./page');
+
+class SecurePage extends Page {
+    get flashAlert () {
+        return $('#flash');
+    }
+}
+
+module.exports = new SecurePage();
+
+
+И далее в тесте можно его импортировать и использовать
+
+const { expect } = require('@wdio/globals')
+const LoginPage = require('../pageobjects/login.page')
+const SecurePage = require('../pageobjects/secure.page')
+
+describe('My Login application', () => {
+    it('should login with valid credentials', async () => {
+        await LoginPage.open()
+        await LoginPage.login('tomsmith', 'SuperSecretPassword!')
+        await expect(SecurePage.flashAlert).toBeExisting()
+        await expect(SecurePage.flashAlert).toHaveTextContaining('You logged into a secure area!')
+    })
+})
