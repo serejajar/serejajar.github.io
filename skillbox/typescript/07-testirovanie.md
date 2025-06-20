@@ -19,10 +19,11 @@ const validateItems = [
   /* остальные данные */
 ]
 describe('validateDate', () => {
-  for (const item in validateItems) {
+  for (let i = 0; i < validateItems.length; i++) {
+    const item = validateItems[i];
+
     it(item.label, () => {
       const result = validateDate(item.value);
-
       expect(result).toEqual(item.result);
     });
   }
