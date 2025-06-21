@@ -19,13 +19,13 @@ const validateItems = [
   /* остальные данные */
 ]
 describe('validateDate', () => {
-  for (const item in validateItems) {
+  validateItem.forEach((item) => {
     it(item.label, () => {
       const result = validateDate(item.value);
 
       expect(result).toEqual(item.result);
     });
-  }
+  })
 })
 Часто это облегчает тестирование.
 
