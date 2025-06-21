@@ -1,3 +1,6 @@
+Работа выполнена на отлично и вам плюсик за то что разобрались с сервисом.
+ДЗ принято.
+
 # Runtime.consoleAPICalled не срабытывает
 Странно, так как событие Runtime.consoleAPICalled не срабытывает, но оно есть в доках.
 https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-consoleAPICalled
