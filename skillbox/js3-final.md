@@ -55,24 +55,36 @@ categoryCheckboxes.forEach(checkbox => {
   checkbox.addEventListener('change', () => { /* ваш код тут */});
 });
 
-# как отфилтровать товары
+
+
+# как отфильтровать товары
 Вам нужно получить все товары и затем отфильтровать массив с товарами, т.е. вам нужно написать функцию которая будет фильтровать товары в зависимости от выбранных чекбоксов. Вот пример как можно выполнить фильтрацию продуктов:
 
-export function filterProducts(products) {
-  let filteredProducts = [...products];
+function filterByType(products) {
+  const checkedTypes = Array.from(
+    document.querySelectorAll(".custom-checkbox__field:checked")
+  ).map((checkbox) => checkbox.value);
 
-  const checkedTypes = [...document.querySelectorAll(".custom-checkbox__field:checked")].map(input => input.value);
-  if (checkedTypes.length > 0) {
-    filteredProducts = filteredProducts.filter(product => product.type.some(type => checkedTypes.includes(type)));
-  }
+  if (checkedTypes.length === 0) return products;
 
-  const status = document.querySelector("input[name='status']:checked")?.value;
+  return products.filter((product) =>
+    product.type.some((type) => checkedTypes.includes(type))
+  );
+}
 
-  if (status === "instock") {
-    filteredProducts = filteredProducts.filter(product =>
-      product.availability && Object.values(product.availability).some(count => count > 0));
-  }
-  return filteredProducts;
+Здесь мы получаем все значения чекбоксов и возвращаем отфильтрованные товары в зависимости от выбранных (checked). Далее эту функцию вы можете вызвать при клике на чекбокс, например:
+
+export async function filterCards(cards) {
+  const filterItem = document.querySelectorAll(".catalog-form__item-col");
+
+  filterItem.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const newCards = filterByType(cards)
+
+      getPagination(newCards);
+    })
+  })
+}
 
 
 # Как отобразить количества товаров в соответствующей категории рядом с каждым фильтром (чекбоксом) в форме.
