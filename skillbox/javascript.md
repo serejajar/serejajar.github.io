@@ -130,6 +130,24 @@ https://learn.javascript.ru/styles-and-classes#classname-i-classlist
 # Используют неверный формат для создания дат Date('08.03.1997')
 Потому что Date не всегда понимает что за формат значения вы ей передаете. Тут по умолчанию используется американский формат "месяц.день.год" и Date выдаст невалидную дату так как нет 15 месяца.  Используйте формат "год-месяц-день" который Date корректно понимает.
 
+
+# не используют ?? или ||
+card.availability.moscow === undefined
+                  ? 0
+                  : card.availability.moscow
+Можно отрефакторить этот код, используя оператор логического ИЛИ (||) или оператор нулевого слияния (??) (??), в зависимости от того, что вы хотите считать "отсутствующим" значением. Например, этот вариант вернёт 0, если card.availability.moscow — null или undefined.
+
+card.availability.moscow ?? 0
+https://learn.javascript.ru/nullish-operators#operator-nulevogo-sliyaniya
+
+
+А этот вариант вернёт 0, если значение ложно (например, 0, null, undefined, false, ''):
+
+card.availability.moscow || 0
+Будьте осторожны — если 0 может быть валидным значением, используйте ??, а не ||.
+
+https://learn.javascript.ru/logical-operators#ili
+
 # FormData
 Вы также может использовать FormData, часто это облегчает сбор данных из формы:
 https://learn.javascript.ru/formdata
