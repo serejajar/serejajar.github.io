@@ -45,3 +45,17 @@ function sortFilm(prop) {
 	console.log('после', films);
 
 }
+# как редактировать
+У вас не совсем корректно редактируется данные фильма. Когда вы вызываете refresh, то в конце этой функции вызывается addFilmToLocalStorage который и добавляет новый фильм, а не редактирует данные существующего. Тут вам нужно использовать map, чтобы изменить массив::
+
+function updateFilmInLocalStorage(updatedFilm) {
+  const films = JSON.parse(localStorage.getItem("films")) || [];
+
+  const updatedFilms = films.map(film =>
+    film.id == updatedFilm.id ? updatedFilm : film
+  );
+
+  localStorage.setItem("films", JSON.stringify(updatedFilms));
+
+  renderTable();
+}

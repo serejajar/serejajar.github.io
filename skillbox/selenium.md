@@ -45,3 +45,8 @@ https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/
 
 # elementLocated или elementIsVisible
 Тут есть тонкая грань между тем что он добавился в разметку (elementLocated) и отобразился (elementIsVisible). Т.е. элемент добавился в разметку, но еще не успел отрендериться, а тест уже пытается к нему обратиться, например кликнуть.
+
+# почему же всё таки без setTimeout не работает
+Дело в том что сайты SPA динамически создают контент и поэтому тест не всегда сразу может найти элемент (он в этот момент еще не создался) и ему нужно явно задать время ожидание используя until.elementIsVisible:
+
+await driver.wait(until.elementIsVisible(driver.findElement(element)), 5000);
