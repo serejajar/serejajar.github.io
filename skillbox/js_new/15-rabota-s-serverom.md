@@ -10,7 +10,20 @@ https://learn.javascript.ru/network
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
 
-# Что такое гет параметры
+# Как удалить?
+Для удаления фильма можно использовать DELETE-эндпоинт /films/:id.  Т.е. это точно такой же запрос только нужно поменять метод на DELETE, вот так:
+
+async function deleteFilm(id) {
+  const response = await fetch(`https://sb-film.skillbox.cc/films/${id}`, {
+    method: "DELETE",
+    headers: {
+      email: "ovikdevil@gmail.com",
+    },
+  });
+}
+
+
+# Что такое гет параметры?
 Я так понимаю вы про это спрашиваете:
 
 const filmsResponse = await fetch(`https://sb-film.skillbox.cc/films?title=${title}&genre=${genre}&releaseYear=${releaseYear}&isWatched=${isWatched}`, {
