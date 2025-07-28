@@ -38,6 +38,15 @@ https://www.typescriptlang.org/play
 
 PS: Также будем рады вашему отзыву о работе куратора и о содержании курса на hello@skillbox.ru или в бот обратной связи.
 
+# Откуда взять аудио 
+Аудио (в очень коротком виде) храниться в виде строки base64 в свойстве encoded_audio в файле backend/data/tracks.js:
+
+https://github.com/dmitfrol152/Projects/blob/main/TypeScript/backend/data/tracks.js#L8
+
+Вы можете воспользоваться этим сервисом, чтобы создать строку base64 на основе аудиофайла:
+
+https://base64.guru/converter/encode/audio
+
 # фигма
 https://www.figma.com/design/lO9aaBqUdW6vp1N33iydRY/TypeScript?node-id=0-1&t=h3zshPipgCY9tdLv-1
 
