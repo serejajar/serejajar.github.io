@@ -2,4 +2,4 @@
 
 
 # Сразу присылаю ссылку на видео звонок:
-https://meet.google.com/tdw-cyqk-egh
+https://telemost.yandex.ru/j/29978542651099

@@ -31,6 +31,9 @@ https://learn.javascript.ru/logical-operators#ili
 https://learn.javascript.ru/nullish-operators
 
 
+# Код должен быть максимально читаемым и понятным. ​Рекомендую эту статью к изучению:
+https://learn.javascript.ru/coding-style
+
 # Код
 !regExp.test(event.key) ? event.preventDefault() : false;
 
