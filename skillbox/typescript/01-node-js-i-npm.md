@@ -19,3 +19,7 @@ https://fengyuanchen.github.io/cropperjs/migration.html
 
 # Я не понимаю
 Вам нужно использовать приложение из материалов урока и установить и использовать библиотеку обрезки изображений (например, cropperjs), чтобы функционал на главной странице этого приложения работал.
+
+# неверный импорт
+import Cropper from 'cropperjs';
+import 'cropperjs/dist/cropper.css';
