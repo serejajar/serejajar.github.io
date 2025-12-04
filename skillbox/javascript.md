@@ -19,6 +19,15 @@ if (obj.done) {
 Рекомендую к изучению статью про преобразование к логическому типу в условии if/else:
 https://learn.javascript.ru/ifelse#preobrazovanie-k-logicheskomu-tipu
 
+
+#
+В методе filter вы можете обойтись без сравнения "!=="
+catalogState.basket = ids
+        .map(id => findProductById(id))
+        .filter(item => item);
+
+Этот код уберёт всё, что приводится к false: undefined,  null, 0, '' (пустая строка), false и NaN
+
 # С помощью оператора "!" (не) вы можете не сравнивать прямо с ""===", например:
 if(!firstCard) {
 https://learn.javascript.ru/logical-operators#ne
