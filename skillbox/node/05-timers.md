@@ -61,8 +61,8 @@ limit(1).then(...) можно заменить на метод .first()
 https://knexjs.org/guide/query-builder.html#first
 
 Рекомендации:
-- Хочу порекомендовать также изучить документацию к express.  У него есть неплохая русская документация.
-https://expressjs.com/ru/
+- Хочу порекомендовать также изучить документацию к express.
+https://expressjs.com/
 
 - Можете так же глянуть в сторону nest.js, этот фреймворк начинают активно использовать:
 https://ru.hexlet.io/blog/posts/gid-po-nest-js
