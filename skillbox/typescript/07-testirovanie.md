@@ -7,27 +7,28 @@ npm test
 
 Рекомендации:
 - Вы также можете использовать циклы в самих тестах. Это может значительно сократить код тестов
-const validateItems = [
-  {
-    label: 'Валидация даты пропускает дату в виде DD.MM.YYYY',
-    value: '30.12.2024',
-    result: {
-      isValid: true,
-      message: errors.date.valid,
-    }
-  }
-  /* остальные данные */
-]
-describe('validateDate', () => {
-  for (let i = 0; i < validateItems.length; i++) {
-    const item = validateItems[i];
 
-    it(item.label, () => {
-      const result = validateDate(item.value);
-      expect(result).toEqual(item.result);
-    });
-  })
-})
+it('выдаёт предупреждение, если есть экранирование', () => {
+  const dangerousCases = [
+    '<script>alert(1)</script>',
+    '"><img src=x onerror=alert(1)>',
+    'javascript:alert(1)',
+    'data:text/html,<script>alert(1)</script>',
+    ' onmouseover=alert(1) ',
+    '../../etc/passwd',
+    ' UNION SELECT * FROM users --',
+    '<svg/onload=alert(1)>',
+    '"><iframe src="javascript:alert(1)">',
+  ];
+
+  dangerousCases.forEach((input) => {
+    const result = validateCityName(input);
+
+    expect(result.isValid).toBe(false);
+    expect([errors.city.escape, errors.city.invalid]).toContain(result.message);
+  });
+});
+
 Часто это облегчает тестирование.
 
 - Можете еще глянуть в сторону библиотеки для тестирования mocha. Несмотря на название он неплох
