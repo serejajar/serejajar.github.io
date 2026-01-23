@@ -9,6 +9,39 @@
 https://learn.javascript.ru/network
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
+# Как применить фильтрацию на таблицу
+async function renderTable() {
+  const params = new URLSearchParams();
+
+  if (filterTitle.value) params.append("title", filterTitle.value);
+  if (filterGenre.value) params.append("genre", filterGenre.value);
+  if (filterYear.value) params.append("releaseYear", filterYear.value);
+  if (filterWatched.value) params.append("isWatched", filterWatched.value);
+
+  const response = await fetch(`${API_URL}?${params.toString()}`, {
+    headers: { email: EMAIL },
+  });
+
+  const films = await response.json();
+  tbody.innerHTML = "";
+
+  films.forEach((film) => {
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+      <td>${film.title}</td>
+      <td>${film.genre}</td>
+      <td>${film.releaseYear}</td>
+      <td>${film.isWatched ? "Да" : "Нет"}</td>
+      <td>
+        <button onclick="deleteFilm('${film.id}')">Удалить</button>
+      </td>
+    `;
+
+    tbody.appendChild(tr);
+  });
+}
+
 
 # Как удалить?
 Для удаления фильма можно использовать DELETE-эндпоинт /films/:id.  Т.е. это точно такой же запрос только нужно поменять метод на DELETE, вот так:

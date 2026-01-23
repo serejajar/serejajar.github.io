@@ -1,5 +1,31 @@
 Задание выполнено на отлично и вам плюсик что разобрались с локальным хранилищем. ДЗ принято.
 
+Что можно улучшить:
+- Многократное чтение localStorage:
+
+JSON.parse(localStorage.getItem('films')) || []
+
+Этот код лучше вынести в отдельные функкции:
+
+function getFilms() {
+    return JSON.parse(localStorage.getItem('films')) || [];
+}
+
+function saveFilms(films) {
+    localStorage.setItem('films', JSON.stringify(films));
+}
+
+Так будет понятнее и проще, особенно когда в следующем задании нужно будет работать с сервером вместо локального хранилища.
+
+- applySorting() сортирует массив и перезаписывает localStorage
+
+Этого лучше избегать, так как данные не должны менять по каждому изменению. Здесь лучше хранить данные как есть и сортировать копию перед рендером передавая сортированный массив в displayFilms в качестве аргумента.
+
+const films = getFilms();
+const sortedFilms = [...films].sort(...)
+
+displayFilms(sortedFilms);
+
 Рекомендации
 - Рекомендую вам к прочтению статью про локальное и сессионное хранилища. Эта информация пригодится вам в дальнейшей работе.
 https://learn.javascript.ru/localstorage
