@@ -1,6 +1,19 @@
 Проверил выполненные задания. Все они выполнены по условиям ДЗ и вам плюсик за правильную работу с формами. Отлично!
 ДЗ принято.
 
+Что можно улучшить:
+- Во второй задаче weightEl.value и distanceEl.value это строки, и, так как JS неявно приводит типы, то сравнение weightEl.value >= 0 может привести к неожиданному поведению. тут лучше явно приводить к числу и проверять это число с помощью Number.isFinite или Number.isNaN:
+const weight = Number(weightEl.value);
+const distance = Number(distanceEl.value);
+
+const isValidNumbers =
+  Number.isFinite(weight) &&
+  Number.isFinite(distance) &&
+  weight >= 0 &&
+  distance >= 0;
+
+if (isValidNumbers && nameRegex.test(productEl.value)) {
+
 Рекомендации
 В качестве дополнительной тренировки можете прочитать эти статьи и выполнить задачи к ним.
 https://learn.javascript.ru/forms-controls
