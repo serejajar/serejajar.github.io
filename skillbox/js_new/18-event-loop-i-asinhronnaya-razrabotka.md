@@ -8,9 +8,8 @@ setTimeout(() => { resolve(); }, 500);
 const TRANSITION_DELAY = 10;
 const AFTER_FINISH_DELAY = 500;
 Это мелочь, но это очень ценится на ревью тестового кода на собеседованиях  .
-
-
-
+- Смешение async/await и .then. Это работает, но стиль разный, поэтому выбирают или .then или async/await:
+const dogData = await fetchDogImages();
 
 Рекомендации
 Рекомендую также изучить эти статьи и решить задачи к ним.

@@ -26,8 +26,23 @@ const sortedFilms = [...films].sort(...)
 
 displayFilms(sortedFilms);
 
+- В renderTable много однотипного кода, его можно вынести в отдельную функцию:
+function createTd(text) {
+  const td = document.createElement("td");
+  td.textContent = text;
+  return td;
+}
+И тогда код станет немного компактнее:
+tr.append(
+  createTd(film.title),
+  createTd(film.genre),
+  createTd(film.releaseYear),
+  createTd(film.isWatched ? "Да" : "Нет"),
+  actionTd
+);
+
 Рекомендации
-- Рекомендую вам к прочтению статью про локальное и сессионное хранилища. Эта информация пригодится вам в дальнейшей работе.
+Рекомендую вам к прочтению статью про локальное и сессионное хранилища. Эта информация пригодится вам в дальнейшей работе.
 https://learn.javascript.ru/localstorage
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
