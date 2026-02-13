@@ -16,6 +16,20 @@ const dogData = await fetchDogImages();
 https://learn.javascript.ru/async
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
+# 1-я задача. пример:
+// Мок-функция: имитация загрузки изображений котов
+function fetchCatImages() {
+// Генерируем целое время в диапазоне от 2000 до 5000 мс
+const loadTime = Math.floor(Math.random() * 3001) + 2000; // 2000–5000 (целое)
+const catUrls = ["img/cat1.jpg", "img/cat2.jpg", "img/cat3.jpg"];
+
+return new Promise((resolve) => {
+setTimeout(() => {
+  resolve({ urls: catUrls, loadTime }); // Возвращаем время и данные
+}, loadTime);
+});
+}
+
 # 2-я задача. пример:
 У вас верный подход, и единственно нужно добавить сам setTimeout в функцию progress
 

@@ -23,3 +23,14 @@ https://fengyuanchen.github.io/cropperjs/migration.html
 # неверный импорт
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
+
+# @parcel/core: Failed to resolve 'node_modules/cropperjs/dist/cropper.min.css' from './src/index.html'
+Решение в импорте файла css в сам файл main.js, т.е. вам нужно:
+1) Удалить подключение в html-файле
+<link rel="stylesheet" href="node_modules/cropperjs/dist/cropper.min.css">
+
+2) Обновить импорты в main.js:
+import Cropper from 'cropperjs';
+import 'cropperjs/dist/cropper.css'
+
+После этого эта ошибка уйдет.
