@@ -2,6 +2,7 @@
 ДЗ принято.
 
 Что можно улучшить:
+- Во второй задаче в clearData вы не совсем корректно очищаете сами данные в value всегда строка.
 - Во второй задаче weightEl.value и distanceEl.value это строки, и, так как JS неявно приводит типы, то сравнение weightEl.value >= 0 может привести к неожиданному поведению. тут лучше явно приводить к числу и проверять это число с помощью Number.isFinite или Number.isNaN:
 const weight = Number(weightEl.value);
 const distance = Number(distanceEl.value);
