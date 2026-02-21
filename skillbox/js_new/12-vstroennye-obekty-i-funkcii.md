@@ -11,22 +11,14 @@ formEl.addEventListener('submit', function (e) {
 - Сейчас при вводе неверного промокода форма просто сбрасывается т.е. пользователь не будет понимать что произошло. Лучше явно указать что промокод не найден:
 message.textContent = "Промокод не найден";
 
-- В getCookie() — потенциальная ошибка, если document.cookie бедер равен "", то:
-"".split("; ") // [""]
-item.split("=") // [""] → name="", value=undefined
-
-И в объект попадёт:
-{ "": undefined }
+- В getCookie() есть возможная ошибка если document.cookie пустой (""), то "".split("; ") вернёт [""], и в value будет undefined:
+const [name, value] = item.split("=");
 
 Тут лучше добавить проверку с if:
 function getCookie() {
   if (!document.cookie) return {};
 
-  return document.cookie.split("; ").reduce((acc, item) => {
-    const [name, value] = item.split("=");
-    if (name) acc[name] = value;
-    return acc;
-  }, {});
+  /* остальной код */
 }
 - Куки могут содержать несколько значений поэтому лучше использовать исполльзовать точку с запятой ";" для разделения данных вида "ключ=значение". Но это больше на будущее, сейчас это не критично и на вашу работу не влияет.
 
