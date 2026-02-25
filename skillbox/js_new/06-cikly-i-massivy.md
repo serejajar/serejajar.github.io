@@ -19,14 +19,12 @@ allElementsEl.textContent = {} // отобразится [object Object]
 allElementsEl.textContent = numbers.join(', ')
 Так вы будете уверены что сохранится именно строка.
 
-- Этот код можно сделать проще c помощью метода массива join:
-let text = ''
-for (const number of numbers) {
-  text += number + ', ';
+- Код
+for (const element of elements) {
+   allElements.textContent += `${element}, `;
 }
-pEl.textContent = text;
-Вот так:
-pEl.textContent = numbers.join(', ');
+Этот код можно сделать проще с помощью метода массива join:
+allElements.textContent = numbers.join(', ');
 https://learn.javascript.ru/array-methods#split-i-join
 Это также уберет лишнюю запятую:
 
