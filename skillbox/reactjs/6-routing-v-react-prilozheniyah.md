@@ -14,4 +14,24 @@ if (!playlistId || isNaN(id)) {
 }
 Это делает код более устойчивым.
 
+- Дублирование логики обработки query params, так как оба хендлера handleTitleFilterChange и handleGenreFilterChange почти одинаковые. Можно сделать универсальную функцию:
+
+const handleFilterChange = (key: string) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newParams = new URLSearchParams(searchParams);
+
+        if (e.target.value) {
+            newParams.set(key, e.target.value);
+        } else {
+            newParams.delete(key);
+        }
+
+        setSearchParams(newParams);
+};
+
+И далее использовать ее:
+
+onChange={handleFilterChange('title')}
+onChange={handleFilterChange('genre')}
+
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
