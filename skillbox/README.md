@@ -1,3 +1,14 @@
+# JS/react задача с подвохом: Button без type
+- В React желательно писать type для кнопки:
+<button type="button">
+Чтобы кнопка не стала submit внутри form.
+
+# JS/react задача с подвохом: когда нужно использовать map, а когда forEach
+см. reactjs/3-logika-v-react-komponentah.md
+
+# JS задача с подвохом: BASE_URL и baseUrl
+см. js_new/15-rabota-s-serverom.md
+
 # JS задача с подвохом (у строк нет метода reverse)
 -reverseString("hello") // "olleh"
 

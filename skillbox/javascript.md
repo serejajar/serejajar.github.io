@@ -33,7 +33,6 @@ if(!firstCard) {
 https://learn.javascript.ru/logical-operators#ne
 
 # Подобный код можно чуть упростить используя оператор "||"" (или) или "??" (оператор нулевого слияния)
-
 const pathname = path ? path : location.pathname;
 https://learn.javascript.ru/logical-operators#ili
 
@@ -55,7 +54,6 @@ https://learn.javascript.ru/variables#variable-naming
 https://learn.javascript.ru/function-basics#function-naming
 
 # Возможно, в дальнейшем, вам будет чуть удобнее использовать шаблонные строки при создании элементов html. Вот пример использования:
-
 container.innerHTML = `<h1>${name}</h1`;
 
 # не нужное null при использовании тернорного оператора (условие ? действие : null)
@@ -79,20 +77,17 @@ https://learn.javascript.ru/function-basics
 
 Подробнее о var вы можете прочитать в статье:
 https://learn.javascript.ru/var
+
 #
 - Само условие уже возвращает true или false, поэтому в примере ниже условный оператор не нужен
-
 return value <= 0 ? false : true;
 
 Правильно вот так:
-
 return value <= 0
 
 #
 Вы можете вместо  методов проверки и добавления  использовать метод toggle:
-
 element.classList.toggle("mystyle");
-
 Метод toggle добавит класс элементу, или уберет этот класс если он уже есть у элемента.
 
 # Рекомендация для студентов,чтобы несколько раз не вызывать append"
@@ -206,6 +201,14 @@ https://developer.mozilla.org/ru/docs/Web/API/Event/target
 
 Получение аттрибутов элемента описано здесь:
 https://learn.javascript.ru/dom-attributes-and-properties
+
+# Лучше не искать элемент .list-el каждый раз при клике:
+btnAdd.onclick = function () {
+  const listEl = document.querySelector('.list-el')
+​Поиск по элементам DOM это "дорогая" операция поэтому лучше уменьшать кол-во таких вызовов. Вместо этого лучше вынести вызов querySelector вне функции. Так элемент .list-el будет найден только один раз.
+const listEl = document.querySelector('.list-el')
+btnAdd.onclick = function () {
+  // использовать переменную listEl
 
 # Переопределил геттер/ сеттер - нужно переопределить сеттер/ геттер?
 Да, это особенность ООП в JavaScript. Тут код скажет лучше:

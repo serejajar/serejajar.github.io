@@ -2,8 +2,17 @@
 
 ДЗ принято.
 
-
 Что можно улучшить
+- Индекс массива это плохой key в списках. Лучше:
+<li key={song}>{song}</li>
+или вот так если названия песен могут совпадать:
+<li key={`${song}-${index}`}>{song}</li>
+
+- Лучше не использовать userId для индекса массива:
+const user = USERS[Number(userId)];
+Это плохая практика, так как если массив изменится, то всё сломается. Лучше использовать find:
+const user = USERS.find(u => u.id === Number(userId));
+
 - Добавить типизацию useParams
 const { playlistId } = useParams<{ playlistId: string }>();
 
