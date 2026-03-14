@@ -1,3 +1,55 @@
+# JS/react задача с подвохом
+многократный вызов getPromoCode в функции:
+
+function usePromoCode (inputCode) {
+   if(!getPromoCode(inputCode)){
+        inputField.value = '';
+        cardNotify.textContent = '';
+    } else {
+        const promoCode = getPromoCode(inputCode).promocode;
+        const promoName = `${encodeURIComponent(getPromoCode(inputCode).gift)}`;
+        const notifyText = getPromoCode(inputCode).gift;
+
+getPromoCode(inputCode) вызывается 4 раза.
+
+Это:
+
+хуже по производительности
+
+ухудшает читаемость
+
+нарушает принцип DRY
+
+Лучше:
+
+function usePromoCode(inputCode) {
+
+ const promo = getPromoCode(inputCode);
+
+ if(!promo){
+  inputField.value = '';
+  cardNotify.textContent = '';
+  return;
+ }
+
+ const promoCode = promo.promocode;
+ const notifyText = promo.gift;
+
+ cardNotify.textContent = notifyText;
+ document.cookie = `promo=${promoCode}`;
+}
+
+# JS/react задача с подвохом
+В третьей задаче очистка списка лишняя:
+if (uList.childElementCount > 0) {
+    uList.innerHTML = "";
+}
+
+Можно просто:
+uList.innerHTML = "";
+
+И браузер сам всё очистит.
+
 # JS/react задача с подвохом: Button без type
 - В React желательно писать type для кнопки:
 <button type="button">

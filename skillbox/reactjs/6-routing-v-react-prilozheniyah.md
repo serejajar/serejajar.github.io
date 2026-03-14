@@ -15,6 +15,16 @@ const user = USERS.find(u => u.id === Number(userId));
 
 - Добавить типизацию useParams
 const { playlistId } = useParams<{ playlistId: string }>();
+Мутация searchParams:
+
+searchParam.set("searchGenre", `${value.toLowerCase()}`)
+setSearchParam(searchParam)
+
+searchParams нельзя мутировать напрямую, так как URLSearchParams мутируется, и React Router может не заметить изменения. Нужно создавать новый объект:
+
+const params = new URLSearchParams(searchParam)
+params.set("searchGenre", value.toLowerCase())
+setSearchParam(params)
 
 - Потенциальный баг с Number(playlistId). Если playlistId будет undefined, то find просто ничего не найдёт, так как Number(undefined) будет  NaN. Поэтому тут лучше явно проверить:
 const id = Number(playlistId);

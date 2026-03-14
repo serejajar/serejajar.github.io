@@ -43,8 +43,5 @@ https://github.com/dmitfrol152/Projects/blob/main/TypeScript/backend/data/tracks
 
 https://base64.guru/converter/encode/audio
 
-# фигма
-https://www.figma.com/design/lO9aaBqUdW6vp1N33iydRY/TypeScript?node-id=0-1&t=h3zshPipgCY9tdLv-1
-
 # критерии оценки
 https://docs.google.com/spreadsheets/d/1atP2ACqSRo051wEPnxqFzoWOoDbgqyhyOit-D8TSDDU/edit?usp=sharing
