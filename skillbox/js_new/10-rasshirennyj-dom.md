@@ -2,6 +2,14 @@
 ДЗ принято.
 
 Что можно улучшить:
+- В первой задаче можно упростить код, и вместо создания <img> каждый раз, можно переиспользовать один:
+const fullImg = document.createElement('img');
+fullSizeBlock.append(fullImg);
+thumbEl.forEach(img => {
+  img.addEventListener('click', () => {
+    fullImg.src = img.dataset.full || img.src;
+  });
+});
 - Добавить проверку элементов thumbs и viewer
 Если по какой-то причине элементы не найдены, код упадёт, поэтому можно обезопасить код вот так:
 if (!thumbs || !viewer) return;
