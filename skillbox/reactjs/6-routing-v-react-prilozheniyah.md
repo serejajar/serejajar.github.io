@@ -15,8 +15,8 @@ const user = USERS.find(u => u.id === Number(userId));
 
 - Добавить типизацию useParams
 const { playlistId } = useParams<{ playlistId: string }>();
-Мутация searchParams:
 
+- Мутация searchParams:
 searchParam.set("searchGenre", `${value.toLowerCase()}`)
 setSearchParam(searchParam)
 
