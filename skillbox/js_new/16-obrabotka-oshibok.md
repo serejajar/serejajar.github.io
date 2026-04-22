@@ -2,6 +2,18 @@
 ДЗ принято.
 
 Что можно улучшить:
+- Вы часто сравниваете message со строкой:
+if (error.message === 'Timeout')
+Но лучше так не делать,, ведь сообщение легко может поменятся, да и разные ошибки могут иметь одинаковый message. Лучше использовать классы ошибок и instanceof для условия:
+class TimeoutError extends Error {
+  constructor() {
+    super('Request timeout');
+    this.name = 'TimeoutError';
+  }
+}
+
+if (error instanceof TimeoutError)
+
 - Лучше не терять контекста ошибки при вызове new Error:
 if (!response.ok) throw new Error();
 Без этого невозможно отличить сетевую ошибку от ошибок от сервера, например 500, 404 и др.. Поэтому лучше передавать сообщение в new Error:

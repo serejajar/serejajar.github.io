@@ -1,3 +1,25 @@
+# JS задача с подвохом:
+Лучше не называть функцию sort так как это может привести к путанице и потенциальным багам в JavaScript уже есть встроенный метод sort.
+
+# JS/react задача с подвохом: если дать одно название и сеттеру и самому свойству, то будет ошибка, так как сеттер будет пытаться считать сам себя.
+
+class Book {
+  set title(value) {
+    this.title = value;
+  }
+
+  get title() {
+    return this.title;
+  }
+}
+
+console.log(new Book().title)
+
+# ReactJS задача с подвохом: state против const/let в компоненте
+
+# ReactJS задача с подвохом: бесконечна загрузка страницы если добавить в депенденси useEffect функцию из хука
+https://gitlab.skillbox.ru/irina_biriukova/ReactJS/-/commit/cdfaef9925292321924c980aa89a368601bd266f
+
 # JS/react задача с подвохом
 многократный вызов getPromoCode в функции:
 

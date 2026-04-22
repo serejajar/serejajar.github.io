@@ -10,7 +10,7 @@
 
 https://nodejs.org/en/learn/getting-started/introduction-to-nodejs - Тут много статей для изучения как работать с nodejs.
 
-https://nodejs.org/en/ - Документация nodejs. Тут вы можете найти информацию как работать с файлами, стримами, создавать сервер. 
+https://nodejs.org/en/ - Документация nodejs. Тут вы можете найти информацию как работать с файлами, стримами, создавать сервер.
 
 http://expressjs.com - Документация к expressjs.
 
