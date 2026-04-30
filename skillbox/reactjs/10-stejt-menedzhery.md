@@ -7,4 +7,4 @@
 import type { PreloadedState } from "@reduxjs/toolkit"
 export const makeStore = (preloadedState?: PreloadedState<RootState>)
 
-PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
+PS: Также будем рады вашему отзыву о работе куратора и о содержании курса на hello@skillbox.ru или в бот обратной связи.
