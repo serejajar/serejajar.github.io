@@ -7,7 +7,7 @@ const fullImg = document.createElement('img');
 fullSizeBlock.append(fullImg);
 thumbEl.forEach(img => {
   img.addEventListener('click', () => {
-    fullImg.src = img.dataset.full || img.src;
+    fullImg.src = img.src;
   });
 });
 - Добавить проверку элементов thumbs и viewer
@@ -29,7 +29,6 @@ https://learn.javascript.ru/dom-nodes
 И вот эту статью про создание элементов
 https://learn.javascript.ru/modifying-document
 Практика никогда не бывает лишней   
-
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
 # 1-я задача, А как чтобы они переключались между собой?

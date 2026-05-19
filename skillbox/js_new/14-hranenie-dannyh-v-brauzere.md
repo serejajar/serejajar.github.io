@@ -99,3 +99,6 @@ function updateFilmInLocalStorage(updatedFilm) {
 
   renderTable();
 }
+
+
+# пример
