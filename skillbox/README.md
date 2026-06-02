@@ -1,3 +1,9 @@
+# Много задач по Реакту и ТС
+Для систематизации React + TypeScript лучше всего опираться на официальную документацию: React Docs и TypeScript Handbook.
+Очень полезны шпаргалки и практические примеры: React TypeScript Cheatsheets и Total TypeScript — они отлично помогают, когда забываешь синтаксис или типизацию.
+https://www.totaltypescript.com/
+https://react-typescript-cheatsheet.netlify.app/
+
 # JS задача с подвохом:
 Лучше не называть функцию sort так как это может привести к путанице и потенциальным багам в JavaScript уже есть встроенный метод sort.
 
