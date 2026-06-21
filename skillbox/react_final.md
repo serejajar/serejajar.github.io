@@ -28,3 +28,32 @@ UI
 Итог: приложение соответствует требованиям технического задания, основные функции работают корректно, интерфейс соответствует заявленной логике и обеспечивает удобное взаимодействие пользователя с платформой.
 
 PS: Также будем рады вашему отзыву о работе куратора и о содержании курса на hello@skillbox.ru или в бот обратной связи.
+
+# Как сделать случайный фильм
+Вы можете их исправить, но если вы используете @tanstack/react-query, то вместо хука вы можете сделать простой компонент, который решит эти проблемы. Вот пример такого компонента:
+
+export const FeaturedMovie: FC = () => {
+    const randomMovieQuery = useQuery({
+        queryFn: () => getRandomMovie(),
+        queryKey: ["movie", "random"],
+        retry: false,
+        refetchOnWindowFocus: false,
+    }, queryClient);
+
+    const handleRefreshRandomMovie = () => {
+        randomMovieQuery.refetch();
+    }
+    console.log("randomMovieQuery.status", randomMovieQuery.status);
+
+    switch (randomMovieQuery.status) {
+        case "error":
+            return <span>Не удалось загрузить фильмы, проверьте соединени с интернетом</span>
+        case "pending":
+            return <SkeletonLoaderFeaturesMovie />
+        case "success":
+            return <FeaturedMovieView movie={randomMovieQuery.data} onRefresh={handleRefreshRandomMovie}/>
+    }
+   
+}
+
+

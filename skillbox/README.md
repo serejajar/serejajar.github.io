@@ -4,6 +4,38 @@
 https://www.totaltypescript.com/
 https://react-typescript-cheatsheet.netlify.app/
 
+
+# CSS revert
+Пример кода для инпута
+inputText.addEventListener('focus', function (e) {
+    inputText.style.backgroundColor = '#d4d9d9';
+    inputText.style.border = '2px solid red';
+})
+
+inputText.addEventListener('blur', function (e) {
+    inputText.style.backgroundColor = 'initial';
+    inputText.style.border = 'revert';
+})
+
+
+css revert не всегда возвращает элемент к тому состоянию, которое было до изменения через JavaScript. Более правильный подход - не менять стили напрямую из JavaScript, а переключать их через CSS-класс:
+
+.active {
+    background-color: #d4d9d9;
+    border: 2px solid red;
+}
+
+
+inputText.addEventListener('focus', () => {
+    inputText.classList.add('active');
+});
+
+inputText.addEventListener('blur', () => {
+    inputText.classList.remove('active');
+});
+
+Так стили остаются в CSS, а JavaScript только управляет состоянием элемента.
+
 # JS задача с подвохом:
 Лучше не называть функцию sort так как это может привести к путанице и потенциальным багам в JavaScript уже есть встроенный метод sort.
 
