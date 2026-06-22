@@ -1,0 +1,23 @@
+body{
+    padding-left:20px ;
+}
+
+.addBtn{
+    color: #fff;
+    background-color: green;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+
+.searchBtn{
+    color: #fff;
+    background-color: rgb(10, 41, 214);
+    padding: 10px;
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer;
+}
+
