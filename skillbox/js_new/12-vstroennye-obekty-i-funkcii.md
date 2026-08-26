@@ -55,25 +55,33 @@ btnSubmit.addEventListener('click', (e) => {
 # где взять картинки для первой задаче
 В этом задании не требуется вёрстка pixel perfect поэтому вы можете не добавлять изображение или добавить свое.
 
-# Выдает undefined так как их нет.
-Тут вам нужно также их установить если промокод успешно применился. Вот пример как  установить cookie:
+# Как делать 2-3 задачи (куки)
+Тут вам нужно сделать следующее:
 
-document.addEventListener('DOMContentLoaded', () => {
-    const formEl = document.querySelector('.form');
-    const promoEl = document.querySelector('.promo');
+1) Проверить если есть уже записанные куки, и в этом случае показать сообщение под полем ввода (функция checkPromo из примера ниже)
+2) В функции submit вам нужно проверить совпадает или введенное значение с объектом promocodeObj (функция getPromo из примера ниже)
+3) Если совпадает, то нужно сохранить куки
 
+Третье задание отличается от второго только тем что в функции getPromo вам нужно будет сравнивать значение не с объектом promocodeObj, а с масивом promocodeArr.
+
+
+Вот пример как установить сами cookie:
+const formEl = document.querySelector('.form');
+const promoEl = document.querySelector('.promo');
+
+checkPromo(promoEl);
+
+formEl.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const promo = getPromo(promoEl.value);
+
+    if (promo.length > 0) {
+        document.cookie = `promo=${promo.promocode}`;
+    } else {
+        document.cookie = `promo=0`;
+    }
     checkPromo(promoEl);
-
-    formEl.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const promo = getPromo(promoEl.value);
-        if (promo.length > 0) {
-            document.cookie = `promo=${promo[0]}`;
-        } else {
-            document.cookie = `promo=0`;
-        }
-        checkPromo(promoEl);
-    });
 });
 
 # почему в режиме Live Server куки записываются, а когда просто открываю html в браузере они не записываются?
