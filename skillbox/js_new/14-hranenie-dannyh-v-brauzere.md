@@ -58,7 +58,6 @@ https://learn.javascript.ru/localstorage
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
 # Не понимаю как удалить конкретный фильм из локал сторадж.
-
 Вы можете удалить фильм из массива с помощью filter.
 
 Для этого вам нужно:
@@ -68,7 +67,7 @@ PS: Если у вас появятся вопросы по этому ДЗ, т�
 
 Вот как это выглядит в коде:
 
-function removeFilmOfLocalStorage(film) {
+function removeFilm(film) {
     let films = JSON.parse(localStorage.getItem('films')) || []
     films = films.filter(_film => _film.title !== film.title)
     localStorage.setItem('films', JSON.stringify(films))
@@ -113,4 +112,67 @@ function updateFilmInLocalStorage(updatedFilm) {
 }
 
 
-# пример
+# пример как добавить обработчик клика (кнопка удалить) для стороки таблицы
+function renderTable(films = []) {
+  // const films = JSON.parse(localStorage.getItem("films")) || [];
+  const filmTableBody = document.getElementById("film-tbody");
+
+  // Clear table body first
+  filmTableBody.innerHTML = "";
+
+  // Then add new rows
+  films.forEach((film, id) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${film.title}</td>
+      <td>${film.genre}</td>
+      <td>${film.releaseYear}</td>
+      <td>${film.isWatched ? "Да" : "Нет"}</td>
+      <td>
+      <button class="deleteBtn deleteBtn--Id" data-id="${film.id}">
+        Удалить
+      </button>
+      </td>
+    `;
+
+    row.querySelector(".deleteBtn--Id").addEventListener("click", () => {
+      const id = row.querySelector(".deleteBtn--Id").dataset.id;
+      deleteFilm(id);
+    });
+
+    filmTableBody.appendChild(row);
+  });
+}
+
+# # пример как добавить обработчик клика (кнопка удалить) для стороки таблицы 2
+function renderTable() {
+  const films = JSON.parse(localStorage.getItem("films")) || [];
+
+  const filmTableBody = document.querySelector("#film-tbody");
+
+  filmTableBody.innerHTML = "";
+
+  films.forEach((film) => {
+    const row = document.createElement("tr");
+    const btnEdit = document.createElement("button");
+    const btnDel = document.createElement("button");
+
+    btnEdit.textContent = "Редактировать";
+    btnDel.textContent = "Удалить";
+    btnEdit.addEventListener("click", addOnClick);
+    btnDel.addEventListener("click", addDelClick);
+    btnDel.setAttribute("data-id", film.id);
+    btnEdit.setAttribute("data-id", film.id);
+
+    row.innerHTML = `
+            <td>${film.title}</td>
+            <td>${film.genre}</td>
+            <td>${film.releaseYear}</td>
+            <td>${film.isWatched ? "да" : "нет"}</td>
+            `;
+
+    row.append(btnEdit, btnDel);
+
+    filmTableBody.appendChild(row);
+  });
+}

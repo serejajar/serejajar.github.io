@@ -2,7 +2,28 @@
 ДЗ принято.
 
 Что можно улучшить
--
+- - У вас последовательность fetch встречается в нескольких местах. Если API разрастётся, это код станен сильно много, поэтому можно сделать вспомогательную функцию:
+
+async function fetchJson<T>(
+    input: RequestInfo,
+    init: RequestInit,
+    schema: z.ZodType<T>,
+): Promise<T> {
+    const response = await fetch(input, init);
+    validateResponse(response);
+
+    const data: unknown = await response.json();
+    return schema.parse(data);
+}
+
+И тогда:
+
+export function fetchMe(): Promise<User> {
+    return fetchJson("/api/users/me", {}, UserSchema);
+}
+
+Это не обязательно делать прямо сейчас, но для API-клиента такой подход актуален.
+
 PS: Если у вас появятся вопросы по этому ДЗ, то вы их можете задать в чате следующего модуля.
 
 # Ка сделать запрос за статьями и как создать хук с этим запросом
